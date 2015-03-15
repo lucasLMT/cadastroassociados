@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Area'); ?></legend>
 	<?php
-		echo $this->Form->input('name');
+		echo $this->Form->input('nome');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
