@@ -1,5 +1,5 @@
-<div class="areas index">
-	<h2><?php echo __('Areas'); ?></h2>
+<div class="grupos index">
+	<h2><?php echo __('Grupos'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
@@ -9,14 +9,14 @@
 	</tr>
 	</thead>
 	<tbody>
-	<?php foreach ($areas as $area): ?>
+	<?php foreach ($grupos as $grupo): ?>
 	<tr>
-		<td><?php echo h($area['Area']['id']); ?>&nbsp;</td>
-		<td><?php echo h($area['Area']['nome']); ?>&nbsp;</td>
+		<td><?php echo h($grupo['Grupo']['id']); ?>&nbsp;</td>
+		<td><?php echo h($grupo['Grupo']['nome']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $area['Area']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $area['Area']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $area['Area']['id']), array(), __('Are you sure you want to delete # %s?', $area['Area']['id'])); ?>
+			<?php echo $this->Html->link(__('View'), array('action' => 'view', $grupo['Grupo']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $grupo['Grupo']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $grupo['Grupo']['id']), array(), __('Are you sure you want to delete # %s?', $grupo['Grupo']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -39,6 +39,8 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Area'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Grupo'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Convenios'), array('controller' => 'convenios', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Convenio'), array('controller' => 'convenios', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

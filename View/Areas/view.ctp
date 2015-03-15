@@ -6,9 +6,9 @@
 			<?php echo h($area['Area']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Nome'); ?></dt>
 		<dd>
-			<?php echo h($area['Area']['name']); ?>
+			<?php echo h($area['Area']['nome']); ?>
 			&nbsp;
 		</dd>
 	</dl>
