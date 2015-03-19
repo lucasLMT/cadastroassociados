@@ -1,3 +1,20 @@
+<br>
+<?php 
+    echo $this->Html->link(
+        'Cadastrar um novo associado',
+        array(
+            'controller' => 'Associados',
+            'action' => 'add',
+            'full_base' => true
+        ),
+        array(
+        	'class' => 'btn btn-success',
+            'role' => 'button'
+        	)
+    );
+?>
+<br>
+<br>
 <div class="panel panel-default">
 	<div class="panel-heading">
 	    Associados
@@ -8,47 +25,28 @@
 	        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	            <thead>
 	                <tr>
-	                    <th><?php echo $this->Paginator->sort('id'); ?></th>
 						<th><?php echo $this->Paginator->sort('nome'); ?></th>
-						<th><?php echo $this->Paginator->sort('endereco'); ?></th>
-						<th><?php echo $this->Paginator->sort('bairro'); ?></th>
-						<th><?php echo $this->Paginator->sort('CEP'); ?></th>
-						<th><?php echo $this->Paginator->sort('dataDeAdmissao'); ?></th>
-						<th><?php echo $this->Paginator->sort('dataDeNascimento'); ?></th>
 						<th><?php echo $this->Paginator->sort('telefone'); ?></th>
-						<th><?php echo $this->Paginator->sort('RG'); ?></th>
-						<th><?php echo $this->Paginator->sort('estado civil'); ?></th>
 						<th><?php echo $this->Paginator->sort('cargo_id'); ?></th>
 						<th><?php echo $this->Paginator->sort('area_id'); ?></th>
 						<th><?php echo $this->Paginator->sort('salario'); ?></th>
-						<th><?php echo $this->Paginator->sort('valor adicional'); ?></th>
-						<th><?php echo $this->Paginator->sort('mensalidade'); ?></th>
-						<th><?php echo $this->Paginator->sort('mensagem'); ?></th>
-						<th class="actions"><?php echo __('Actions'); ?></th>
+						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
 					</tr>
 	            </thead>
 	            <tbody>
 					<?php foreach ($associados as $associado): ?>
 					<tr class="odd gradeX">
-						<td><?php echo h($associado['Associado']['id']); ?>&nbsp;</td>
 						<td><?php echo h($associado['Associado']['nome']); ?>&nbsp;</td>
-						<td><?php echo h($associado['Associado']['endereco']); ?>&nbsp;</td>
-						<td><?php echo h($associado['Associado']['bairro']); ?>&nbsp;</td>
-						<td><?php echo h($associado['Associado']['CEP']); ?>&nbsp;</td>
-						<td><?php echo h($associado['Associado']['dataDeAdmissao']); ?>&nbsp;</td>
-						<td><?php echo h($associado['Associado']['dataDeNascimento']); ?>&nbsp;</td>
 						<td><?php echo h($associado['Associado']['telefone']); ?>&nbsp;</td>
-						<td><?php echo h($associado['Associado']['RG']); ?>&nbsp;</td>
-						<td><?php echo h($associado['Associado']['estado civil']); ?>&nbsp;</td>
 						<td><?php echo h($associado['Cargo']['id']); ?>&nbsp;</td>
 						<td><?php echo h($associado['Area']['id']); ?>&nbsp;</td>
 						<td><?php echo h($associado['Associado']['salario']); ?>&nbsp;</td>
-						<td><?php echo h($associado['Associado']['valor adicional']); ?>&nbsp;</td>
-						<td><?php echo h($associado['Associado']['mensalidade']); ?>&nbsp;</td>
-						<td><?php echo h($associado['Associado']['mensagem']); ?>&nbsp;</td>
 						<td class="actions">
-							<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $associado['Associado']['id'])); ?>
-							<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $associado['Associado']['id']), array(), __('Are you sure you want to delete # %s?', $associado['Associado']['id'])); ?>
+							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $associado['Associado']['id']),
+							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>
+							<?php echo $this->Form->postLink(__('Apagar'), array('action' => 'delete', $associado['Associado']['id']),
+							array('class' => 'btn btn-danger btn-sm','role' => 'button'), __('Are you sure you want to delete # %s?', 
+							$associado['Associado']['id'])); ?>
 						</td>
 					</tr>
 					<?php endforeach; ?>
