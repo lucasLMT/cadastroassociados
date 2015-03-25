@@ -1,3 +1,20 @@
+<br>
+<?php 
+    echo $this->Html->link(
+        'Cadastrar uma nova compra',
+        array(
+            'controller' => 'Compras',
+            'action' => 'add',
+            'full_base' => true
+        ),
+        array(
+        	'class' => 'btn btn-success',
+            'role' => 'button'
+        	)
+    );
+?>
+<br>
+<br>
 <div class="panel panel-default">
 	<div class="panel-heading">
 	    Compras
@@ -8,20 +25,18 @@
 	        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	            <thead>
 	                <tr>
-	                    <th><?php echo $this->Paginator->sort('id'); ?></th>
 						<th><?php echo $this->Paginator->sort('convenio_id'); ?></th>
 						<th><?php echo $this->Paginator->sort('associado_id'); ?></th>
 						<th><?php echo $this->Paginator->sort('nomeAssociado'); ?></th>
 						<th><?php echo $this->Paginator->sort('valor'); ?></th>
 						<th><?php echo $this->Paginator->sort('referencia'); ?></th>
 						<th><?php echo $this->Paginator->sort('observacao'); ?></th>
-						<th class="actions"><?php echo __('Actions'); ?></th>
+						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
 	                </tr>
 	            </thead>
 	            <tbody>
 					<?php foreach ($compras as $compra): ?>
 					<tr class="odd gradeX">
-						<td><?php echo h($compra['Compra']['id']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Convenio']['id']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Associado']['id']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['nomeAssociado']); ?>&nbsp;</td>
@@ -29,8 +44,11 @@
 						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
 						<td class="actions">
-							<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $compra['Compra']['id'])); ?>
-							<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $compra['Compra']['id']), array(), __('Are you sure you want to delete # %s?', $compra['Compra']['id'])); ?>
+							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $compra['Compra']['id']),
+							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>
+							<?php echo $this->Form->postLink(__('Apagar'), array('action' => 'delete', $compra['Compra']['id']),
+							array('class' => 'btn btn-danger btn-sm','role' => 'button'), __('Are you sure you want to delete # %s?', 
+							$compra['Compra']['id'])); ?>
 						</td>
 					</tr>
 					<?php endforeach; ?>

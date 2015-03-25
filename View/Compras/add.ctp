@@ -1,7 +1,7 @@
 <br>
 <div class="panel panel-default">
     <div class="panel-heading">
-        Adicionar cargo
+        Adicionar compra
     </div>
     <div class="panel-body">
         <div class="row">
@@ -19,7 +19,7 @@
 					<div class="form-group">
 						<?php echo $this->Form->input('observacao', array('label'=>'Observação:','class'=>'form-control','rows'=>'4'));?>
 					</div>
-					<button type="submit" class="btn btn-default">Submit Button</button>
+					<button type="submit" class="btn btn-default">Enviar</button>
 				<?php echo $this->Form->end(); ?>
 			</div>
         </div>

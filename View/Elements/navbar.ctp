@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                <a class="navbar-brand" href="index.html">Cadastro Associados</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -17,30 +17,6 @@
                         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
                         <li>
                             <a href="#">
                                 <div>
@@ -207,12 +183,12 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Usuário</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configurações</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -236,10 +212,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="<?php echo $this->Html->url()?>"><i class="fa fa-dashboard fa-fw"></i> Home</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Tabelas<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Gerenciamento<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <?php 
@@ -324,108 +297,6 @@
                                             )
                                         );
                                     ?>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Cadastros<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <?php 
-                                        echo $this->Html->link(
-                                            'Áreas',
-                                            array(
-                                                'controller' => 'Areas',
-                                                'action' => 'add',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php 
-                                        echo $this->Html->link(
-                                            'Associados',
-                                            array(
-                                                'controller' => 'Associados',
-                                                'action' => 'add',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php 
-                                        echo $this->Html->link(
-                                            'Cargos',
-                                            array(
-                                                'controller' => 'Cargos',
-                                                'action' => 'add',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php 
-                                        echo $this->Html->link(
-                                            'Compras',
-                                            array(
-                                                'controller' => 'Compras',
-                                                'action' => 'add',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php 
-                                        echo $this->Html->link(
-                                            'Convenios',
-                                            array(
-                                                'controller' => 'Convenios',
-                                                'action' => 'add',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php 
-                                        echo $this->Html->link(
-                                            'Grupos',
-                                            array(
-                                                'controller' => 'Grupos',
-                                                'action' => 'add',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php 
-                                        echo $this->Html->link(
-                                            'Usuários',
-                                            array(
-                                                'controller' => 'Usuarios',
-                                                'action' => 'add',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="#">Login Page</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

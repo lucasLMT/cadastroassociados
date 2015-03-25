@@ -13,7 +13,7 @@
                     <div class="form-group">
                         <?php echo $this->Form->input('valorAlmoço', array('label'=>'Valor do almoço:','class'=>'form-control','rows'=>'1'));?>
                     </div>
-					<button type="submit" class="btn btn-default">Submit Button</button>
+					<button type="submit" class="btn btn-default">Enviar</button>
 				<?php echo $this->Form->end(); ?>
 			</div>
         </div>

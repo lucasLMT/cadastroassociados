@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <?php echo $this->Form->input('mensagem', array('label'=>'Mensagem:','class'=>'form-control','rows'=>'4')); ?>
                     </div>
-                    <button type="submit" class="btn btn-default">Submit Button</button>
+                    <button type="submit" class="btn btn-default">Enviar</button>
                 <?php echo $this->Form->end(); ?>
             </div>
         </div>

@@ -1,3 +1,20 @@
+<br>
+<?php 
+    echo $this->Html->link(
+        'Cadastrar um novo usuário',
+        array(
+            'controller' => 'Usuarios',
+            'action' => 'add',
+            'full_base' => true
+        ),
+        array(
+        	'class' => 'btn btn-success',
+            'role' => 'button'
+        	)
+    );
+?>
+<br>
+<br>
 <div class="panel panel-default">
 	<div class="panel-heading">
 	    Áreas
@@ -8,21 +25,22 @@
 	        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	            <thead>
 	                <tr>
-	                    <th><?php echo $this->Paginator->sort('id'); ?></th>
 						<th><?php echo $this->Paginator->sort('login'); ?></th>
 						<th><?php echo $this->Paginator->sort('senha'); ?></th>
-						<th class="actions"><?php echo __('Actions'); ?></th>
+						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
 	                </tr>
 	            </thead>
 	            <tbody>
 					<?php foreach ($usuarios as $usuario): ?>
 					<tr class="odd gradeX">
-						<td><?php echo h($usuario['Usuario']['id']); ?>&nbsp;</td>
 						<td><?php echo h($usuario['Usuario']['login']); ?>&nbsp;</td>
 						<td><?php echo h($usuario['Usuario']['senha']); ?>&nbsp;</td>
 						<td class="actions">
-							<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $usuario['Usuario']['id'])); ?>
-							<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $usuario['Usuario']['id']), array(), __('Are you sure you want to delete # %s?', $usuario['Usuario']['id'])); ?>
+							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $usuario['Usuario']['id']),
+							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>
+							<?php echo $this->Form->postLink(__('Apagar'), array('action' => 'delete', $usuario['Usuario']['id']),
+							array('class' => 'btn btn-danger btn-sm','role' => 'button'), __('Are you sure you want to delete # %s?', 
+							$usuario['Usuario']['id'])); ?>
 						</td>
 					</tr>
 					<?php endforeach; ?>

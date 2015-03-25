@@ -1,7 +1,7 @@
 <br>
 <div class="panel panel-default">
     <div class="panel-heading">
-        Editar área
+        Adicionar convênio
     </div>
     <div class="panel-body">
         <div class="row">
@@ -40,7 +40,8 @@
 					<div class="form-group">
 						<?php echo $this->Form->input('status', array('label'=>'Status:','class'=>'form-control','rows'=>'1'));?>
 					</div>
-					<button type="submit" class="btn btn-default">Submit Button</button>
+					<button type="submit" class="btn btn-default">Enviar</button>
+					<button type="reset" class="btn btn-default">Limpar</button>
 				<?php echo $this->Form->end(); ?>
 			</div>
         </div>
