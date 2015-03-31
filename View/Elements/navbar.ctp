@@ -285,19 +285,7 @@
                                             )
                                         );
                                     ?>
-                                </li>
-                                <li>
-                                    <?php 
-                                        echo $this->Html->link(
-                                            'Usuários',
-                                            array(
-                                                'controller' => 'Usuarios',
-                                                'action' => 'index',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
+                                </li>                                
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
