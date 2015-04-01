@@ -13,7 +13,8 @@ class AreasController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'CsvView.CsvView');
+
 
 /**
  * index method
@@ -101,4 +102,15 @@ class AreasController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	public function export() {
+    $areas = $this->Area->find('all');
+    $_serialize = 'areas';
+    $_header = array('Código', 'Nome');
+    $_extract = array('Area.id', 'Area.nome');
+
+    $this->viewClass = 'CsvView.Csv';
+    $this->set(compact('areas', '_serialize', '_header', '_extract'));
 }
+}
+

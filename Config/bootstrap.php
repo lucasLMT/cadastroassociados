@@ -98,6 +98,11 @@ Configure::write('Dispatcher.filters', array(
 	'CacheDispatcher'
 ));
 
+/*
+*Arquivos referente ao plugin 
+*/
+CakePlugin::loadAll();
+
 /**
  * Configures default file logging options
  */
