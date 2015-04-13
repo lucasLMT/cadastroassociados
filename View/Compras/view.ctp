@@ -41,13 +41,13 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Compra'), array('action' => 'edit', $compra['Compra']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Compra'), array('action' => 'delete', $compra['Compra']['id']), array(), __('Are you sure you want to delete # %s?', $compra['Compra']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Compras'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Compra'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Convenios'), array('controller' => 'convenios', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Convenio'), array('controller' => 'convenios', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Associados'), array('controller' => 'associados', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Associado'), array('controller' => 'associados', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar Compra'), array('action' => 'edit', $compra['Compra']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Remover Compra'), array('action' => 'delete', $compra['Compra']['id']), array(), __('Você tem certeza que deseja remover %s?', $compra['Compra']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Compras'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nova Compra'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Convenios'), array('controller' => 'convenios', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Novo Convenio'), array('controller' => 'convenios', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Associados'), array('controller' => 'associados', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Novo Associado'), array('controller' => 'associados', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

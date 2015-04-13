@@ -16,12 +16,12 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Grupo'), array('action' => 'edit', $grupo['Grupo']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Grupo'), array('action' => 'delete', $grupo['Grupo']['id']), array(), __('Are you sure you want to delete # %s?', $grupo['Grupo']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Grupos'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Grupo'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Convenios'), array('controller' => 'convenios', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Convenio'), array('controller' => 'convenios', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar Grupo'), array('action' => 'edit', $grupo['Grupo']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Remover Grupo'), array('action' => 'delete', $grupo['Grupo']['id']), array(), __('Você tem certeza que deseja remover %s?', $grupo['Grupo']['nome'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Grupos'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Novo Grupo'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Convenios'), array('controller' => 'convenios', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Novo Convenio'), array('controller' => 'convenios', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -60,9 +60,9 @@
 			<td><?php echo $convenio['nomeDoGrupo']; ?></td>
 			<td><?php echo $convenio['status']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'convenios', 'action' => 'view', $convenio['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'convenios', 'action' => 'edit', $convenio['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'convenios', 'action' => 'delete', $convenio['id']), array(), __('Are you sure you want to delete # %s?', $convenio['id'])); ?>
+				<?php echo $this->Html->link(__('Listar'), array('controller' => 'convenios', 'action' => 'view', $convenio['id'])); ?>
+				<?php echo $this->Html->link(__('Editar'), array('controller' => 'convenios', 'action' => 'edit', $convenio['id'])); ?>
+				<?php echo $this->Form->postLink(__('Remover'), array('controller' => 'convenios', 'action' => 'delete', $convenio['id']), array(), __('Você tem certeza que deseja remover %s?', $convenio['nomeDoGrupo'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -71,7 +71,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Convenio'), array('controller' => 'convenios', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('Novo Convenio'), array('controller' => 'convenios', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>

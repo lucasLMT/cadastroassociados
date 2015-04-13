@@ -86,16 +86,16 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Associado'), array('action' => 'edit', $associado['Associado']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Associado'), array('action' => 'delete', $associado['Associado']['id']), array(), __('Are you sure you want to delete # %s?', $associado['Associado']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Associados'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Associado'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Cargos'), array('controller' => 'cargos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Cargo'), array('controller' => 'cargos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Areas'), array('controller' => 'areas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Area'), array('controller' => 'areas', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Compras'), array('controller' => 'compras', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Compra'), array('controller' => 'compras', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar Associado'), array('action' => 'edit', $associado['Associado']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Remover Associado'), array('action' => 'delete', $associado['Associado']['id']), array(), __('Você tem certeza que deseja remover %s?', $associado['Associado']['nome'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Associados'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Novo Associado'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Cargos'), array('controller' => 'cargos', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Novo Cargo'), array('controller' => 'cargos', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Areas'), array('controller' => 'areas', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nova Area'), array('controller' => 'areas', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Compras'), array('controller' => 'compras', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nova Compra'), array('controller' => 'compras', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -123,8 +123,8 @@
 			<td><?php echo $compra['observacao']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'compras', 'action' => 'view', $compra['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'compras', 'action' => 'edit', $compra['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'compras', 'action' => 'delete', $compra['id']), array(), __('Are you sure you want to delete # %s?', $compra['id'])); ?>
+				<?php echo $this->Html->link(__('Editar'), array('controller' => 'compras', 'action' => 'edit', $compra['id'])); ?>
+				<?php echo $this->Form->postLink(__('Remover'), array('controller' => 'compras', 'action' => 'delete', $compra['id']), array(), __('Você tem certeza que deseja remover %s?', $compra['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -133,7 +133,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Compra'), array('controller' => 'compras', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('Nova Compra'), array('controller' => 'compras', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>
