@@ -71,14 +71,14 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Convenio'), array('action' => 'edit', $convenio['Convenio']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Convenio'), array('action' => 'delete', $convenio['Convenio']['id']), array(), __('Are you sure you want to delete # %s?', $convenio['Convenio']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Convenios'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Convenio'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Grupos'), array('controller' => 'grupos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Grupo'), array('controller' => 'grupos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Compras'), array('controller' => 'compras', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Compra'), array('controller' => 'compras', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar Convenio'), array('action' => 'edit', $convenio['Convenio']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Remover Convenio'), array('action' => 'delete', $convenio['Convenio']['id']), array(), __('Você tem certeza que deseja remover %s?', $convenio['Convenio']['nomeDoGrupo'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Convenios'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Novo Convenio'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Grupos'), array('controller' => 'grupos', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Novo Grupo'), array('controller' => 'grupos', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Compras'), array('controller' => 'compras', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nova Compra'), array('controller' => 'compras', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -105,9 +105,9 @@
 			<td><?php echo $compra['referencia']; ?></td>
 			<td><?php echo $compra['observacao']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'compras', 'action' => 'view', $compra['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'compras', 'action' => 'edit', $compra['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'compras', 'action' => 'delete', $compra['id']), array(), __('Are you sure you want to delete # %s?', $compra['id'])); ?>
+				<?php echo $this->Html->link(__('Listar'), array('controller' => 'compras', 'action' => 'view', $compra['id'])); ?>
+				<?php echo $this->Html->link(__('Editar'), array('controller' => 'compras', 'action' => 'edit', $compra['id'])); ?>
+				<?php echo $this->Form->postLink(__('Remover'), array('controller' => 'compras', 'action' => 'delete', $compra['id']), array(), __('Você tem certeza que deseja remover %s?', $compra['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -116,7 +116,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Compra'), array('controller' => 'compras', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('Nova Compra'), array('controller' => 'compras', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>

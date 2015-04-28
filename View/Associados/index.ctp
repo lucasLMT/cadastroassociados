@@ -45,8 +45,8 @@
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $associado['Associado']['id']),
 							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>
 							<?php echo $this->Form->postLink(__('Apagar'), array('action' => 'delete', $associado['Associado']['id']),
-							array('class' => 'btn btn-danger btn-sm','role' => 'button'), __('Are you sure you want to delete # %s?', 
-							$associado['Associado']['id'])); ?>
+							array('class' => 'btn btn-danger btn-sm','role' => 'button'), __('Você tem certeza que deseja remover associado %s?', 
+							$associado['Associado']['nome'])); ?>
 						</td>
 					</tr>
 					<?php endforeach; ?>
@@ -65,9 +65,9 @@
 </p>
 <div class="paging">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->prev('< ' . __('anterior '), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->numbers(array('separator' => ' '));
+		echo $this->Paginator->next(__(' próximo') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 </div>
 

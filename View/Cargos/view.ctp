@@ -21,12 +21,12 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Cargo'), array('action' => 'edit', $cargo['Cargo']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Cargo'), array('action' => 'delete', $cargo['Cargo']['id']), array(), __('Are you sure you want to delete # %s?', $cargo['Cargo']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Cargos'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Cargo'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Associados'), array('controller' => 'associados', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Associado'), array('controller' => 'associados', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar Cargo'), array('action' => 'edit', $cargo['Cargo']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Remover Cargo'), array('action' => 'delete', $cargo['Cargo']['id']), array(), __('Você tem certeza que deseja remover %s?', $cargo['Cargo']['nome'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Cargos'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Novo Cargo'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Associados'), array('controller' => 'associados', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Novo Associado'), array('controller' => 'associados', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -71,9 +71,9 @@
 			<td><?php echo $associado['mensalidade']; ?></td>
 			<td><?php echo $associado['mensagem']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'associados', 'action' => 'view', $associado['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'associados', 'action' => 'edit', $associado['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'associados', 'action' => 'delete', $associado['id']), array(), __('Are you sure you want to delete # %s?', $associado['id'])); ?>
+				<?php echo $this->Html->link(__('Listar'), array('controller' => 'associados', 'action' => 'view', $associado['id'])); ?>
+				<?php echo $this->Html->link(__('Editar'), array('controller' => 'associados', 'action' => 'edit', $associado['id'])); ?>
+				<?php echo $this->Form->postLink(__('Remover'), array('controller' => 'associados', 'action' => 'delete', $associado['id']), array(), __('Você tem certeza que deseja remover %s?', $associado['nome'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -82,7 +82,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Associado'), array('controller' => 'associados', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('Novo Associado'), array('controller' => 'associados', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>
