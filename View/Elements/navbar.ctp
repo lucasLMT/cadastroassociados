@@ -188,7 +188,16 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configurações</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i><?php 
+                                        echo $this->Html->link(
+                                            'Sair',
+                                            array(
+                                                'controller' => 'Users',
+                                                'action' => 'logout',
+                                                'full_base' => true
+                                            )
+                                        );
+                                    ?> </a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -285,7 +294,7 @@
                                             )
                                         );
                                     ?>
-                                </li>                                
+                                </li>                                                            
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

@@ -41,19 +41,18 @@ class AppController extends Controller {
           )
         )
       ),
-      'loginRedirect' => array('controller' => 'users', 'action' => 'index'),      
-      'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+      'loginRedirect' => array('controller' => 'associados', 'action' => 'index'),
+      'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),             
       'authError' => 'Você não possui autorização para acessar a página',
-      'authorize' => array('Controller')
-      )
-    );
-  
+      'authorize' => array('Controller')      
+    )
+  );
   public function isAuthorized($user) {
     return true;
   }
 
   public function beforeFilter(){
-    $this->Auth->allow('login');
+    $this->Auth->allow('login');    
     $this->set('logged_in', $this->Auth->loggedIn());
     $this->set('current_user', $this->Auth->user());
   }

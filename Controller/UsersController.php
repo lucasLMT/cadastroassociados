@@ -110,6 +110,7 @@ class UsersController extends AppController {
 	public function beforeFilter(){
 		parent::beforeFilter();
 		$this->Auth->allow('login');
+		$this->Auth->allow('logout');
 	}
 
 	public function isAuthorized($user){
@@ -131,7 +132,7 @@ class UsersController extends AppController {
 		}
 	}
 
-	public function logout(){
-		$this->redirect($this->Auth->logout());
+	public function logout(){		
+    $this->redirect($this->Auth->logout());
 	}
 }
