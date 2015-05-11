@@ -14,6 +14,9 @@ class UsersController extends AppController {
 	 * @var array
 	 */
 	public $components = array('Paginator');
+    
+    public $uses = 'User';
+    public $name = 'Users';
 
 	/**
 	 * index method
@@ -109,17 +112,7 @@ class UsersController extends AppController {
 
 	public function beforeFilter(){
 		parent::beforeFilter();
-		$this->Auth->allow('login');
 		$this->Auth->allow('logout');
-	}
-
-	public function isAuthorized($user){
-		if (in_array($this->action, array('edit', 'delete'))){
-			if ($user['id'] != $this->request->params['pass'][0]){
-				return false;
-			}
-		}
-		return true;
 	}
 
 	public function login(){
@@ -133,6 +126,6 @@ class UsersController extends AppController {
 	}
 
 	public function logout(){		
-    $this->redirect($this->Auth->logout());
+	return $this->redirect($this->Auth->logout());	
 	}
 }
