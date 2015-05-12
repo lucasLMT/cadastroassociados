@@ -9,6 +9,7 @@ App::uses('AppModel', 'Model');
  */
 class Associado extends AppModel {
 
+    public $displayField = 'nome';
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
