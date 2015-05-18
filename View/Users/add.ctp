@@ -1,18 +1,23 @@
-<div class="users form">
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Add User'); ?></legend>
-	<?php
-		echo $this->Form->input('login');
-		echo $this->Form->input('password');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-	</ul>
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Adicionar Usuário
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <?php echo $this->Form->create('User'); ?>           
+                	<div class="form-group">
+                    	<?php
+						echo $this->Form->input('login', array('label'=>'Login:','class'=>'form-control','rows'=>'1'));
+						echo $this->Form->input('password', array('label'=>'Senha:','class'=>'form-control'));
+						?>
+                    </div>
+                    <button type="submit" class="btn btn-default">Enviar</button>
+                <?php echo $this->Form->end(); ?>
+            </div>
+        </div>
+        <!-- /.row (nested) -->
+    </div>
+    <!-- /.panel-body -->
 </div>

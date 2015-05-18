@@ -8,6 +8,8 @@ App::uses('AppModel', 'Model');
  */
 class Convenio extends AppModel {
 
+	public $displayField = 'nomeDoGrupo';
+
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -46,5 +48,56 @@ class Convenio extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array(
+		'razaoSocial' => array(
+			'rule' => 'alphaNumeric',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'O campo "Razão Social" é obrigatório.'
+		),
+		'rua' => array(
+			'rule' => 'alphaNumeric',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'O campo "Rua" é obrigatório.'
+		),
+		'bairro' => array(
+			'rule' => 'alphaNumeric',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'O campo "Bairro" é obrigatório.'
+		),
+		'cidade' => array(
+			'rule' => 'alphaNumeric',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'O campo "Cidade" é obrigatório.'
+		),
+		'CEP' => array(
+			'rule' => array('postal', '/^[0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9]$/'),
+			'allowEmpty'=>true,
+			'message'=>'O campo "CEP" é obrigatório. Padrão "XXXXX-XXX"'
+		),
+		'telefone' => array(
+			'rule' => 'numeric',
+			'allowEmpty'=>true,
+			'message'=>'O campo "Telefone" é obrigatório.'
+		),'nomeDoGrupo' => array(
+			'rule' => 'alphaNumeric',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'O campo "Razão Social" é obrigatório.'
+		),
+		'fax'=> array(),
+		'percDesc'=> array(),
+		'contato'=> array(),
+		'status' => array(),
+	);		
 
 }

@@ -8,7 +8,10 @@
             <div class="col-lg-6">
                 <?php echo $this->Form->create('Compra'); ?>
 					<div class="form-group">
-					<?php echo $this->Form->input('nomeAssociado', array('label'=>'Nome:','class'=>'form-control','rows'=>'1'));?>
+					<?php echo $this->Form->input('associado_id', array('label'=>'Nome:','class'=>'form-control'));?>
+					</div>
+					<div class="form-group">
+					<?php echo $this->Form->input('convenio_id', array('label'=>'Convênio:','class'=>'form-control'));?>
 					</div>
 					<div class="form-group">
 						<?php echo $this->Form->input('valor', array('label'=>'Valor:','class'=>'form-control','rows'=>'1'));?>

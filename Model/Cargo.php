@@ -32,4 +32,23 @@ class Cargo extends AppModel {
 		)
 	);
 
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array(
+		'nome' => array(
+			'rule' => 'alphaNumeric',
+			'required'=> true,
+			'allowEmpty'=> false,
+			'message'=>'Este campo é obrigatório.'
+		),
+		'valorAlmoço'=>array(
+			'rule' => array('money', 'left'),
+			'allowEmpty'=>true,
+			'message' => 'Por favor, informe um valor com uma quantia monetária'
+		)
+	);	
+
 }

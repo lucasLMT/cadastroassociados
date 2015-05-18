@@ -17,16 +17,12 @@ class User extends AppModel {
  */
   public $validate = array(
     'login' => array(
+      'allowEmpty' => false,
+      'message' => 'Por favor, informe um login válido.'
     ),
     'password' => array(
-      'notEmpty' => array(
-        'rule' => 'notEmpty'
-        //'message' => 'Your custom message here',
-        //'allowEmpty' => false,
-        //'required' => false,
-        //'last' => false, // Stop validation after this rule
-        //'on' => 'create', // Limit validation to 'create' or 'update' operations
-      ),
+      'allowEmpty' => false,
+      'message' => 'Por favor, informe uma senha válida.'
     )
   );
 

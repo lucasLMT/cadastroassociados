@@ -1,20 +1,24 @@
-<div class="users form">
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit User'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('login');
-		echo $this->Form->input('password');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('User.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('User.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-	</ul>
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Editar Usuário
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <?php echo $this->Form->create('User'); ?>
+                    <?php echo $this->Form->input('id'); ?>                
+                    <div class="form-group">
+                    	<?php
+						echo $this->Form->input('login', array('label'=>'Login:','class'=>'form-control','rows'=>'1'));
+						echo $this->Form->input('password', array('label'=>'Senha:','class'=>'form-control'));
+						?>
+                    </div>
+                    <button type="submit" class="btn btn-default">Enviar</button>
+                <?php echo $this->Form->end(); ?>
+            </div>
+        </div>
+        <!-- /.row (nested) -->
+    </div>
+    <!-- /.panel-body -->
 </div>

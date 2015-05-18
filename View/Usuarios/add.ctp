@@ -11,7 +11,7 @@
                         <?php echo $this->Form->input('login', array('label'=>'Login:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('senha', array('label'=>'Senha:','class'=>'form-control','rows'=>'1', 'type'=>'password')); ?>
+                        <?php echo $this->Form->input('senha', array('label'=>'Senha:','class'=>'form-control', 'type'=>'password')); ?>
                     </div>
                     <button type="submit" class="btn btn-default">Enviar</button>
                 <?php echo $this->Form->end(); ?>

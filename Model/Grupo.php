@@ -32,4 +32,18 @@ class Grupo extends AppModel {
 		)
 	);
 
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array(
+		'nome' => array(
+			'rule' => 'alphaNumeric',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'O campo "Nome" é obrigatório.'
+		)
+	);	
+
 }

@@ -56,4 +56,70 @@ class Associado extends AppModel {
 		)
 	);
 
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array(
+		'nome' => array(
+			'rule' => 'alphaNumeric',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'O campo "Nome" é obrigatório.'
+		),
+		'endereco'=>array(
+			'rule' => 'alphaNumeric',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'O campo "Endereço" é obrigatório.'
+		),
+		'bairro'=>array(
+			'rule' => 'alphaNumeric',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'O campo "Bairro" é obrigatório.'
+		),
+		'dataDeAdmissao'=>array(
+			'rule' => 'date',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'Insira uma data válida.'
+		),
+		'dataDeNascimento'=>array(
+			'rule' => 'date',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'Insira uma data válida.'
+		),
+		'telefone'=>array(
+			'rule' => 'numeric',
+			'message'=>'Insira apenas números no campo "Telefone".'	
+		),
+		'RG'=>array(
+			'rule' => 'numeric',
+			'allowEmpty'=>true,
+			'message'=>'Insira apenas números no campo "RG".'	
+		),
+		'estado civil'=>array(
+			'rule'=>'alphaNumeric',
+			'allowEmpty'=>true
+		),
+		'salario'=>array(
+			'rule' => array('money', 'left'),
+			'allowEmpty'=>true,
+			'message' => 'Por favor, informe um valor com uma quantia monetária'
+		),
+		'valor adicional'=>array(
+			'rule' => array('money', 'left'),
+			'allowEmpty'=>true,
+			'message' => 'Por favor, informe um valor com uma quantia monetária'
+		),
+		'mensalidade'=>array(
+			'rule' => array('money', 'left'),
+			'allowEmpty'=>true,
+			'message' => 'Por favor, informe um valor com uma quantia monetária'
+		)
+	);	
+
 }

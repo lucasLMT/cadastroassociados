@@ -17,10 +17,13 @@
                         <?php echo $this->Form->input('bairro', array('label'=>'Bairro:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('dataDeAdmissao', array('label'=>'Data de admissão:','class'=>'form-control','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('CEP', array('label'=>'CEP:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('dataDeNascimento', array('label'=>'Data de nascimento:','class'=>'form-control','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('dataDeAdmissao', array('label'=>'Data de admissão:','class'=>'form-control')); ?>
+                    </div>
+                    <div class="form-group">
+                        <?php echo $this->Form->input('dataDeNascimento', array('label'=>'Data de nascimento:','class'=>'form-control')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('telefone', array('label'=>'Telefone:','class'=>'form-control','rows'=>'1')); ?>
@@ -30,6 +33,12 @@
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('estado civil', array('label'=>'Estado civil:','class'=>'form-control','rows'=>'1')); ?>
+                    </div>
+                    <div class="form-group">
+                        <?php echo $this->Form->input('cargo_id', array('label'=>'Cargo:','class'=>'form-control')); ?>
+                    </div>
+                    <div class="form-group">
+                        <?php echo $this->Form->input('area_id', array('label'=>'Área:','class'=>'form-control')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('salario', array('label'=>'Salário:','class'=>'form-control','rows'=>'1')); ?>

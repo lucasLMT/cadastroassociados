@@ -32,4 +32,29 @@ class Compra extends AppModel {
 			'order' => ''
 		)
 	);
+
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array(
+		'nomeAssociado' => array(
+			'rule' => 'alphaNumeric',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'O campo "Nome" é obrigatório.'
+		),
+		'valor'=> array(
+			'rule' => array('money', 'left'),
+			'message' => 'Por favor, informe um valor com uma quantia monetária'
+		),
+		'referencia'=> array(
+			'rule' => 'alphaNumeric',
+			'required'=>true,
+			'allowEmpty'=>false,
+			'message'=>'O campo "Referência" é obrigatório.'
+		),
+		'observacao'=> array()
+	);		
 }
