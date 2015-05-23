@@ -55,8 +55,6 @@ class ConveniosController extends AppController {
 				$this->Session->setFlash(__('The convenio could not be saved. Please, try again.'));
 			}
 		}
-		$grupos = $this->Convenio->Grupo->find('list');
-		$this->set(compact('grupos'));
 	}
 
 /**

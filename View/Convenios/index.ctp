@@ -29,8 +29,7 @@
 						<th><?php echo $this->Paginator->sort('telefone'); ?></th>
 						<th><?php echo $this->Paginator->sort('fax'); ?></th>
 						<th><?php echo $this->Paginator->sort('percDesc'); ?></th>
-						<th><?php echo $this->Paginator->sort('contato'); ?></th>
-						<th><?php echo $this->Paginator->sort('grupo_id'); ?></th>						
+						<th><?php echo $this->Paginator->sort('contato'); ?></th>						
 						<th><?php echo $this->Paginator->sort('status'); ?></th>
 						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
 	                </tr>
@@ -42,8 +41,7 @@
 						<td><?php echo h($convenio['Convenio']['telefone']); ?>&nbsp;</td>
 						<td><?php echo h($convenio['Convenio']['fax']); ?>&nbsp;</td>
 						<td><?php echo h($convenio['Convenio']['percDesc']); ?>&nbsp;</td>
-						<td><?php echo h($convenio['Convenio']['contato']); ?>&nbsp;</td>
-						<td><?php echo h($convenio['Grupo']['id']); ?>&nbsp;</td>		
+						<td><?php echo h($convenio['Convenio']['contato']); ?>&nbsp;</td>	
 						<td><?php echo h($convenio['Convenio']['status']); ?>&nbsp;</td>
 						<td class="actions">
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $convenio['Convenio']['id']),

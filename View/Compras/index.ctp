@@ -27,7 +27,6 @@
 	                <tr>
 						<th><?php echo $this->Paginator->sort('convenio_id'); ?></th>
 						<th><?php echo $this->Paginator->sort('associado_id'); ?></th>
-						<th><?php echo $this->Paginator->sort('nomeAssociado'); ?></th>
 						<th><?php echo $this->Paginator->sort('valor'); ?></th>
 						<th><?php echo $this->Paginator->sort('referencia'); ?></th>
 						<th><?php echo $this->Paginator->sort('observacao'); ?></th>
@@ -37,9 +36,8 @@
 	            <tbody>
 					<?php foreach ($compras as $compra): ?>
 					<tr class="odd gradeX">
-						<td><?php echo h($compra['Convenio']['id']); ?>&nbsp;</td>
-						<td><?php echo h($compra['Associado']['id']); ?>&nbsp;</td>
-						<td><?php echo h($compra['Compra']['nomeAssociado']); ?>&nbsp;</td>
+						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
+						<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>

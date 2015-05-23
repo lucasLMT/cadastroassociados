@@ -44,6 +44,8 @@
 						<td class="actions">
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $associado['Associado']['id']),
 							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>
+							<?php echo $this->Html->link(__('Compras'), array('action' => 'listaCompras', $associado['Associado']['id']),
+							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>
 							<?php echo $this->Form->postLink(__('Apagar'), array('action' => 'delete', $associado['Associado']['id']),
 							array('class' => 'btn btn-danger btn-sm','role' => 'button'), __('Você tem certeza que deseja remover associado %s?', 
 							$associado['Associado']['nome'])); ?>

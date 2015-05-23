@@ -107,4 +107,14 @@ class AssociadosController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	public function listaCompras($id = null) {
+		
+		$options = array('conditions' => array('Compra.associado_id' => $id));
+		$this->set('compras', $this->Associado->Compra->find('all', $options));
+		
+		//$cargos = $this->Associado->Cargo->find('list');
+		//$areas = $this->Associado->Area->find('list');
+		//$this->set(compact('cargos', 'areas'));	
+	}
 }

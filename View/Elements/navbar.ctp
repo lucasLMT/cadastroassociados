@@ -291,19 +291,7 @@
                                             )
                                         );
                                     ?>
-                                </li>
-                                <li>
-                                    <?php 
-                                        echo $this->Html->link(
-                                            'Grupos',
-                                            array(
-                                                'controller' => 'Grupos',
-                                                'action' => 'index',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>                                                            
+                                </li>                                                           
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

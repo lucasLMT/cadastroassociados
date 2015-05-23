@@ -8,7 +8,6 @@ App::uses('AppModel', 'Model');
  */
 class Compra extends AppModel {
 
-
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
@@ -38,23 +37,5 @@ class Compra extends AppModel {
  *
  * @var array
  */
-	public $validate = array(
-		'nomeAssociado' => array(
-			'rule' => 'alphaNumeric',
-			'required'=>true,
-			'allowEmpty'=>false,
-			'message'=>'O campo "Nome" é obrigatório.'
-		),
-		'valor'=> array(
-			'rule' => array('money', 'left'),
-			'message' => 'Por favor, informe um valor com uma quantia monetária'
-		),
-		'referencia'=> array(
-			'rule' => 'alphaNumeric',
-			'required'=>true,
-			'allowEmpty'=>false,
-			'message'=>'O campo "Referência" é obrigatório.'
-		),
-		'observacao'=> array()
-	);		
+
 }
