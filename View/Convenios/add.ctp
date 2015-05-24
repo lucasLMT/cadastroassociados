@@ -8,6 +8,9 @@
             <div class="col-lg-6">
                 <?php echo $this->Form->create('Convenio'); ?>
 					<div class="form-group">
+						<?php echo $this->Form->input('matricula', array('label'=>'Matrícula:','class'=>'form-control','rows'=>'1'));?>
+					</div>
+					<div class="form-group">
 						<?php echo $this->Form->input('razaoSocial', array('label'=>'Razão social:','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<div class="form-group">

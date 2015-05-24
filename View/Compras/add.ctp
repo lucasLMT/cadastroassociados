@@ -17,7 +17,7 @@
 						<?php echo $this->Form->input('valor', array('label'=>'Valor:','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
-						<?php echo $this->Form->input('referencia', array('label'=>'Referência:','class'=>'form-control','rows'=>'1'));?>
+						<?php echo $this->Form->input('referencia', array('label'=>'Referência:','dateFormat'=>'DMY','class'=>'form-control'));?>
 					</div>
 					<div class="form-group">
 						<?php echo $this->Form->input('observacao', array('label'=>'Observação:','class'=>'form-control','rows'=>'4'));?>
