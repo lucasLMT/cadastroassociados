@@ -6,7 +6,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-lg-6">
-                <?php echo $this->Form->create(false, array('url' => array('controller' => 'AssociadosConstroller', 'action' => 'listaCompras'))); ?>           
+                <?php echo $this->Form->create('ListaCompra'); ?>           
                 	<div class="form-group">
                     	<?php echo $this->Form->input('associado_id', array('label'=>'Nome:','class'=>'form-control')); ?>
                     </div>

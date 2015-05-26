@@ -291,6 +291,18 @@
                                             )
                                         );
                                     ?>
+                                </li>
+                                <li>
+                                    <?php 
+                                        echo $this->Html->link(
+                                            'Listar Compras',
+                                            array(
+                                                'controller' => 'ListaCompra',
+                                                'action' => 'form',
+                                                'full_base' => true
+                                            )
+                                        );
+                                    ?>
                                 </li>                                                           
                             </ul>
                             <!-- /.nav-second-level -->
