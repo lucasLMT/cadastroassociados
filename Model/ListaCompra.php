@@ -24,7 +24,11 @@ class ListaCompra extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		),
+        'Compra' => array(
+            'className' => 'Compra',
+            'foreignKey' => 'associado_id'
+        )
 	);
 
 	public $_schema = array(
