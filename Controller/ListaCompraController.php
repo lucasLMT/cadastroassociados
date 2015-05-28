@@ -25,11 +25,13 @@ class ListaCompraController extends AppController {
  *
  * @return void
  */
-	public function lista($compras = null) {
-		debug($compras);
-		$this->ListaCompra->recursive = 0;
-		$ListaCompras = $this->Paginator->paginate();
-		$this->set(compact('ListaCompras', 'compras'));
+	public function lista($data_inicio, $data_fim, $associado) {
+
+		$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+								                   'Compra.referencia <= ' => $data_fim,
+								                   'Compra.associado_id' => $associado));
+		$compras = $this->ListaCompra->Compra->find('all', $options);
+		$this->set(compact('compras'));
 	}
 
 	public function form($id = null) {
@@ -51,7 +53,9 @@ class ListaCompraController extends AppController {
 			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
 								                   'Compra.referencia <= ' => $data_fim));
 			$compras = $this->ListaCompra->Compra->find('all', $options);
-			$this->redirect(array('controller' => 'ListaCompra','action' => 'lista','compras' => $compras));
+			//debug($compras);
+			$this->redirect(array('controller' => 'ListaCompra','action' => 'lista', $data_inicio, $data_fim, 
+																					 $data['ListaCompra']['associado_id']));
 		}
 		$associados = $this->ListaCompra->Associado->find('list');
 		$this->set(compact('associados'));
