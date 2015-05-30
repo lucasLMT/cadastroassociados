@@ -19,16 +19,20 @@ class ListaCompra extends AppModel {
  */
 	public $belongsTo = array(
 		'Associado' => array(
-			'className' => 'Associado',
-			'foreignKey' => 'associado_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
+				'className' => 'Associado',
+				'foreignKey' => 'associado_id',
+				'conditions' => '',
+				'fields' => '',
+				'order' => ''
+			),
+	    'Compra' => array(
+	        'className' => 'Compra',
+	        'foreignKey' => 'associado_id'
+	    ),
+		'Periodo' => array(
+			'className' => 'Periodo',
+			'foreignKey' => 'periodo_id'
 		),
-        'Compra' => array(
-            'className' => 'Compra',
-            'foreignKey' => 'associado_id'
-        )
 	);
 
 	public $_schema = array(
@@ -36,14 +40,8 @@ class ListaCompra extends AppModel {
             'type' => 'integer',
             'null' => false,
         ),
-        'data_inicio' => array(
-            'type' => 'date',
-            'length' => 200,
-            'null' => false,
-        ),
-        'data_fim' => array(
-            'type' => 'date',
-            'length' => 150,
+        'periodo_id' => array(
+            'type' => 'integer',
             'null' => false,
         ),
     );
@@ -53,13 +51,9 @@ class ListaCompra extends AppModel {
                 'rule' => 'notempty',
                 'message' => "O nome deve ser preenchido",
         ),
-        'data_inicio' => array(
-                'rule' => 'date',
-                'message' => "O e-mail deve ser preenchido",
-        ),
-        'data_fim' => array(
-                'rule' => 'date',
-                'message' => "A mensagem deve ser preenchida",
+        'periodo_id' => array(
+                'rule' => 'notempty',
+                'message' => "O período deve ser preenchido",
         ),
     );
 

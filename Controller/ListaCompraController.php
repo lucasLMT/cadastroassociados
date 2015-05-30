@@ -11,8 +11,6 @@ class ListaCompraController extends AppController {
 
 	public $useModel = false;
 
-
-
 /**
  * Components
  *
@@ -32,6 +30,7 @@ class ListaCompraController extends AppController {
 								                   'Compra.associado_id' => $associado));
 		$compras = $this->ListaCompra->Compra->find('all', $options);
 		$this->set(compact('compras'));
+
 	}
 
 	public function form($id = null) {
@@ -39,25 +38,32 @@ class ListaCompraController extends AppController {
 		$model = ClassRegistry::init('ListaCompra');
 
 		if ($this->request->is('post')) {
-			App::uses('String', 'Utility');
+			//App::uses('String', 'Utility');
 			$data = $this->request->data;
-			$data_inicio = String::insert(':ano-:mes-:dia', array(
-											'ano' => $data['ListaCompra']['data_inicio']['year'],
-											'mes' => $data['ListaCompra']['data_inicio']['month'],
-											'dia' => $data['ListaCompra']['data_inicio']['day']));
-			$data_fim = String::insert(':ano-:mes-:dia', array(
-											'ano' => $data['ListaCompra']['data_fim']['year'],
-											'mes' => $data['ListaCompra']['data_fim']['month'],
-											'dia' => $data['ListaCompra']['data_fim']['day']));
+			$date_conditions = array('conditions' => array('Periodo.id' => $data['ListaCompra']['periodo_id']));
+			$date = $this->ListaCompra->Periodo->find('all', $date_conditions);
+			//debug($date);
+			/*$data_inicio = String::insert(':ano-:mes-:dia', array(
+											'ano' => $date[0]['data_inicial']['year'],
+											'mes' => $date[0]['data_inicial']['month'],
+											'dia' => $date[0]['data_inicial']['day']));*/
+			$data_inicio = $date[0]['Periodo']['data_inicial'];
+			/*$data_fim = String::insert(':ano-:mes-:dia', array(
+											'ano' => $date['Periodo']['data_final']['year'],
+											'mes' => $date['Periodo']['data_final']['month'],
+											'dia' => $date['Periodo']['data_final']['day']));*/
+			$data_fim = $date[0]['Periodo']['data_final'];
 
 			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
 								                   'Compra.referencia <= ' => $data_fim));
 			$compras = $this->ListaCompra->Compra->find('all', $options);
 			//debug($compras);
-			$this->redirect(array('controller' => 'ListaCompra','action' => 'lista', $data_inicio, $data_fim, 
+			$this->redirect(array('controller' => 'ListaCompra','action' => 'lista', $data_inicio, $data_fim,
 																					 $data['ListaCompra']['associado_id']));
 		}
 		$associados = $this->ListaCompra->Associado->find('list');
-		$this->set(compact('associados'));
+		$periodos = $this->ListaCompra->Periodo->find('list');
+		$this->set(compact('associados', 'periodos'));
 	}
+
 }

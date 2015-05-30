@@ -183,7 +183,7 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> <?php 
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> <?php
                                         echo $this->Html->link(
                                             'Usuários',
                                             array(
@@ -192,12 +192,12 @@
                                                 'full_base' => true
                                             )
                                         );
-                                    ?></a>                        
+                                    ?></a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configurações</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i><?php 
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i><?php
                                         echo $this->Html->link(
                                             'Sair',
                                             array(
@@ -233,7 +233,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Gerenciamento<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <?php 
+                                    <?php
                                         echo $this->Html->link(
                                             'Áreas',
                                             array(
@@ -245,7 +245,7 @@
                                     ?>
                                 </li>
                                 <li>
-                                    <?php 
+                                    <?php
                                         echo $this->Html->link(
                                             'Associados',
                                             array(
@@ -257,7 +257,7 @@
                                     ?>
                                 </li>
                                 <li>
-                                    <?php 
+                                    <?php
                                         echo $this->Html->link(
                                             'Cargos',
                                             array(
@@ -269,7 +269,7 @@
                                     ?>
                                 </li>
                                 <li>
-                                    <?php 
+                                    <?php
                                         echo $this->Html->link(
                                             'Compras',
                                             array(
@@ -281,7 +281,7 @@
                                     ?>
                                 </li>
                                 <li>
-                                    <?php 
+                                    <?php
                                         echo $this->Html->link(
                                             'Convenios',
                                             array(
@@ -293,7 +293,19 @@
                                     ?>
                                 </li>
                                 <li>
-                                    <?php 
+                                    <?php
+                                        echo $this->Html->link(
+                                            'Períodos',
+                                            array(
+                                                'controller' => 'Periodos',
+                                                'action' => 'index',
+                                                'full_base' => true
+                                            )
+                                        );
+                                    ?>
+                                </li>
+                                <li>
+                                    <?php
                                         echo $this->Html->link(
                                             'Listar Compras',
                                             array(
@@ -303,7 +315,7 @@
                                             )
                                         );
                                     ?>
-                                </li>                                                           
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
