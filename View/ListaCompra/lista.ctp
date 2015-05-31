@@ -33,3 +33,20 @@
 	</div>
 	<!-- /.panel-body -->
 </div>
+<?php
+    echo $this->Html->link(
+        'Exportar PDF',
+        array(
+            'controller' => 'ListaCompra',
+            'action' => 'viewpdf',
+            'full_base' => true,
+						$data_inicio,
+						$data_fim,
+						$associado
+        ),
+        array(
+        	'class' => 'btn btn-success',
+            'role' => 'button'
+        	)
+    );
+?>
