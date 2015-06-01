@@ -307,10 +307,22 @@
                                 <li>
                                     <?php
                                         echo $this->Html->link(
-                                            'Listar Compras',
+                                            'Listar Compras A',
                                             array(
                                                 'controller' => 'ListaCompra',
-                                                'action' => 'form',
+                                                'action' => 'formAssociado',
+                                                'full_base' => true
+                                            )
+                                        );
+                                    ?>
+                                </li>
+                                <li>
+                                    <?php
+                                        echo $this->Html->link(
+                                            'Listar Compras C',
+                                            array(
+                                                'controller' => 'ListaCompra',
+                                                'action' => 'formConvenio',
                                                 'full_base' => true
                                             )
                                         );

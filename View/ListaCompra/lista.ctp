@@ -1,5 +1,4 @@
 <br><br>
-
 <div class="panel panel-default">
 	<div class="panel-heading">
 	    Compras por Associado
@@ -25,8 +24,12 @@
 						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
+						<?php $total += (float)$compra['Compra']['valor']; ?>
 					</tr>
 					<?php endforeach; ?>
+					<tr class="odd gradeX">
+						<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
+					</tr>
 				</tbody>
 	        </table>
 	    </div>

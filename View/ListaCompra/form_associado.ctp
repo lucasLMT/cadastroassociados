@@ -13,6 +13,9 @@
                     <div class="form-group">
                         <?php echo $this->Form->input('periodo_id', array('label'=>'Período:','class'=>'form-control')); ?>
                     </div>
+                    <div class="form-group">
+                        <?php echo $this->Form->input('modo_id', array('label'=>'Modo:','class'=>'form-control')); ?>
+                    </div>
                     <button type="submit" class="btn btn-default">Enviar</button>
                 <?php echo $this->Form->end(); ?>
             </div>

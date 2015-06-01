@@ -33,6 +33,10 @@ class ListaCompra extends AppModel {
 			'className' => 'Periodo',
 			'foreignKey' => 'periodo_id'
 		),
+		'Convenio' => array(
+			'className' => 'Convenio',
+			'foreignKey' => 'convenio_id'
+		),
 	);
 
 	public $_schema = array(
@@ -44,6 +48,14 @@ class ListaCompra extends AppModel {
             'type' => 'integer',
             'null' => false,
         ),
+		'convenio_id' => array(
+            'type' => 'integer',
+            'null' => false,
+        ),
+		'modo_id' => array(
+			'type' => 'integer',
+			'null' => false,
+		),
     );
 
     public $validate = array(
@@ -56,5 +68,14 @@ class ListaCompra extends AppModel {
                 'message' => "O período deve ser preenchido",
         ),
     );
+
+	public function getModeList() {
+        // this could be a find 'list' from
+        // another model
+        return array(
+            1 => 'Analítico',
+            2 => 'Sintético',
+        );
+}
 
 }
