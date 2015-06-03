@@ -1,5 +1,5 @@
 <br>
-<?php 
+<?php
     echo $this->Html->link(
         'Cadastrar uma nova área',
         array(
@@ -38,7 +38,7 @@
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $area['Area']['id']),
 							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>
 							<?php echo $this->Form->postLink(__('Apagar'), array('action' => 'delete', $area['Area']['id']),
-							array('class' => 'btn btn-danger btn-sm','role' => 'button'), __('Você tem certeza que deseja remover %s?', 
+							array('class' => 'btn btn-danger btn-sm','role' => 'button'), __('Você tem certeza que deseja remover %s?',
 							$area['Area']['nome'])); ?>
 						</td>
 					</tr>
@@ -54,20 +54,9 @@
 	echo $this->Paginator->counter(array(
 	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
 	));
-?>	
+?>
 </p>
 <div class="paging">
-<?php 
-	echo $this->Html->link(
-		'Exportar',
-		array(
-			'controller'=>'areas',
-			'action'=>'export'), 
-		array( 
-			'class' => 'btn btn-info', 
-			'role' => 'button'));
-?>	
-<?php
 	echo $this->Paginator->prev('< ' . __('anterior '), array(), null, array('class' => 'prev disabled'));
 	echo $this->Paginator->numbers(array('separator' => ' '));
 	echo $this->Paginator->next(__(' próximo') . ' >', array(), null, array('class' => 'next disabled'));

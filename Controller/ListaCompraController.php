@@ -18,6 +18,7 @@ class ListaCompraController extends AppController {
  */
 	public $components = array('Paginator');
 
+	var $helpers = array('xls');
 /**
  * index method
  *
@@ -105,14 +106,23 @@ class ListaCompraController extends AppController {
 																	'Compra.associado_id' => $associado));
 		$compras = $this->ListaCompra->Compra->find('all', $options);
 		//Import /app/Vendor/Fpdf
-    	App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
-    	//Assign layout to /app/View/Layout/pdf.ctp
-    	$this->layout = 'pdf'; //this will use the pdf.ctp layout
-    	//Set fpdf variable to use in view
-    	$this->set('fpdf', new FPDF('P','mm','A4'));
-    	//pass data to view
-		$this->set(compact('compras'));
-    	//render the pdf view (app/View/[view_name]/pdf.ctp)
-    	$this->render('pdf');
+    App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
+    //Assign layout to /app/View/Layout/pdf.ctp
+    $this->layout = 'pdf'; //this will use the pdf.ctp layout
+    //Set fpdf variable to use in view
+    $this->set('fpdf', new FPDF('P','mm','A4'));
+    //pass data to view
+	  $this->set(compact('compras'));
+    //render the pdf view (app/View/[view_name]/pdf.ctp)
+    $this->render('pdf');
+  }
+
+	public function export($data_inicio, $data_fim, $associado) {
+		$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+																	'Compra.referencia <= ' => $data_fim,
+																	'Compra.associado_id' => $associado));
+		$compras = $this->ListaCompra->Compra->find('all', $options);
+		//$data = $this->Model->find('all');
+    $this->set(compact('compras'));
   }
 }
