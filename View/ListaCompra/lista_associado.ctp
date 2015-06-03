@@ -53,3 +53,19 @@
         	)
     );
 ?>
+<?php
+	echo $this->Html->link(
+		'Exportar CSV',
+		array(
+			'controller'=>'ListaCompra',
+			'action'=>'export',
+			$data_inicio,
+			$data_fim,
+      $associado
+    ),
+		array(
+			'class' => 'btn btn-info',
+			'role' => 'button'
+    )
+  );
+?>

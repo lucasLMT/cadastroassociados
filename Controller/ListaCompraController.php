@@ -18,6 +18,7 @@ class ListaCompraController extends AppController {
  */
 	public $components = array('Paginator');
 
+	var $helpers = array('xls');
 /**
  * index method
  *
@@ -25,31 +26,23 @@ class ListaCompraController extends AppController {
  */
 	public function listaAssociado($data_inicio, $data_fim, $associado, $modo) {
 
-		if ($modo == 1) { //Modo analitico
-			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-												   'Compra.referencia <= ' => $data_fim,
-												   'Compra.associado_id' => $associado));
-			$compras = $this->ListaCompra->Compra->find('all', $options);
-			$total = 0;
-			$this->set(compact('compras','data_inicio','data_fim','associado','total'));
-		} else if ($modo == 2) { //Modo sintetico
-
-		}
+		$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+											   'Compra.referencia <= ' => $data_fim,
+											   'Compra.associado_id' => $associado));
+		$compras = $this->ListaCompra->Compra->find('all', $options);
+		$total = 0;
+		$this->set(compact('compras','data_inicio','data_fim','associado','total','modo'));
 
 	}
 
-	public function listaConvenio($data_inicio, $data_fim, $convenio) {
+	public function listaConvenio($data_inicio, $data_fim, $convenio, $modo) {
 
-		if ($modo == 1) { //Modo analitico
-			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-												   'Compra.referencia <= ' => $data_fim,
-												   'Compra.convenio_id' => $convenio));
-			$compras = $this->ListaCompra->Compra->find('all', $options);
-			$total = 0;
-			$this->set(compact('compras','data_inicio','data_fim','convenio','total'));
-		} else if ($modo == 2) { //Modo sintetico
-
-		}
+		$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+											   'Compra.referencia <= ' => $data_fim,
+											   'Compra.convenio_id' => $convenio));
+		$compras = $this->ListaCompra->Compra->find('all', $options);
+		$total = 0;
+		$this->set(compact('compras','data_inicio','data_fim','convenio','total','modo'));
 
 	}
 
@@ -105,14 +98,23 @@ class ListaCompraController extends AppController {
 																	'Compra.associado_id' => $associado));
 		$compras = $this->ListaCompra->Compra->find('all', $options);
 		//Import /app/Vendor/Fpdf
-    	App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
-    	//Assign layout to /app/View/Layout/pdf.ctp
-    	$this->layout = 'pdf'; //this will use the pdf.ctp layout
-    	//Set fpdf variable to use in view
-    	$this->set('fpdf', new FPDF('P','mm','A4'));
-    	//pass data to view
-		$this->set(compact('compras'));
-    	//render the pdf view (app/View/[view_name]/pdf.ctp)
-    	$this->render('pdf');
+    App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
+    //Assign layout to /app/View/Layout/pdf.ctp
+    $this->layout = 'pdf'; //this will use the pdf.ctp layout
+    //Set fpdf variable to use in view
+    $this->set('fpdf', new FPDF('P','mm','A4'));
+    //pass data to view
+	  $this->set(compact('compras'));
+    //render the pdf view (app/View/[view_name]/pdf.ctp)
+    $this->render('pdf');
+  }
+
+	public function export($data_inicio, $data_fim, $associado) {
+		$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+																	'Compra.referencia <= ' => $data_fim,
+																	'Compra.associado_id' => $associado));
+		$compras = $this->ListaCompra->Compra->find('all', $options);
+		//$data = $this->Model->find('all');
+    $this->set(compact('compras'));
   }
 }
