@@ -36,19 +36,37 @@
                     <tr class="odd gradeX">
 						<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
 					</tr>
-                    <?php} else {
-                            $assoc_tmp = $compra['Associado']['nome'];
+                    <?php } else {
+                            $assoc_tmp = $compras[0]['Associado']['nome'];
+							debug($assoc_tmp);
+							$count = Count($compras);
+							$i = 1;
                             foreach ($compras as $compra):
-                                if ($assoc_tmp <> $compra['Associado']['nome']) {
-                                    $assoc_tmp = $compra['Associado']['nome'];
+                                if (($assoc_tmp <> $compra['Associado']['nome']) || ($count == $i)) {
+									if ($count == $i)
+									$total += $compra['Compra']['valor'];
                     ?>
-                                    <td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
+								<tr class="odd gradeX">
+                                    <td><?php echo h($assoc_tmp); ?>&nbsp;</td>
                                     <td><?php echo h($total); ?>&nbsp;</td>
-                        <?php
-                            $total = $compra['Compra']['valor'];
-                            } else {
-                                $total += $compra['Compra']['valor'];
-                            } ?>
+								</tr>
+						<?php
+									$assoc_tmp = $compra['Associado']['nome'];
+                            		$total = $compra['Compra']['valor'];
+									if (($assoc_tmp <> $compra['Associado']['nome']) && ($count == $i)) {
+								?>
+										<tr class="odd gradeX">
+											<td><?php echo h($assoc_tmp); ?>&nbsp;</td>
+											<td><?php echo h($total); ?>&nbsp;</td>
+										</tr>
+								<?php
+									}
+                            	} else {
+                                	$total += $compra['Compra']['valor'];
+                            	}
+								$i++;
+							endforeach;
+							} ?>
 				</tbody>
 	        </table>
 	    </div>

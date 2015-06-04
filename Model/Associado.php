@@ -61,7 +61,7 @@ class Associado extends AppModel {
  *
  * @var array
  */
-	public $validate = array(
+	/*public $validate = array(
 		'nome' => array(
 			'rule' => 'alphaNumeric',
 			'required'=>true,
@@ -94,12 +94,12 @@ class Associado extends AppModel {
 		),
 		'telefone'=>array(
 			'rule' => 'numeric',
-			'message'=>'Insira apenas números no campo "Telefone".'	
+			'message'=>'Insira apenas números no campo "Telefone".'
 		),
 		'RG'=>array(
 			'rule' => 'numeric',
 			'allowEmpty'=>true,
-			'message'=>'Insira apenas números no campo "RG".'	
+			'message'=>'Insira apenas números no campo "RG".'
 		),
 		'estado civil'=>array(
 			'rule'=>'alphaNumeric',
@@ -120,6 +120,6 @@ class Associado extends AppModel {
 			'allowEmpty'=>true,
 			'message' => 'Por favor, informe um valor com uma quantia monetária'
 		)
-	);	
+	);	*/
 
 }

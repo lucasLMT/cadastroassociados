@@ -25,11 +25,17 @@ class ListaCompraController extends AppController {
  * @return void
  */
 	public function listaAssociado($data_inicio, $data_fim, $associado, $modo) {
-
-		$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-											   'Compra.referencia <= ' => $data_fim,
-											   'Compra.associado_id' => $associado));
+		if ($modo == 1) {
+			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+												   'Compra.referencia <= ' => $data_fim,
+												   'Compra.associado_id' => $associado));
+		} else {
+			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+												   'Compra.referencia <= ' => $data_fim),
+							 'group' => array('nomeAssociado'));
+		}
 		$compras = $this->ListaCompra->Compra->find('all', $options);
+		debug($compras);
 		$total = 0;
 		$this->set(compact('compras','data_inicio','data_fim','associado','total','modo'));
 
@@ -37,9 +43,16 @@ class ListaCompraController extends AppController {
 
 	public function listaConvenio($data_inicio, $data_fim, $convenio, $modo) {
 
-		$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-											   'Compra.referencia <= ' => $data_fim,
-											   'Compra.convenio_id' => $convenio));
+		if ($modo  == 1) {
+			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+												   'Compra.referencia <= ' => $data_fim,
+												   'Compra.convenio_id' => $convenio));
+		} else {
+			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+												   'Compra.referencia <= ' => $data_fim,
+												   'Compra.convenio_id' => $convenio),
+							 'group' => array('Compra.convenio_id'));
+		}
 		$compras = $this->ListaCompra->Compra->find('all', $options);
 		$total = 0;
 		$this->set(compact('compras','data_inicio','data_fim','convenio','total','modo'));
