@@ -32,10 +32,9 @@ class ListaCompraController extends AppController {
 		} else {
 			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
 												   'Compra.referencia <= ' => $data_fim),
-							 'group' => array('nomeAssociado'));
+							 'order' => array('Compra.associado_id'));
 		}
 		$compras = $this->ListaCompra->Compra->find('all', $options);
-		debug($compras);
 		$total = 0;
 		$this->set(compact('compras','data_inicio','data_fim','associado','total','modo'));
 

@@ -38,29 +38,28 @@
 					</tr>
                     <?php } else {
                             $assoc_tmp = $compras[0]['Associado']['nome'];
-							debug($assoc_tmp);
 							$count = Count($compras);
 							$i = 1;
                             foreach ($compras as $compra):
                                 if (($assoc_tmp <> $compra['Associado']['nome']) || ($count == $i)) {
-									if ($count == $i)
-									$total += $compra['Compra']['valor'];
+									if ($count == $i && $assoc_tmp == $compra['Associado']['nome'])
+										$total += $compra['Compra']['valor'];
                     ?>
 								<tr class="odd gradeX">
                                     <td><?php echo h($assoc_tmp); ?>&nbsp;</td>
                                     <td><?php echo h($total); ?>&nbsp;</td>
 								</tr>
-						<?php
-									$assoc_tmp = $compra['Associado']['nome'];
-                            		$total = $compra['Compra']['valor'];
+								<?php
+                            		$total = $compra['Compra']['valor'] + 0;
 									if (($assoc_tmp <> $compra['Associado']['nome']) && ($count == $i)) {
 								?>
 										<tr class="odd gradeX">
-											<td><?php echo h($assoc_tmp); ?>&nbsp;</td>
+											<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
 											<td><?php echo h($total); ?>&nbsp;</td>
 										</tr>
 								<?php
 									}
+									$assoc_tmp = $compra['Associado']['nome'];
                             	} else {
                                 	$total += $compra['Compra']['valor'];
                             	}
