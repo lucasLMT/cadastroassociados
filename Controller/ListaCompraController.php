@@ -48,9 +48,8 @@ class ListaCompraController extends AppController {
 												   'Compra.convenio_id' => $convenio));
 		} else {
 			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-												   'Compra.referencia <= ' => $data_fim,
-												   'Compra.convenio_id' => $convenio),
-							 'group' => array('Compra.convenio_id'));
+												   'Compra.referencia <= ' => $data_fim),
+							 'order' => array('Compra.convenio_id'));
 		}
 		$compras = $this->ListaCompra->Compra->find('all', $options);
 		$total = 0;

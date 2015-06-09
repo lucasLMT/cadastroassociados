@@ -23,13 +23,13 @@
 						<?php echo $this->Form->input('cidade', array('label'=>'Cidade:','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
-						<?php echo $this->Form->input('CEP', array('label'=>'CEP:','class'=>'form-control'));?>
+						<?php echo $this->Form->input('CEP', array('label'=>'CEP:','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
-						<?php echo $this->Form->input('telefone', array('label'=>'Telefone:','class'=>'form-control'));?>
+						<?php echo $this->Form->input('telefone', array('label'=>'Telefone:','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
-						<?php echo $this->Form->input('fax', array('label'=>'Fax:','class'=>'form-control'));?>
+						<?php echo $this->Form->input('fax', array('label'=>'Fax:','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
 						<?php echo $this->Form->input('percDesc', array('label'=>'percDesc:','class'=>'form-control','rows'=>'1'));?>
@@ -52,4 +52,3 @@
     </div>
     <!-- /.panel-body -->
 </div>
-

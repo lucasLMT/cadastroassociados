@@ -1,46 +1,67 @@
-<div class="users index">
-	<h2><?php echo __('Users'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('login'); ?></th>
-			<th><?php echo $this->Paginator->sort('password'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($users as $user): ?>
-	<tr>
-		<td><?php echo h($user['User']['id']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['login']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id']), array(), __('Are you sure you want to delete # %s?', $user['User']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
-	</table>
-	<p>
-	<?php
+
+<?php
+    echo $this->Html->link(
+        'Cadastrar um novo usuário',
+        array(
+            'controller' => 'Users',
+            'action' => 'add',
+            'full_base' => true
+        ),
+        array(
+        	'class' => 'btn btn-success',
+            'role' => 'button'
+        	)
+    );
+?>
+<br>
+<br>
+<div class="panel panel-default">
+	<div class="panel-heading">
+	    Usuários
+	</div>
+	<!-- /.panel-heading -->
+	<div class="panel-body">
+	    <div class="dataTable_wrapper">
+	        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+	            <thead>
+	                <tr>
+						<th><?php echo $this->Paginator->sort('login'); ?></th>
+						<th><?php echo $this->Paginator->sort('senha'); ?></th>
+						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
+	                </tr>
+	            </thead>
+	            <tbody>
+					<?php foreach ($users as $usuario): ?>
+					<tr class="odd gradeX">
+						<td><?php echo h($usuario['User']['login']); ?>&nbsp;</td>
+						<td><?php echo h($usuario['User']['password']); ?>&nbsp;</td>
+						<td class="actions">
+							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $usuario['User']['id']),
+							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>
+							<?php echo $this->Form->postLink(__('Apagar'), array('action' => 'delete', $usuario['User']['id']),
+							array('class' => 'btn btn-danger btn-sm','role' => 'button'), __('Você tem certeza que deseja remover %s?',
+							$usuario['User']['login'])); ?>
+						</td>
+					</tr>
+					<?php endforeach; ?>
+				</tbody>
+	        </table>
+	    </div>
+	</div>
+	<!-- /.panel-body -->
+</div>
+
+<p>
+<?php
 	echo $this->Paginator->counter(array(
 	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
 	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
-	</ul>
+?>
+</p>
+<div class="paging">
+<?php
+	echo $this->Paginator->prev('< ' . __('anterior '), array(), null, array('class' => 'prev disabled'));
+	echo $this->Paginator->numbers(array('separator' => ' '));
+	echo $this->Paginator->next(__(' próximo') . ' >', array(), null, array('class' => 'next disabled'));
+?>
 </div>

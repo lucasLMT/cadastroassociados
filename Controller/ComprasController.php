@@ -47,13 +47,8 @@ class ComprasController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$data = $this->request->data;
-			$nomeAssociado = $this->Compra->Associado->find('all', array('conditions' => array(
-							'Associado.id' => $data['Compra']['associado_id']
-							)));
-			$data['Compra']['nomeAssociado'] = $nomeAssociado[0]['Associado']['nome'];
 			$this->Compra->create();
-			if ($this->Compra->save($data)) {
+			if ($this->Compra->save($this->request->data)) {
 				$this->Session->setFlash(__('The compra has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
@@ -77,12 +72,7 @@ class ComprasController extends AppController {
 			throw new NotFoundException(__('Invalid compra'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			$data = $this->request->data;
-			$nomeAssociado = $this->Compra->Associado->find('all', array('conditions' => array(
-							'Associado.id' => $data['Compra']['associado_id']
-							)));
-			$data['Compra']['nomeAssociado'] = $nomeAssociado[0]['Associado']['nome'];
-			if ($this->Compra->save($data)) {
+			if ($this->Compra->save($this->request->data)) {
 				$this->Session->setFlash(__('The compra has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {

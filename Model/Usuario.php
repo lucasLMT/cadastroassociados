@@ -17,7 +17,6 @@ class Usuario extends AppModel {
       'message' => 'Por favor, informe um login válido.'
     ),
       'message' => 'Por favor, informe uma senha válida.'
-    )
-  );	
+  );
 
 }

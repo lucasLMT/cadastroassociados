@@ -307,7 +307,7 @@
                                 <li>
                                     <?php
                                         echo $this->Html->link(
-                                            'Listar Compras A',
+                                            'Compras Associados',
                                             array(
                                                 'controller' => 'ListaCompra',
                                                 'action' => 'formAssociado',
@@ -319,10 +319,22 @@
                                 <li>
                                     <?php
                                         echo $this->Html->link(
-                                            'Listar Compras C',
+                                            'Compras Convênios',
                                             array(
                                                 'controller' => 'ListaCompra',
                                                 'action' => 'formConvenio',
+                                                'full_base' => true
+                                            )
+                                        );
+                                    ?>
+                                </li>
+                                <li>
+                                    <?php
+                                        echo $this->Html->link(
+                                            'Gerenciar usuários',
+                                            array(
+                                                'controller' => 'Users',
+                                                'action' => 'index',
                                                 'full_base' => true
                                             )
                                         );
