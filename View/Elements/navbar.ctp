@@ -284,6 +284,30 @@
                         <li>
                             <?php
                                 echo $this->Html->link(
+                                    'Planos de saúde',
+                                    array(
+                                        'controller' => 'saudePlanos',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
+                                    'Linhas telefônicas',
+                                    array(
+                                        'controller' => 'LinhasTelefonicas',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
                                     'Períodos',
                                     array(
                                         'controller' => 'Periodos',
