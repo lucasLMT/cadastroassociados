@@ -15,7 +15,7 @@ class User extends AppModel {
  *
  * @var array
  */
-  public $validate = array(
+/*  public $validate = array(
     'login' => array(
       'allowEmpty' => false,
       'message' => 'Por favor, informe um login válido.'
@@ -24,7 +24,7 @@ class User extends AppModel {
       'allowEmpty' => false,
       'message' => 'Por favor, informe uma senha válida.'
     )
-  );
+  );*/
 
   public function beforeSave($options = array()) {
     if (isset($this->data['User']['password'])) {

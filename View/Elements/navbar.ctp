@@ -218,129 +218,117 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Gerenciamento<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <?php
-                                        echo $this->Html->link(
-                                            'Áreas',
-                                            array(
-                                                'controller' => 'Areas',
-                                                'action' => 'index',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php
-                                        echo $this->Html->link(
-                                            'Associados',
-                                            array(
-                                                'controller' => 'Associados',
-                                                'action' => 'index',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php
-                                        echo $this->Html->link(
-                                            'Cargos',
-                                            array(
-                                                'controller' => 'Cargos',
-                                                'action' => 'index',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php
-                                        echo $this->Html->link(
-                                            'Compras',
-                                            array(
-                                                'controller' => 'Compras',
-                                                'action' => 'index',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php
-                                        echo $this->Html->link(
-                                            'Convenios',
-                                            array(
-                                                'controller' => 'Convenios',
-                                                'action' => 'index',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php
-                                        echo $this->Html->link(
-                                            'Períodos',
-                                            array(
-                                                'controller' => 'Periodos',
-                                                'action' => 'index',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php
-                                        echo $this->Html->link(
-                                            'Compras Associados',
-                                            array(
-                                                'controller' => 'ListaCompra',
-                                                'action' => 'formAssociado',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php
-                                        echo $this->Html->link(
-                                            'Compras Convênios',
-                                            array(
-                                                'controller' => 'ListaCompra',
-                                                'action' => 'formConvenio',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                                <li>
-                                    <?php
-                                        echo $this->Html->link(
-                                            'Gerenciar usuários',
-                                            array(
-                                                'controller' => 'Users',
-                                                'action' => 'index',
-                                                'full_base' => true
-                                            )
-                                        );
-                                    ?>
-                                </li>
-                            </ul>
+                        </li>    
+                        <li>
+                            <?php
+                                echo $this->Html->link(
+                                    'Áreas',
+                                    array(
+                                        'controller' => 'Areas',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
+                                    'Associados',
+                                    array(
+                                        'controller' => 'Associados',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
+                                    'Cargos',
+                                    array(
+                                        'controller' => 'Cargos',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
+                                    'Compras',
+                                    array(
+                                        'controller' => 'Compras',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
+                                    'Convenios',
+                                    array(
+                                        'controller' => 'Convenios',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
+                                    'Períodos',
+                                    array(
+                                        'controller' => 'Periodos',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
+                                    'Compras Associados',
+                                    array(
+                                        'controller' => 'ListaCompra',
+                                        'action' => 'formAssociado',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
+                                    'Compras Convênios',
+                                    array(
+                                        'controller' => 'ListaCompra',
+                                        'action' => 'formConvenio',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
+                                    'Gerenciar usuários',
+                                    array(
+                                        'controller' => 'Users',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
                             <!-- /.nav-second-level -->
                         </li>
                     </ul>

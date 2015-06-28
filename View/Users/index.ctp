@@ -1,4 +1,4 @@
-
+<br>
 <?php
     echo $this->Html->link(
         'Cadastrar um novo usuário',
@@ -25,8 +25,7 @@
 	        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	            <thead>
 	                <tr>
-						<th><?php echo $this->Paginator->sort('login'); ?></th>
-						<th><?php echo $this->Paginator->sort('senha'); ?></th>
+						<th><?php echo $this->Paginator->sort('Usuário'); ?></th>
 						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
 	                </tr>
 	            </thead>
@@ -34,7 +33,6 @@
 					<?php foreach ($users as $usuario): ?>
 					<tr class="odd gradeX">
 						<td><?php echo h($usuario['User']['login']); ?>&nbsp;</td>
-						<td><?php echo h($usuario['User']['password']); ?>&nbsp;</td>
 						<td class="actions">
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $usuario['User']['id']),
 							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>

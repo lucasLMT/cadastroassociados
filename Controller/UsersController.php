@@ -26,6 +26,10 @@ class UsersController extends AppController {
 	public function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
+		$current_user = $this->Auth->user();
+		if ($current_user['login'] != 'admin') {
+			return $this->redirect(array('controller' => 'Associados', 'action' => 'index'));
+		}
 	}
 
 	/**
