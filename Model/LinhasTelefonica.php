@@ -24,4 +24,20 @@ class LinhasTelefonica extends AppModel {
 			'order' => ''
 		)
 	);
+
+	public $_schema = array(
+		'modo_id' => array(
+            'type' => 'integer',
+            'null' => false,
+        ),
+    );   
+
+    public function getModeList() {
+        // this could be a find 'list' from
+        // another model
+        return array(
+            1 => 'Por usuário',
+            2 => 'Por número',
+        );
+	} 
 }

@@ -76,6 +76,6 @@ class ListaCompra extends AppModel {
             1 => 'Analítico',
             2 => 'Sintético',
         );
-}
+	}
 
 }

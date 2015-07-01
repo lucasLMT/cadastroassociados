@@ -105,4 +105,34 @@ class LinhasTelefonicasController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	public function listaLinhas($associado_id, $modo, $numero = null) {
+		if ($modo == 1) {
+			$options = array('conditions'=>array('associado_id' => $associado_id));	
+		} else {
+			$options = array('conditions'=>array('numero' => $numero));	
+		}
+		$linhasTelefonicas = $this->LinhasTelefonica->find('all', $options);
+		$this->set(compact('linhasTelefonicas'));
+	}
+
+	public function formLinhas($id = null) {
+
+		$model = ClassRegistry::init('LinhasTelefonica');
+
+		if ($this->request->is('post')) {
+			$data = $this->request->data;
+			if ($data['LinhasTelefonica']['modo_id'] == 1) {
+				$options = array('conditions'=>array('associado_id'=>$data['LinhasTelefonica']['associado_id']));
+				$associado = $this->LinhasTelefonica->Associado->find('all', $options);
+			}
+			$this->redirect(array('controller' => 'LinhasTelefonicas','action' => 'listaLinhas', 
+																			$data['LinhasTelefonica']['associado_id'],
+																			$data['LinhasTelefonica']['modo_id'],
+																			$data['LinhasTelefonica']['numero']));
+		}
+		$associados = $this->LinhasTelefonica->Associado->find('list');
+		$modos = $model->getModeList();
+		$this->set(compact('associados', 'modos'));
+	}
 }

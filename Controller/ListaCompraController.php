@@ -40,23 +40,6 @@ class ListaCompraController extends AppController {
 
 	}
 
-	public function listaConvenio($data_inicio, $data_fim, $convenio, $modo) {
-
-		if ($modo  == 1) {
-			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-												   'Compra.referencia <= ' => $data_fim,
-												   'Compra.convenio_id' => $convenio));
-		} else {
-			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-												   'Compra.referencia <= ' => $data_fim),
-							 'order' => array('Compra.convenio_id'));
-		}
-		$compras = $this->ListaCompra->Compra->find('all', $options);
-		$total = 0;
-		$this->set(compact('compras','data_inicio','data_fim','convenio','total','modo'));
-
-	}
-
 	public function formAssociado($id = null) {
 
 		$model = ClassRegistry::init('ListaCompra');
@@ -77,6 +60,23 @@ class ListaCompraController extends AppController {
 		$periodos = $this->ListaCompra->Periodo->find('list');
 		$modos = $model->getModeList();
 		$this->set(compact('associados', 'periodos', 'modos'));
+	}
+
+	public function listaConvenio($data_inicio, $data_fim, $convenio, $modo) {
+
+		if ($modo  == 1) {
+			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+												   'Compra.referencia <= ' => $data_fim,
+												   'Compra.convenio_id' => $convenio));
+		} else {
+			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+												   'Compra.referencia <= ' => $data_fim),
+							 'order' => array('Compra.convenio_id'));
+		}
+		$compras = $this->ListaCompra->Compra->find('all', $options);
+		$total = 0;
+		$this->set(compact('compras','data_inicio','data_fim','convenio','total','modo'));
+
 	}
 
 	public function formConvenio($id = null) {
@@ -101,6 +101,38 @@ class ListaCompraController extends AppController {
 		$periodos = $this->ListaCompra->Periodo->find('list');
 		$modos = $model->getModeList();
 		$this->set(compact('convenios', 'periodos', 'modos'));
+	}
+
+	public function listaDevedores($data_inicio, $data_fim) {
+
+		$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+											   'Compra.referencia <= ' => $data_fim),
+						 'order' => array('Compra.associado_id'));
+	
+		$compras = $this->ListaCompra->Compra->find('all', $options);
+		$total = 0;
+		$this->set(compact('compras','data_inicio','data_fim','total'));
+
+	}
+
+	public function formDevedores() {
+
+		$model = ClassRegistry::init('ListaCompra');
+
+		if ($this->request->is('post')) {
+
+			$data = $this->request->data;
+			$date_conditions = array('conditions' => array('Periodo.id' => $data['ListaCompra']['periodo_id']));
+			$date = $this->ListaCompra->Periodo->find('all', $date_conditions);
+
+			$data_inicio = $date[0]['Periodo']['data_inicial'];
+			$data_fim = $date[0]['Periodo']['data_final'];
+
+			$this->redirect(array('controller' => 'ListaCompra','action' => 'listaDevedores', $data_inicio, $data_fim));
+
+		}
+		$periodos = $this->ListaCompra->Periodo->find('list');
+		$this->set(compact('periodos'));
 	}
 
 	public function viewpdf($data_inicio, $data_fim, $associado) {

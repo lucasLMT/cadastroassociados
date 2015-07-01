@@ -14,7 +14,7 @@
                         <?php echo $this->Form->input('Operadora', array('label'=>'Operadora:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('Número', array('label'=>'Número:','class'=>'form-control','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('Numero', array('label'=>'Número:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('modelo', array('label'=>'Modelo:','class'=>'form-control', 'rows'=>'1')); ?>

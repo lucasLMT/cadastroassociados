@@ -308,6 +308,18 @@
                         <li>
                             <?php
                                 echo $this->Html->link(
+                                    'Relatório das linhas',
+                                    array(
+                                        'controller' => 'LinhasTelefonicas',
+                                        'action' => 'formLinhas',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
                                     'Períodos',
                                     array(
                                         'controller' => 'Periodos',
@@ -336,6 +348,18 @@
                                     array(
                                         'controller' => 'ListaCompra',
                                         'action' => 'formConvenio',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
+                                    'Devedores',
+                                    array(
+                                        'controller' => 'ListaCompra',
+                                        'action' => 'formDevedores',
                                         'full_base' => true
                                     )
                                 );
