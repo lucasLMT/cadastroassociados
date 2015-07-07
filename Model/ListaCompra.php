@@ -56,6 +56,10 @@ class ListaCompra extends AppModel {
 			'type' => 'integer',
 			'null' => false,
 		),
+		'todos' => array(
+			'type' => 'boolean',
+			'null' => false,
+		),
     );
 
     public $validate = array(

@@ -24,8 +24,8 @@ class ListaCompraController extends AppController {
  *
  * @return void
  */
-	public function listaAssociado($data_inicio, $data_fim, $associado, $modo) {
-		if ($modo == 1) {
+	public function listaAssociado($data_inicio, $data_fim, $associado, $modo, $todos) {
+		if (($modo == 1) && !$todos) {
 			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
 												   'Compra.referencia <= ' => $data_fim,
 												   'Compra.associado_id' => $associado));
@@ -36,7 +36,7 @@ class ListaCompraController extends AppController {
 		}
 		$compras = $this->ListaCompra->Compra->find('all', $options);
 		$total = 0;
-		$this->set(compact('compras','data_inicio','data_fim','associado','total','modo'));
+		$this->set(compact('compras','data_inicio','data_fim','associado','total','modo','todos'));
 
 	}
 
@@ -54,7 +54,8 @@ class ListaCompraController extends AppController {
 
 			$this->redirect(array('controller' => 'ListaCompra','action' => 'listaAssociado', $data_inicio, $data_fim,
 																			$data['ListaCompra']['associado_id'],
-																			$data['ListaCompra']['modo_id']));
+																			$data['ListaCompra']['modo_id'],
+																			$data['ListaCompra']['todos']));
 		}
 		$associados = $this->ListaCompra->Associado->find('list');
 		$periodos = $this->ListaCompra->Periodo->find('list');
@@ -62,9 +63,9 @@ class ListaCompraController extends AppController {
 		$this->set(compact('associados', 'periodos', 'modos'));
 	}
 
-	public function listaConvenio($data_inicio, $data_fim, $convenio, $modo) {
+	public function listaConvenio($data_inicio, $data_fim, $convenio, $modo, $todos) {
 
-		if ($modo  == 1) {
+		if (($modo == 1) && !$todos) {
 			$options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
 												   'Compra.referencia <= ' => $data_fim,
 												   'Compra.convenio_id' => $convenio));
@@ -75,7 +76,7 @@ class ListaCompraController extends AppController {
 		}
 		$compras = $this->ListaCompra->Compra->find('all', $options);
 		$total = 0;
-		$this->set(compact('compras','data_inicio','data_fim','convenio','total','modo'));
+		$this->set(compact('compras','data_inicio','data_fim','convenio','total','modo','todos'));
 
 	}
 
@@ -94,8 +95,8 @@ class ListaCompraController extends AppController {
 
 			$this->redirect(array('controller' => 'ListaCompra','action' => 'listaConvenio', $data_inicio, $data_fim,
 																					$data['ListaCompra']['convenio_id'],
-																					$data['ListaCompra']['modo_id']));
-
+																					$data['ListaCompra']['modo_id'],
+																					$data['ListaCompra']['todos']));
 		}
 		$convenios = $this->ListaCompra->Convenio->find('list');
 		$periodos = $this->ListaCompra->Periodo->find('list');

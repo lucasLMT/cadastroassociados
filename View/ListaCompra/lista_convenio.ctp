@@ -23,20 +23,73 @@
 	            </thead>
 	            <tbody>
 					<?php if ($modo == 1) {
-                        foreach ($compras as $compra): ?>
-    					<tr class="odd gradeX">
-    						<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
-    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
-    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
-    						<?php $total += (float)$compra['Compra']['valor']; ?>
-    						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
-    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
-    					</tr>
-					<?php endforeach; ?>
-                    <tr class="odd gradeX">
-						<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
-					</tr>
-                    <?php } else {
+						if (!$todos) { 
+	                        foreach ($compras as $compra): ?>
+	    					<tr class="odd gradeX">
+	    						<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
+	    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
+	    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+	    						<?php $total += (float)$compra['Compra']['valor']; ?>
+	    						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
+	    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
+	    					</tr>
+							<?php endforeach; ?>
+		                    <tr class="odd gradeX">
+								<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
+							</tr>
+				<?php   } else { 
+							$conv_tmp = $compras[0]['Convenio']['nomeDoGrupo'];
+				  			$count = Count($compras);
+							$i = 1;
+				  			foreach ($compras as $compra): 
+				  				if (($conv_tmp <> $compra['Convenio']['nomeDoGrupo']) || ($count == $i)) {
+				  					if (($conv_tmp == $compra['Convenio']['nomeDoGrupo']) && ($count == $i)) { ?>
+										<tr class="odd gradeX">
+				    						<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
+				    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
+				    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+				    						<?php $total += (float)$compra['Compra']['valor']; ?>
+				    						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
+				    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
+				    					</tr>				    					
+				    					<tr class="odd gradeX">
+											<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
+										</tr>
+				  			<?php		break;
+				  					} 
+				  					if (($conv_tmp <> $compra['Convenio']['nomeDoGrupo']) && ($count == $i)) { ?>
+				  						<tr class="odd gradeX">
+				    						<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
+				    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
+				    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+				    						<?php $total += (float)$compra['Compra']['valor']; ?>
+				    						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
+				    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
+				    					</tr>
+				    					<tr class="odd gradeX">
+											<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
+										</tr>
+				  			<?php		break;
+				  					} ?>
+					  				<tr class="odd gradeX">
+										<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
+									</tr>
+					  			<?php 
+					  				$conv_tmp = $compra['Convenio']['nomeDoGrupo'];
+					  				$total = 0;
+					  			} ?>
+		    					<tr class="odd gradeX">
+		    						<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
+		    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
+		    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+		    						<?php $total += (float)$compra['Compra']['valor']; ?>
+		    						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
+		    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
+		    					</tr>
+						<?php   $i++;
+							endforeach;
+						}
+              		} else {
                             $conv_tmp = $compras[0]['Convenio']['nomeDoGrupo'];
 							$count = Count($compras);
 							$i = 1;
