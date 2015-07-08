@@ -10,15 +10,13 @@ body {
 
 #wrapper {
     width: 100%;
+    background: url(../../img/background.png) no-repeat center center fixed; 
+    background-size: cover;
 }
 
 #page-wrapper {
     padding: 0 15px;
     min-height: 568px;
-    background-color: #fff;
-    background: url(../../img/background.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
 }
 
 @media(min-width:768px) {

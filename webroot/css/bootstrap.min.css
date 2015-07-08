@@ -3166,8 +3166,10 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
     margin-right: 0;
 }
 }.navbar-default {
-    background-color: #f8f8f8;
+    background-color: #fff;
     border-color: #e7e7e7;
+    opacity: .9;
+    filter: alpha(opacity=90);
 }
 .navbar-default .navbar-brand {
     color: #777;
