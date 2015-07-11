@@ -27,34 +27,38 @@ App::uses('Controller', 'Controller');
  * Add your application-wide methods in the class below, your controllers
  * will inherit them.
  *
- * @package		app.Controller
- * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
+ * @package        app.Controller
+ * @link        http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller {
-  public $components = array(
-    'Session',
-    'Auth' => array(
-      'authenticate' => array('Form' => array( 'userModel' => 'User',
-        'fields' => array(
-          'username' => 'login'
-          )
+class AppController extends Controller
+{
+    public $components = array(
+        'Session',
+        'Auth' => array(
+            'authenticate' => array('Form' => array('userModel' => 'User',
+                'fields' => array(
+                    'username' => 'login'
+                )
+            )
+            ),
+            'loginRedirect' => array('controller' => 'associados', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+            'authError' => 'Você não possui autorização para acessar a página',
+            'authorize' => array('Controller')
         )
-      ),
-      'loginRedirect' => array('controller' => 'associados', 'action' => 'index'),
-      'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),             
-      'authError' => 'Você não possui autorização para acessar a página',
-      'authorize' => array('Controller')      
-    )
-  );
-  public function isAuthorized($user) {
-    return true;
-  }
+    );
 
-  public function beforeFilter(){
-    $this->Auth->allow('login');    
-    $this->set('logged_in', $this->Auth->loggedIn());
-    $this->set('current_user', $this->Auth->user());
-  }
+    public function isAuthorized($user)
+    {
+        return true;
+    }
+
+    public function beforeFilter()
+    {
+        $this->Auth->allow('login');
+        $this->set('logged_in', $this->Auth->loggedIn());
+        $this->set('current_user', $this->Auth->user());
+    }
 
 
 }

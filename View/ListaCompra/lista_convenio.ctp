@@ -23,7 +23,7 @@
 	            </thead>
 	            <tbody>
 					<?php if ($modo == 1) {
-						if (!$todos) { 
+						if (!$todos) {
 	                        foreach ($compras as $compra): ?>
 	    					<tr class="odd gradeX">
 	    						<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
@@ -37,11 +37,11 @@
 		                    <tr class="odd gradeX">
 								<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
 							</tr>
-				<?php   } else { 
+				<?php   } else {
 							$conv_tmp = $compras[0]['Convenio']['nomeDoGrupo'];
 				  			$count = Count($compras);
 							$i = 1;
-				  			foreach ($compras as $compra): 
+				  			foreach ($compras as $compra):
 				  				if (($conv_tmp <> $compra['Convenio']['nomeDoGrupo']) || ($count == $i)) {
 				  					if (($conv_tmp == $compra['Convenio']['nomeDoGrupo']) && ($count == $i)) { ?>
 										<tr class="odd gradeX">
@@ -51,12 +51,12 @@
 				    						<?php $total += (float)$compra['Compra']['valor']; ?>
 				    						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
 				    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
-				    					</tr>				    					
+				    					</tr>
 				    					<tr class="odd gradeX">
 											<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
 										</tr>
 				  			<?php		break;
-				  					} 
+				  					}
 				  					if (($conv_tmp <> $compra['Convenio']['nomeDoGrupo']) && ($count == $i)) { ?>
 				  						<tr class="odd gradeX">
 				    						<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
@@ -74,7 +74,7 @@
 					  				<tr class="odd gradeX">
 										<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
 									</tr>
-					  			<?php 
+					  			<?php
 					  				$conv_tmp = $compra['Convenio']['nomeDoGrupo'];
 					  				$total = 0;
 					  			} ?>
@@ -126,11 +126,12 @@
 	<!-- /.panel-body -->
 </div>
 <?php
-    echo $this->Html->link(
+  if ($modo == 1) {
+		echo $this->Html->link(
         'Exportar PDF',
         array(
             'controller' => 'ListaCompra',
-            'action' => 'viewpdf',
+            'action' => 'viewpdf_convenios_analiticos',
             'full_base' => true,
 						$data_inicio,
 						$data_fim,
@@ -141,20 +142,54 @@
             'role' => 'button'
         	)
     );
+	} else {
+		echo $this->Html->link(
+        'Exportar PDF',
+        array(
+            'controller' => 'ListaCompra',
+            'action' => 'viewpdf_convenios_sinteticos',
+            'full_base' => true,
+						$data_inicio,
+						$data_fim,
+						$convenio
+        ),
+        array(
+        	'class' => 'btn btn-success',
+            'role' => 'button'
+        	)
+    );
+	};
 ?>
 <?php
-	echo $this->Html->link(
-		'Exportar CSV',
-		array(
-			'controller'=>'ListaCompra',
-			'action'=>'export',
-			$data_inicio,
-			$data_fim,
-      		$convenio
-    ),
-		array(
-			'class' => 'btn btn-info',
-			'role' => 'button'
-    )
-  );
+  if ($modo == 1) {
+	  echo $this->Html->link(
+		  'Exportar CSV',
+		  array(
+			  'controller'=>'ListaCompra',
+			  'action'=>'export_convenios_analiticos',
+			  $data_inicio,
+			  $data_fim,
+        $convenio
+      ),
+		  array(
+			  'class' => 'btn btn-info',
+			  'role' => 'button'
+      )
+    );
+  } else {
+		echo $this->Html->link(
+		  'Exportar CSV',
+		  array(
+			  'controller'=>'ListaCompra',
+			  'action'=>'export_convenios_sinteticos',
+			  $data_inicio,
+			  $data_fim,
+        $convenio
+      ),
+		  array(
+			  'class' => 'btn btn-info',
+			  'role' => 'button'
+      )
+    );
+  };
 ?>
