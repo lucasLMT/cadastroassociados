@@ -14,7 +14,10 @@
                         <?php echo $this->Form->input('nome', array('label'=>'Nome:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('dataDeNascimento', array('label'=>'Data de nascimento:','dateFormat'=>'DMY', 'class'=>'form-control')); ?>
+                        <?php echo $this->Form->input('dataDeNascimento', array('label'=>'Data de nascimento:','dateFormat'=>'DMY',
+                                                                                                               'minYear' => date('Y') - 100,
+                                                                                                               'maxYear' => date('Y'),
+                                                                                                               'class'=>'form-control')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('sexo', array('label'=>'Sexo:','class'=>'form-control', 'rows'=>'1')); ?>
