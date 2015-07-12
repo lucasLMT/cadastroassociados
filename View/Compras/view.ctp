@@ -6,7 +6,7 @@
 			<?php echo h($compra['Compra']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Convenio'); ?></dt>
+		<dt><?php echo __('Convênio'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($compra['Convenio']['id'], array('controller' => 'convenios', 'action' => 'view', $compra['Convenio']['id'])); ?>
 			&nbsp;
@@ -26,12 +26,12 @@
 			<?php echo h($compra['Compra']['valor']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Referencia'); ?></dt>
+		<dt><?php echo __('Referência'); ?></dt>
 		<dd>
 			<?php echo h($compra['Compra']['referencia']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Observacao'); ?></dt>
+		<dt><?php echo __('Observação'); ?></dt>
 		<dd>
 			<?php echo h($compra['Compra']['observacao']); ?>
 			&nbsp;

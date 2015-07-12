@@ -10,6 +10,7 @@
 	            <thead>
 	                <tr>
                     <?php if ($modo == 1) { ?>
+						<th><?php echo __('Matrícula'); ?></th>
 						<th><?php echo __('Associado'); ?></th>
 						<th><?php echo __('Convênio'); ?></th>
 						<th><?php echo __('Referência'); ?></th>
@@ -26,7 +27,8 @@
 						if (!$todos) {
 							foreach ($compras as $compra): ?>
 	    					<tr class="odd gradeX">
-	    						<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
+	    						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
+									<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
 	    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
 	    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 	    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
@@ -45,7 +47,8 @@
 				  				if (($assoc_tmp <> $compra['Associado']['nome']) || ($count == $i)) {
 				  					if (($assoc_tmp == $compra['Associado']['nome']) && ($count == $i)) { ?>
 										<tr class="odd gradeX">
-				    						<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
+				    						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
+												<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
 				    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
 				    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 				    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
@@ -59,7 +62,8 @@
 				  					}
 				  					if (($assoc_tmp <> $compra['Associado']['nome']) && ($count == $i)) { ?>
 				  						<tr class="odd gradeX">
-				    						<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
+				    						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
+												<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
 				    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
 				    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 				    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
@@ -79,7 +83,8 @@
 					  				$total = 0;
 					  			} ?>
 		    					<tr class="odd gradeX">
-		    						<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
+		    						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
+										<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
 		    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
 		    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 		    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
