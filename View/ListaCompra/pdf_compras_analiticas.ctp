@@ -38,8 +38,8 @@ foreach($compras as $compra)
   $pdf->Ln();
 }
 
-
-$pdf->AddPage();
+//Modelo 2 para exibição de tabela.
+/*$pdf->AddPage();
 //Cabeçalho
 $pdf->Cell(0,40,"",1,1,'C'); // Célula do cabeçalho
 $pdf->SetFont('Arial','B',12);
@@ -66,7 +66,15 @@ foreach($compras as $compra)
   $pdf->Ln();
 }
 // Closing line
-$pdf->Cell(array_sum($w),0,'','T');
+$pdf->Cell(array_sum($w),0,'','T');*/
+
+// Position at 1.5 cm from bottom
+$pdf->SetY(265);
+// Arial italic 8
+$pdf->SetFont('Arial','I',8);
+// Page number
+$pdf->Cell(0,10,utf8_decode('Página ').$pdf->PageNo(),0,0,'C');
+//$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 
 $pdf->Output('ComprasAnaliticas.pdf','D')
 ?>

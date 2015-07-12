@@ -31,7 +31,8 @@ class ListaCompraController extends AppController
         if (($modo == 1) && !$todos) {
             $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
                 'Compra.referencia <= ' => $data_fim,
-                'Compra.associado_id' => $associado));
+                'Compra.associado_id' => $associado),
+                'order' => array('Compra.referencia'));
         } else {
             $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
                 'Compra.referencia <= ' => $data_fim),
