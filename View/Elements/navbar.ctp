@@ -254,9 +254,9 @@
                         <li>
                             <?php
                                 echo $this->Html->link(
-                                    'Associados',
+                                    'Aniversariantes',
                                     array(
-                                        'controller' => 'Aniversariantes',
+                                        'controller' => 'Associados',
                                         'action' => 'listaAniversario',
                                         'full_base' => true
                                     )
