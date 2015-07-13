@@ -26,11 +26,19 @@ class LinhasTelefonica extends AppModel {
 	);
 
 	public $_schema = array(
+		'data' => array(
+			'type' => 'date',
+            'null' => false,
+		),
+		'devolucao' => array(
+			'type' => 'date',
+            'null' => false,
+		),
 		'modo_id' => array(
             'type' => 'integer',
             'null' => false,
         ),
-    );   
+    ); 
 
     public function getModeList() {
         // this could be a find 'list' from

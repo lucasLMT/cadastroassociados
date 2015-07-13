@@ -254,6 +254,18 @@
                         <li>
                             <?php
                                 echo $this->Html->link(
+                                    'Associados',
+                                    array(
+                                        'controller' => 'Aniversariantes',
+                                        'action' => 'listaAniversario',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
                                     'Cargos',
                                     array(
                                         'controller' => 'Cargos',
@@ -371,8 +383,17 @@
                                 );
                             ?>
                         </li>
-
-                            <!-- /.nav-second-level -->
+                        <li>
+                            <?php
+                                echo $this->Html->link(
+                                    'Refeitório',
+                                    array(
+                                        'controller' => 'Refeitorios',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
                         </li>
                     </ul>
                 </div>

@@ -25,10 +25,10 @@
 	        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	            <thead>
 	                <tr>
-	                	<th><?php echo $this->Paginator->sort('nomeDoGrupo'); ?></th>						
+	                	<th><?php echo $this->Paginator->sort('nomeDoGrupo', 'Convênio'); ?></th>						
 						<th><?php echo $this->Paginator->sort('telefone'); ?></th>
 						<th><?php echo $this->Paginator->sort('fax'); ?></th>
-						<th><?php echo $this->Paginator->sort('percDesc'); ?></th>
+						<th><?php echo $this->Paginator->sort('percDesc', 'Per desconto'); ?></th>
 						<th><?php echo $this->Paginator->sort('contato'); ?></th>						
 						<th><?php echo $this->Paginator->sort('status'); ?></th>
 						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
@@ -57,18 +57,4 @@
 	    </div>
 	</div>
 	<!-- /.panel-body -->
-</div>
-<p>
-<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-?>	
-</p>
-<div class="paging">
-<?php
-	echo $this->Paginator->prev('< ' . __('anterior '), array(), null, array('class' => 'prev disabled'));
-	echo $this->Paginator->numbers(array('separator' => ' '));
-	echo $this->Paginator->next(__(' próximo') . ' >', array(), null, array('class' => 'next disabled'));
-?>
 </div>
