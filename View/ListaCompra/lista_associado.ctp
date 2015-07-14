@@ -119,9 +119,9 @@
 								<?php
 									}
 									$assoc_tmp = $compra['Associado']['nome'];
-                            	} else {
-                                	$total += $compra['Compra']['valor'];
-                            	}
+                  } else {
+                    $total += $compra['Compra']['valor'];
+                  }
 								$i++;
 							endforeach;
 							} ?>
@@ -132,7 +132,7 @@
 	<!-- /.panel-body -->
 </div>
 <?php
-  if ($modo == 1) {
+  if (($modo == 1) && !$todos) {
 		echo $this->Html->link(
         'Exportar PDF',
         array(
@@ -148,7 +148,7 @@
             'role' => 'button'
         	)
     );
-	} else {
+	} else if ($modo == 2){
 		echo $this->Html->link(
         'Exportar PDF',
         array(
@@ -164,9 +164,25 @@
             'role' => 'button'
         	)
     );
-}?>
+  } else {
+		echo $this->Html->link(
+        'Exportar PDF',
+        array(
+            'controller' => 'ListaCompra',
+					  'action' => 'viewpdf_compras_analiticas',
+            'full_base' => true,
+						$data_inicio,
+						$data_fim,
+						$associado
+        ),
+        array(
+        	'class' => 'btn btn-success',
+            'role' => 'button'
+        	)
+    );
+	}?>
 <?php
-  if ($modo == 1) {
+  if (($modo == 1) && !$todos) {
 	  echo $this->Html->link(
 				'Exportar CSV',
 		    array(
@@ -181,7 +197,7 @@
 			     'role' => 'button'
         )
     );
-  } else {
+	} else if ($modo == 2) {
 	  echo $this->Html->link(
 			'Exportar CSV',
 			array(
@@ -195,5 +211,21 @@
 				'class' => 'btn btn-info',
 				'role' => 'button'
 			)
-	);
-}?>
+	  );
+  } else {
+	  echo $this->Html->link(
+			'Exportar CSV',
+			array(
+					'controller'=>'ListaCompra',
+					'action'=>'export_compras_analiticas_todos',
+					$data_inicio,
+					$data_fim,
+					$associado
+			),
+			array(
+				'class' => 'btn btn-info',
+				'role' => 'button'
+			)
+	  );
+}
+?>

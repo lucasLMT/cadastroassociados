@@ -183,7 +183,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> 
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>
                                 <?php
                                     echo $current_user['login'];
                                 ?>
@@ -226,7 +226,7 @@
                     <ul class="nav" id="side-menu">
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Gerenciamento<span class="fa arrow"></span></a>
-                        </li>    
+                        </li>
                         <li>
                             <?php
                                 echo $this->Html->link(
@@ -246,18 +246,6 @@
                                     array(
                                         'controller' => 'Associados',
                                         'action' => 'index',
-                                        'full_base' => true
-                                    )
-                                );
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                                echo $this->Html->link(
-                                    'Aniversariantes',
-                                    array(
-                                        'controller' => 'Associados',
-                                        'action' => 'listaAniversario',
                                         'full_base' => true
                                     )
                                 );
