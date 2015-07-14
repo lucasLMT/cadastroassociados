@@ -26,9 +26,9 @@
 	        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	            <thead>
 	                <tr>
-	                    <th><?php echo $this->Paginator->sort('referencia'); ?></th>
-						<th><?php echo $this->Paginator->sort('data_inicial'); ?></th>
-						<th><?php echo $this->Paginator->sort('data_final'); ?></th>
+	                    <th><?php echo $this->Paginator->sort('referencia', 'Referência'); ?></th>
+						<th><?php echo $this->Paginator->sort('data_inicial', 'Data inicial'); ?></th>
+						<th><?php echo $this->Paginator->sort('data_final', 'Data final'); ?></th>
 	                    <th class="actions"><?php echo __('Gerenciamento'); ?></th>
 	                </tr>
 	            </thead>

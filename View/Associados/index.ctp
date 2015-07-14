@@ -44,7 +44,7 @@
 						<th><?php echo $this->Paginator->sort('telefone'); ?></th>
 						<th><?php echo $this->Paginator->sort('cargo_id'); ?></th>
 						<th><?php echo $this->Paginator->sort('area_id'); ?></th>
-						<th><?php echo $this->Paginator->sort('salario'); ?></th>
+						<th><?php echo $this->Paginator->sort('salario', 'Salário'); ?></th>
 						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
 					</tr>
 	            </thead>
@@ -72,10 +72,3 @@
 	</div>
 	<!-- /.panel-body -->
 </div>
-<p>
-<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-?>
-</p>

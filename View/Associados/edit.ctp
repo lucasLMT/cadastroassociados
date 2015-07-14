@@ -39,6 +39,9 @@
                         <?php echo $this->Form->input('telefone', array('label'=>'Telefone:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
+                        <?php echo $this->Form->input('email', array('label'=>'Email:','class'=>'form-control','rows'=>'1')); ?>
+                    </div>
+                    <div class="form-group">
                         <?php echo $this->Form->input('RG', array('label'=>'RG:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">

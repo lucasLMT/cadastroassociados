@@ -27,11 +27,11 @@
 	                <tr>
 						<th><?php echo $this->Paginator->sort('associado_id'); ?></th>
 						<th><?php echo $this->Paginator->sort('Operadora'); ?></th>
-						<th><?php echo $this->Paginator->sort('Numero'); ?></th>
+						<th><?php echo $this->Paginator->sort('Numero', 'Número'); ?></th>
 						<th><?php echo $this->Paginator->sort('modelo'); ?></th>
 						<th><?php echo $this->Paginator->sort('data'); ?></th>
-						<th><?php echo $this->Paginator->sort('devolucao'); ?></th>
-						<th><?php echo $this->Paginator->sort('observacao'); ?></th>
+						<th><?php echo $this->Paginator->sort('devolucao', 'Data de devolução'); ?></th>
+						<th><?php echo $this->Paginator->sort('observacao', 'Observação'); ?></th>
 						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
 	                </tr>
 	            </thead>
@@ -58,18 +58,4 @@
 	    </div>
 	</div>
 	<!-- /.panel-body -->
-</div>
-<p>
-<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-?>	
-</p>
-<div class="paging">
-<?php
-	echo $this->Paginator->prev('< ' . __('anterior '), array(), null, array('class' => 'prev disabled'));
-	echo $this->Paginator->numbers(array('separator' => ' '));
-	echo $this->Paginator->next(__(' próximo') . ' >', array(), null, array('class' => 'next disabled'));
-?>
 </div>

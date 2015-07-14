@@ -27,10 +27,10 @@
 	                <tr>
 						<th><?php echo $this->Paginator->sort('associado_id'); ?></th>
 						<th><?php echo $this->Paginator->sort('data'); ?></th>
-						<th><?php echo $this->Paginator->sort('qtd_associado'); ?></th>
-						<th><?php echo $this->Paginator->sort('qtd_convidado'); ?></th>
-						<th><?php echo $this->Paginator->sort('preco_asc'); ?></th>
-						<th><?php echo $this->Paginator->sort('preco_conv'); ?></th>
+						<th><?php echo $this->Paginator->sort('qtd_associado', 'Quantidade'); ?></th>
+						<th><?php echo $this->Paginator->sort('qtd_convidado', 'Quantidade convidado'); ?></th>
+						<th><?php echo $this->Paginator->sort('preco_asc', 'Preço associado'); ?></th>
+						<th><?php echo $this->Paginator->sort('preco_conv', 'Preço convidado'); ?></th>
 						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
 	                </tr>
 	            </thead>

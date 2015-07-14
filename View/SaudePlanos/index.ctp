@@ -27,10 +27,10 @@
 	                <tr>
 						<th><?php echo $this->Paginator->sort('nome'); ?></th>
 						<th><?php echo $this->Paginator->sort('tipo'); ?></th>
-						<th><?php echo $this->Paginator->sort('valorAssociado'); ?></th>
-						<th><?php echo $this->Paginator->sort('valorSebrae'); ?></th>
-						<th><?php echo $this->Paginator->sort('valorAFSebrae'); ?></th>
-						<th><?php echo $this->Paginator->sort('observacao'); ?></th>
+						<th><?php echo $this->Paginator->sort('valorAssociado', 'Valor Associado'); ?></th>
+						<th><?php echo $this->Paginator->sort('valorSebrae', 'Valor Sebrae'); ?></th>
+						<th><?php echo $this->Paginator->sort('valorAFSebrae', 'Valor AFSebrae'); ?></th>
+						<th><?php echo $this->Paginator->sort('observacao', 'Observação'); ?></th>
 						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
 	                </tr>
 	            </thead>
@@ -56,18 +56,4 @@
 	    </div>
 	</div>
 	<!-- /.panel-body -->
-</div>
-<p>
-<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-?>	
-</p>
-<div class="paging">
-<?php
-	echo $this->Paginator->prev('< ' . __('anterior '), array(), null, array('class' => 'prev disabled'));
-	echo $this->Paginator->numbers(array('separator' => ' '));
-	echo $this->Paginator->next(__(' próximo') . ' >', array(), null, array('class' => 'next disabled'));
-?>
 </div>
