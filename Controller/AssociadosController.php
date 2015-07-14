@@ -52,6 +52,8 @@ class AssociadosController extends AppController
      */
     public function add()
     {
+        $model = ClassRegistry::init('Associado');
+
         if ($this->request->is('post')) {
             $this->Associado->create();
             if ($this->Associado->save($this->request->data)) {
@@ -63,7 +65,8 @@ class AssociadosController extends AppController
         }
         $cargos = $this->Associado->Cargo->find('list');
         $areas = $this->Associado->Area->find('list');
-        $this->set(compact('cargos', 'areas'));
+        $ativos = $model->getAtivo();
+        $this->set(compact('cargos', 'areas', 'ativos'));
     }
 
     /**

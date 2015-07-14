@@ -68,7 +68,7 @@
                         <?php echo $this->Form->input('mensalidade', array('label'=>'Mensalidade:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('ativo', array('label'=>'Ativo:','class'=>'form-control','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('ativo_id', array('label'=>'Ativo:','class'=>'form-control')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('possui filhos', array('label'=>'Filhos:','class'=>'form-control','rows'=>'1')); ?>

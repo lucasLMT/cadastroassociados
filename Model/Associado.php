@@ -56,6 +56,15 @@ class Associado extends AppModel {
 		)
 	);
 
+	public function getAtivo() {
+        // this could be a find 'list' from
+        // another model
+        return array(
+            1 => 'Ativo',
+            2 => 'Inativo',
+        );
+	}
+
 /**
  * Validation rules
  *
