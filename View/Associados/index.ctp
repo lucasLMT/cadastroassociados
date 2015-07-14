@@ -8,7 +8,21 @@
             'full_base' => true
         ),
         array(
-        	'class' => 'btn btn-success',
+        	'class' => 'btn btn-warning',
+            'role' => 'button'
+        	)
+    );
+?>
+<?php
+    echo $this->Html->link(
+        'Aniversariantes',
+        array(
+            'controller' => 'Associados',
+            'action' => 'listaAniversario',
+            'full_base' => true
+        ),
+        array(
+        	'class' => 'btn btn-info',
             'role' => 'button'
         	)
     );
@@ -25,7 +39,7 @@
 	        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	            <thead>
 	                <tr>
-						<th><?php echo $this->Paginator->sort('Matrícula'); ?></th>
+						<th><?php echo $this->Paginator->sort('matricula','Matrícula'); ?></th>
             <th><?php echo $this->Paginator->sort('nome'); ?></th>
 						<th><?php echo $this->Paginator->sort('telefone'); ?></th>
 						<th><?php echo $this->Paginator->sort('cargo_id'); ?></th>
@@ -46,8 +60,6 @@
 						<td class="actions">
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $associado['Associado']['id']),
 							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>
-							<?php echo $this->Html->link(__('Compras'), array('action' => 'listaCompras', $associado['Associado']['id']),
-							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>
 							<?php echo $this->Form->postLink(__('Apagar'), array('action' => 'delete', $associado['Associado']['id']),
 							array('class' => 'btn btn-danger btn-sm','role' => 'button'), __('Você tem certeza que deseja remover associado %s?',
 							$associado['Associado']['nome'])); ?>
@@ -60,4 +72,3 @@
 	</div>
 	<!-- /.panel-body -->
 </div>
-

@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 
 /**
  * Associados Controller
@@ -117,14 +118,33 @@ class AssociadosController extends AppController
 
     public function listaAniversario($id = null)
     {
-
         $data = date("m-d");
-        debug($data);
         $options = array('conditions' => array("strftime('%m-%d',Associado.dataDeNascimento)" => $data));
         $aniversariantes = $this->Associado->find('all', $options);
-        debug($aniversariantes);
         $this->set(compact('aniversariantes'));
     }
 
+    public function sendEmail($dest = null)
+    {
+        $dest = 'destinatario@gmail.com';
+        $Email = new CakeEmail('gmail');
+        $Email->to($dest);
+        $Email->subject('Test Cakephp email');
+        //$Email->replyTo();
+        $Email->from('AFSEBRAE');
+        $Email->message('Test message.');
+        $Email->send('message');
+        return $this->redirect(array('action' => 'index'));
+    }
 
+    /*public function send_email($dest=null)
+    {
+        $Email = new CakeEmail('gmail');
+        $Email->to($dest);
+        $Email->subject('Automagically generated email');
+        $Email->replyTo('the_mail_you_want_to_receive_replies@yourdomain.com');
+        $Email->from('your_user@gmail.com');
+        $Email->send();
+        return $this->redirect(array('action' => 'index'));
+    }*/
 }

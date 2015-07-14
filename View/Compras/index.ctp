@@ -25,11 +25,11 @@
 	        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	            <thead>
 	                <tr>
-						<th><?php echo $this->Paginator->sort('Matrícula'); ?></th>
-            <th><?php echo $this->Paginator->sort('associado_id'); ?></th>
-						<th><?php echo $this->Paginator->sort('Convênio'); ?></th>
-						<th><?php echo $this->Paginator->sort('referência'); ?></th>
-						<th><?php echo $this->Paginator->sort('observação'); ?></th>
+						<th><?php echo $this->Paginator->sort('matricula','Matrícula'); ?></th>
+            <th><?php echo $this->Paginator->sort('associado_id','Associado'); ?></th>
+						<th><?php echo $this->Paginator->sort('convenio_id','Convênio'); ?></th>
+						<th><?php echo $this->Paginator->sort('referencia','Referência'); ?></th>
+						<th><?php echo $this->Paginator->sort('observacao','Observação'); ?></th>
 						<th><?php echo $this->Paginator->sort('valor'); ?></th>
 						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
 	                </tr>
