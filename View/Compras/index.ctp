@@ -28,7 +28,8 @@
 						<th><?php echo $this->Paginator->sort('matricula','Matrícula'); ?></th>
             <th><?php echo $this->Paginator->sort('associado_id','Associado'); ?></th>
 						<th><?php echo $this->Paginator->sort('convenio_id','Convênio'); ?></th>
-						<th><?php echo $this->Paginator->sort('referencia','Referência'); ?></th>
+						<th><?php echo $this->Paginator->sort('descricao','Descrição'); ?></th>
+            <th><?php echo $this->Paginator->sort('referencia','Referência'); ?></th>
 						<th><?php echo $this->Paginator->sort('observacao','Observação'); ?></th>
 						<th><?php echo $this->Paginator->sort('valor'); ?></th>
 						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
@@ -40,7 +41,8 @@
 						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
             <td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
-						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+						<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
+            <td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
 						<td class="actions">

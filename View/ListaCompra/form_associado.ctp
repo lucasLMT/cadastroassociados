@@ -18,15 +18,15 @@
                             <td>
                                 <div class="form-group">
                                 <?php echo $this->Form->input('modo_id', array('label'=>'Modo:','class'=>'form-control')); ?>
-                                </div>            
+                                </div>
                             </td>
                             <td>
                                 <div class="form-group">
                                 <?php echo $this->Form->input('todos', array('label'=>'Trazer todos:','class'=>'form-control')); ?>
-                                </div>            
+                                </div>
                             </td>
                         </tr>
-                    </table>  
+                    </table>
                     <button type="submit" class="btn btn-default">Enviar</button>
                 <?php echo $this->Form->end(); ?>
             </div>

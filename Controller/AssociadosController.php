@@ -127,12 +127,12 @@ class AssociadosController extends AppController
         $this->set(compact('aniversariantes'));
     }
 
-    public function sendEmail($dest = null)
+    public function sendEmail($associados, $dest = null)
     {
         $dest = 'destinatario@gmail.com';
         $Email = new CakeEmail('gmail');
         $Email->to($dest);
-        $Email->subject('Test Cakephp email');
+        $Email->subject('Aniversariantes do dia.');
         //$Email->replyTo();
         $Email->from('AFSEBRAE');
         $Email->message('Test message.');

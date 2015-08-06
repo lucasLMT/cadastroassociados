@@ -144,6 +144,28 @@ class ListaCompraController extends AppController
         $this->set(compact('periodos'));
     }
 
+    public function viewpdf_compras_todas_analiticas($data_inicio, $data_fim, $associado)
+    {
+
+      $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+          'Compra.referencia <= ' => $data_fim),
+          'order' => array('Compra.associado_id'));
+
+        $compras = $this->ListaCompra->Compra->find('all', $options);
+        $total = 0;
+
+        //Import /app/Vendor/Fpdf
+        App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
+        //Assign layout to /app/View/Layout/pdf.ctp
+        $this->layout = 'pdf'; //this will use the pdf.ctp layout
+        //Set fpdf variable to use in view
+        $this->set('pdf', new FPDF("P", "mm", "A4"));
+        //pass data to view
+        $this->set(compact('compras', 'data_inicio', 'data_fim', 'associado', 'total'));
+        //render the pdf view (app/View/[view_name]/pdf.ctp)
+        $this->render('pdf_compras_todas_analiticas');
+    }
+
     public function viewpdf_compras_analiticas($data_inicio, $data_fim, $associado)
     {
         $total = 0;
@@ -278,6 +300,22 @@ class ListaCompraController extends AppController
         $this->set(compact('conveniosArray'));
         //render the pdf view (app/View/[view_name]/pdf.ctp)
         $this->render('pdf_convenios_sinteticos');
+    }
+
+    public function export_compras_todas_analiticas($data_inicio, $data_fim, $associado)
+    {
+        $total = 0;
+        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+            'Compra.referencia <= ' => $data_fim,
+            'Compra.associado_id' => $associado));
+        $compras = $this->ListaCompra->Compra->find('all', $options);
+
+        foreach ($compras as $compra):
+            $total += (float)$compra['Compra']['valor'];
+        endforeach;
+
+        //$data = $this->Model->find('all');
+        $this->set(compact('compras', 'total'));
     }
 
     public function export_compras_analiticas($data_inicio, $data_fim, $associado)
