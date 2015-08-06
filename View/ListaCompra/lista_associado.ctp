@@ -13,6 +13,7 @@
 						<th><?php echo __('Matrícula'); ?></th>
 						<th><?php echo __('Associado'); ?></th>
 						<th><?php echo __('Convênio'); ?></th>
+						<th><?php echo __('Descrição'); ?></th>
 						<th><?php echo __('Referência'); ?></th>
 						<th><?php echo __('Observação'); ?></th>
 						<th><?php echo __('Valor'); ?></th>
@@ -30,7 +31,8 @@
 	    						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
 									<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
 	    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
-	    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+	    						<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
+									<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 	    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
 	    						<?php $total += (float)$compra['Compra']['valor']; ?>
 	    						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
@@ -50,7 +52,8 @@
 				    						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
 												<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
 				    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
-				    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+				    						<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
+												<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 				    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
 				    						<?php $total += (float)$compra['Compra']['valor']; ?>
 				    						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
@@ -65,7 +68,8 @@
 				    						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
 												<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
 				    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
-				    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+				    						<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
+												<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 				    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
 				    						<?php $total = (float)$compra['Compra']['valor']; ?>
 				    						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
@@ -86,7 +90,8 @@
 		    						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
 										<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
 		    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
-		    						<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+		    						<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
+										<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 		    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
 		    						<?php $total += (float)$compra['Compra']['valor']; ?>
 		    						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
@@ -169,7 +174,7 @@
         'Exportar PDF',
         array(
             'controller' => 'ListaCompra',
-					  'action' => 'viewpdf_compras_analiticas',
+					  'action' => 'viewpdf_compras_todas_analiticas',
             'full_base' => true,
 						$data_inicio,
 						$data_fim,
@@ -217,7 +222,7 @@
 			'Exportar CSV',
 			array(
 					'controller'=>'ListaCompra',
-					'action'=>'export_compras_analiticas_todos',
+					'action'=>'export_compras_todas_analiticas',
 					$data_inicio,
 					$data_fim,
 					$associado

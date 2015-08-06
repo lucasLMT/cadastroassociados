@@ -11,16 +11,11 @@ $pdf->Cell(50,15,utf8_decode("AFSEBRAE - Associação dos funcionários do SEBRA
 $pdf->SetFont('Arial','B',10);
 $pdf->SetXY(90,20);
 $pdf->Cell(50,10,utf8_decode("Compras analíticas por associado."));
+
 $pdf->Ln(30);
 
 // Column headings
-for($i=0;$i<count($compras);$i++)
-    $assoc_temp = $compras[$i]['Associado']['nome'];
-
-    
-$pdf->Cell(0,7,utf8_decode("Associado: ".$compras[0]['Associado']['nome']),1,0,'C');
-$pdf->Ln();
-$header = array(utf8_decode('Matrícula'),utf8_decode('Descrição'), utf8_decode('Convênio'), 'Valor', utf8_decode('Observação'));
+$header = array(utf8_decode('Matrícula'),'Associado', utf8_decode('Convênio'), 'Valor', utf8_decode('Observação'));
 // Column widths
 $w = array(20,85,40,15,30);
 // Header
@@ -37,14 +32,16 @@ $pdf->Ln();*/
 foreach($compras as $compra)
 {
   $pdf->Cell($w[0],8,$compra['Associado']['matricula'],1,0,'C');
-  $pdf->Cell($w[1],8,$compra['Compra']['descricao'],1);
+  $pdf->Cell($w[1],8,$compra['Associado']['nome'],1);
   $pdf->Cell($w[2],8,$compra['Convenio']['nomeDoGrupo'],1);
   $pdf->Cell($w[3],8,$compra['Compra']['valor'],1,0,'C');
+  $total += (float)$compra['Compra']['valor'];
   $pdf->Cell($w[4],8,$compra['Compra']['observacao'],1);
   $pdf->Ln();
 }
-$pdf->Cell(0,7,utf8_decode("Total: R$".$total),1,0,'R');
 
+//debug($total);
+$pdf->Cell(0,8,'Total: '.$total,1,0,'R');
 //Modelo 2 para exibição de tabela.
 /*$pdf->AddPage();
 //Cabeçalho
@@ -83,5 +80,5 @@ $pdf->SetFont('Arial','I',8);
 $pdf->Cell(0,10,utf8_decode('Página ').$pdf->PageNo(),0,0,'C');
 //$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 
-$pdf->Output('ComprasAnaliticas.pdf','D')
+$pdf->Output('ComprasAnaliticasTodas.pdf','D')
 ?>

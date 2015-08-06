@@ -16,7 +16,10 @@
 					<div class="form-group">
 						<?php echo $this->Form->input('valor', array('label'=>'Valor:','class'=>'form-control','rows'=>'1'));?>
 					</div>
-					<div class="form-group">
+          <div class="form-group">
+						<?php echo $this->Form->input('descricao', array('label'=>'descrição:','class'=>'form-control','rows'=>'4'));?>
+					</div>
+          <div class="form-group">
 						<?php echo $this->Form->input('referencia', array('label'=>'Referência:','dateFormat'=>'DMY','class'=>'form-control'));?>
 					</div>
 					<div class="form-group">
@@ -30,4 +33,3 @@
     </div>
     <!-- /.panel-body -->
 </div>
-

@@ -33,7 +33,7 @@
                         <?php echo $this->Form->input('dataDeAdmissao', array('label'=>'Data de admissão:','dateFormat'=>'DMY','class'=>'form-control')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('dataDesligamento', array('label'=>'Data de desligamento:','dateFormat'=>'DMY','class'=>'form-control')); ?>
+                        <?php echo $this->Form->input('dataDesligamento', array('label'=>'Data de desligamento:','dateFormat'=>'DMY','class'=>'form-control', 'empty' => true)); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('telefone', array('label'=>'Telefone:','class'=>'form-control','rows'=>'1')); ?>
@@ -82,4 +82,3 @@
     </div>
     <!-- /.panel-body -->
 </div>
-
