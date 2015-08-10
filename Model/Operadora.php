@@ -6,6 +6,8 @@ App::uses('AppModel', 'Model');
  */
 class Operadora extends AppModel {
 
+	public $displayField = 'nome';
+
 /**
  * Validation rules
  *

@@ -65,6 +65,31 @@ class Associado extends AppModel {
         );
 	}
 
+	public function getSexo() {
+        return array(
+            1 => 'Masculino',
+            2 => 'Feminino',
+        );
+	}
+	
+	public function getEstadocivil() {
+        return array(
+            1 => 'Solteiro(a)',
+            2 => 'Casado(a)',
+            3 => 'Separado(a) judicialmente',
+            4 => 'Divorciado(a)',
+            5 => 'Viúvo(a)',
+        );
+	}
+
+	public function getFilhos()
+	{
+		return array(
+            1 => 'Sim',
+            2 => 'Não',
+        );	
+	}
+
 /**
  * Validation rules
  *

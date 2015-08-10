@@ -314,6 +314,18 @@
                         <li>
                             <?php
                                 echo $this->Html->link(
+                                    'Operadoras telefônicas',
+                                    array(
+                                        'controller' => 'Operadoras',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                echo $this->Html->link(
                                     'Relatório das linhas',
                                     array(
                                         'controller' => 'LinhasTelefonicas',

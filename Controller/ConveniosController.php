@@ -60,6 +60,8 @@ class ConveniosController extends AppController
                 $this->Session->setFlash(__('The convenio could not be saved. Please, try again.'));
             }
         }
+        $status = $model->getAtivo();
+        $this->set(compact('status'));
     }
 
     /**

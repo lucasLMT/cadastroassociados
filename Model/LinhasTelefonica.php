@@ -22,6 +22,13 @@ class LinhasTelefonica extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Operadora' => array(
+			'className' => 'Operadora',
+			'foreignKey' => 'operadora_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 

@@ -12,7 +12,7 @@
                         <?php echo $this->Form->input('associado_id', array('label'=>'Associado:','class'=>'form-control')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('Operadora', array('label'=>'Operadora:','class'=>'form-control','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('operadora_id', array('label'=>'Operadora:','class'=>'form-control')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('Numero', array('label'=>'Número:','class'=>'form-control','rows'=>'1')); ?>
@@ -27,10 +27,10 @@
                         <?php echo $this->Form->input('notafiscal', array('label'=>'Nota fiscal:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('data', array('label'=>'Data:','dateFormat'=>'DMY','class'=>'form-control')); ?>
+                        <?php echo $this->Form->input('data', array('label'=>'Data:','class'=>'form-control date','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('devolucao', array('label'=>'Data de devolução:','dateFormat'=>'DMY','class'=>'form-control')); ?>
+                        <?php echo $this->Form->input('devolucao', array('label'=>'Data de devolução:','class'=>'form-control date','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('observacao', array('label'=>'Observação:','class'=>'form-control','rows'=>'4')); ?>

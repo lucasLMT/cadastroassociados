@@ -53,7 +53,14 @@ class LinhasTelefonicasController extends AppController
     {
         if ($this->request->is('post')) {
             $this->LinhasTelefonica->create();
-            if ($this->LinhasTelefonica->save($this->request->data)) {
+            $data = $this->request->data;
+
+            $date = $data['LinhasTelefonica']['data'];
+            $data['LinhasTelefonica']['data'] = revertDate($date);
+            $devolucao = $data['LinhasTelefonica']['devolucao'];
+            $data['LinhasTelefonica']['devolucao'] = revertDate($devolucao);
+
+            if ($this->LinhasTelefonica->save($data)) {
                 $this->Session->setFlash(__('The linhas telefonica has been saved.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
@@ -61,7 +68,8 @@ class LinhasTelefonicasController extends AppController
             }
         }
         $associados = $this->LinhasTelefonica->Associado->find('list');
-        $this->set(compact('associados'));
+        $operadoras = $this->LinhasTelefonica->Operadora->find('list');
+        $this->set(compact('associados', 'operadoras'));
     }
 
     /**
@@ -77,7 +85,14 @@ class LinhasTelefonicasController extends AppController
             throw new NotFoundException(__('Invalid linhas telefonica'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            if ($this->LinhasTelefonica->save($this->request->data)) {
+            $data = $this->request->data;
+
+            $date = $data['LinhasTelefonica']['data'];
+            $data['LinhasTelefonica']['data'] = revertDate($date);
+            $devolucao = $data['LinhasTelefonica']['devolucao'];
+            $data['LinhasTelefonica']['devolucao'] = revertDate($devolucao);
+
+            if ($this->LinhasTelefonica->save($data)) {
                 $this->Session->setFlash(__('The linhas telefonica has been saved.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
@@ -85,7 +100,14 @@ class LinhasTelefonicasController extends AppController
             }
         } else {
             $options = array('conditions' => array('LinhasTelefonica.' . $this->LinhasTelefonica->primaryKey => $id));
-            $this->request->data = $this->LinhasTelefonica->find('first', $options);
+            $linhasTmp = $this->LinhasTelefonica->find('first', $options);
+
+            $date = $linhasTmp['LinhasTelefonica']['data'];
+            $linhasTmp['LinhasTelefonica']['data'] = revertDate($date);
+            $devolucao = $linhasTmp['LinhasTelefonica']['devolucao'];
+            $linhasTmp['LinhasTelefonica']['devolucao'] = revertDate($devolucao);
+
+            $this->request->data = $linhasTmp;
         }
         $associados = $this->LinhasTelefonica->Associado->find('list');
         $this->set(compact('associados'));

@@ -15,10 +15,10 @@
                         <?php echo $this->Form->input('nome', array('label'=>'Nome:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('dataDeNascimento', array('label'=>'Data de nascimento:','dateFormat'=>'DMY','class'=>'form-control')); ?>
+                        <?php echo $this->Form->input('dataDeNascimento', array('label'=>'Data de nascimento:','class'=>'form-control date','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('sexo', array('label'=>'Sexo:','class'=>'form-control','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('sexo_id', array('label'=>'Sexo:','class'=>'form-control')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('endereco', array('label'=>'Endereço:','class'=>'form-control','rows'=>'1')); ?>
@@ -27,13 +27,13 @@
                         <?php echo $this->Form->input('bairro', array('label'=>'Bairro:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('CEP', array('label'=>'CEP:','class'=>'form-control','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('CEP', array('label'=>'CEP:','class'=>'form-control cep','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('dataDeAdmissao', array('label'=>'Data de admissão:','dateFormat'=>'DMY','class'=>'form-control')); ?>
+                        <?php echo $this->Form->input('dataDeAdmissao', array('label'=>'Data de admissão:','class'=>'form-control date','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('dataDesligamento', array('label'=>'Data de desligamento:','dateFormat'=>'DMY','class'=>'form-control', 'empty' => true)); ?>
+                        <?php echo $this->Form->input('dataDesligamento', array('label'=>'Data de desligamento:','class'=>'form-control date','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('telefone', array('label'=>'Telefone:','class'=>'form-control','rows'=>'1')); ?>
@@ -45,10 +45,10 @@
                         <?php echo $this->Form->input('RG', array('label'=>'RG:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('cpf', array('label'=>'CPF:','class'=>'form-control','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('cpf', array('label'=>'CPF:','class'=>'form-control cpf','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('estado civil', array('label'=>'Estado civil:','class'=>'form-control','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('estadocivil_id', array('label'=>'Estado civil:','class'=>'form-control')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('cargo_id', array('label'=>'Cargo:','class'=>'form-control')); ?>
@@ -63,13 +63,13 @@
                         <?php echo $this->Form->input('valor adicional', array('label'=>'Valor adicional:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('mensalidade', array('label'=>'Mensalidade:','class'=>'form-control','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('mensalidade', array('label'=>'Contribuição:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('ativo_id', array('label'=>'Ativo:','class'=>'form-control')); ?>
+                        <?php echo $this->Form->input('ativo_id', array('label'=>'Status:','class'=>'form-control')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('possui filhos', array('label'=>'Filhos:','class'=>'form-control','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('filho_id', array('label'=>'Filhos:','class'=>'form-control')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('mensagem', array('label'=>'Mensagem:','class'=>'form-control','rows'=>'4')); ?>

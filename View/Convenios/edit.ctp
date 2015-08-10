@@ -21,7 +21,7 @@
 						<?php echo $this->Form->input('cidade', array('label'=>'Cidade:','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
-						<?php echo $this->Form->input('CEP', array('label'=>'CEP:','class'=>'form-control','rows'=>'1'));?>
+						<?php echo $this->Form->input('CEP', array('label'=>'CEP:','class'=>'form-control cep','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
 						<?php echo $this->Form->input('telefone', array('label'=>'Telefone:','class'=>'form-control','rows'=>'1'));?>
@@ -30,16 +30,13 @@
 						<?php echo $this->Form->input('fax', array('label'=>'Fax:','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
-						<?php echo $this->Form->input('percDesc', array('label'=>'percDesc:','class'=>'form-control','rows'=>'1'));?>
+						<?php echo $this->Form->input('percDesc', array('label'=>'Taxa Administrativa:','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
 						<?php echo $this->Form->input('contato', array('label'=>'Contato:','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
-						<?php echo $this->Form->input('nomeDoGrupo', array('label'=>'Nome do grupo:','class'=>'form-control','rows'=>'1'));?>
-					</div>
-					<div class="form-group">
-						<?php echo $this->Form->input('status', array('label'=>'Status:','class'=>'form-control','rows'=>'1'));?>
+						<?php echo $this->Form->input('status_id', array('label'=>'Status:','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<button type="submit" class="btn btn-default">Enviar</button>
 				<?php echo $this->Form->end(); ?>

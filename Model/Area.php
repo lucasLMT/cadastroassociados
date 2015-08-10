@@ -13,7 +13,7 @@ class Area extends AppModel {
  *
  * @var array
  */
-	public $validate = array(
+/*	public $validate = array(
 		'nome' => array(
 			'rule' => 'alphaNumeric',
 			'required'=>true,
@@ -21,4 +21,5 @@ class Area extends AppModel {
 			'message'=>'Este campo é obrigatório.'
 		),
 	);
+*/
 }

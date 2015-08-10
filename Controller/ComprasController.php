@@ -53,11 +53,16 @@ class ComprasController extends AppController
     {
         if ($this->request->is('post')) {
             $this->Compra->create();
-            if ($this->Compra->save($this->request->data)) {
+            $data = $this->request->data;
+
+            $referencia = $data['Compra']['referencia'];
+            $data['Compra']['referencia'] = revertDate($referencia);
+
+            if ($this->Compra->save($data)) {
                 $this->Session->setFlash(__('Compra salva.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('Não foi possível salvar a compra. Por favor, Tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível salvar a compra. Por favor, tente novamente.'));
             }
         }
         $convenios = $this->Compra->Convenio->find('list');
@@ -78,7 +83,13 @@ class ComprasController extends AppController
             throw new NotFoundException(__('Compra inválida.'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            if ($this->Compra->save($this->request->data)) {
+
+            $data = $this->request->data;
+
+            $referencia = $data['Compra']['referencia'];
+            $data['Compra']['referencia'] = revertDate($referencia);
+
+            if ($this->Compra->save($data)) {
                 $this->Session->setFlash(__('Compra salva.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
@@ -86,7 +97,13 @@ class ComprasController extends AppController
             }
         } else {
             $options = array('conditions' => array('Compra.' . $this->Compra->primaryKey => $id));
-            $this->request->data = $this->Compra->find('first', $options);
+            $comprasTmp = $this->Compra->find('first', $options);
+
+            $referencia = $associadosTmp['Compra']['referencia'];
+            $associadosTmp['Compra']['referencia'] = revertDate($referencia);
+
+            $this->request->data = $comprasTmp;
+
         }
         $convenios = $this->Compra->Convenio->find('list');
         $associados = $this->Compra->Associado->find('list');
@@ -115,3 +132,16 @@ class ComprasController extends AppController
         return $this->redirect(array('action' => 'index'));
     }
 }
+
+function revertDate($date)
+{
+    if ($date != '') {
+        $dates = explode('-', $date);
+        $datesTmp[0] = $dates[2];
+        $datesTmp[1] = $dates[1];
+        $datesTmp[2] = $dates[0]; 
+        return join('-', $datesTmp);
+    } 
+    return $date;
+}
+

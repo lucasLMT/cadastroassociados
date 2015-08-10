@@ -37,7 +37,7 @@ class Cargo extends AppModel {
  *
  * @var array
  */
-	public $validate = array(
+/*	public $validate = array(
 		'nome' => array(
 			'rule' => 'alphaNumeric',
 			'required'=> true,
@@ -50,5 +50,5 @@ class Cargo extends AppModel {
 			'message' => 'Por favor, informe um valor com uma quantia monetária'
 		)
 	);	
-
+*/
 }

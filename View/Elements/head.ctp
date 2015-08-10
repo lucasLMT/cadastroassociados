@@ -20,6 +20,7 @@
 
 		echo $this->Html->script('jquery');
 		echo $this->Html->script('bootstrap.min');
+		echo $this->Html->script('mask');
 		echo $this->Html->script(
 			array(
 				'template/metisMenu.min.js',
@@ -28,4 +29,13 @@
 				)
 			); 
 	?>
+	<script type="text/javascript">
+		$().ready(function() {
+		    //$("#AssociadoEndereco").mask("99/99/9999");	
+		    $(".date").mask("99-99-9999");	
+		    $(".cpf").mask("999.999.999-99");
+		    $(".cep").mask("99.999-999");
+		});
+	</script>
+	
 </head>	

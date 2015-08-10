@@ -49,12 +49,21 @@ class Convenio extends AppModel {
 		)
 	);
 
+	public function getStatus() {
+        // this could be a find 'list' from
+        // another model
+        return array(
+            1 => 'Ativo',
+            2 => 'Inativo',
+        );
+	}	
+
 /**
  * Validation rules
  *
  * @var array
  */
-	public $validate = array(
+/*	public $validate = array(
 		'razaoSocial' => array(
 			'rule' => 'alphaNumeric',
 			'required'=>true,
@@ -99,5 +108,5 @@ class Convenio extends AppModel {
 		'contato'=> array(),
 		'status' => array(),
 	);		
-
+*/
 }

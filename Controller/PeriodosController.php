@@ -53,7 +53,14 @@ class PeriodosController extends AppController
     {
         if ($this->request->is('post')) {
             $this->Periodo->create();
-            if ($this->Periodo->save($this->request->data)) {
+            $data = $this->request->data;
+
+            $datainicial = $data['Periodo']['data_inicial'];
+            $data['Periodo']['data_inicial'] = revertDate($date);
+            $datafinal = $data['Periodo']['data_final'];
+            $data['Periodo']['data_final'] = revertDate($datafinal);
+
+            if ($this->Periodo->save($data)) {
                 $this->Session->setFlash(__('The periodo has been saved.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
@@ -75,7 +82,14 @@ class PeriodosController extends AppController
             throw new NotFoundException(__('Invalid periodo'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            if ($this->Periodo->save($this->request->data)) {
+            $data = $this->request->data;
+
+            $datainicial = $data['Periodo']['data_inicial'];
+            $data['Periodo']['data_inicial'] = revertDate($date);
+            $datafinal = $data['Periodo']['data_final'];
+            $data['Periodo']['data_final'] = revertDate($datafinal);
+
+            if ($this->Periodo->save($data)) {
                 $this->Session->setFlash(__('The periodo has been saved.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
@@ -83,7 +97,14 @@ class PeriodosController extends AppController
             }
         } else {
             $options = array('conditions' => array('Periodo.' . $this->Periodo->primaryKey => $id));
-            $this->request->data = $this->Periodo->find('first', $options);
+            $periodosTmp = $this->Periodo->find('first', $options);
+
+            $datainicial = $periodosTmp['Periodo']['data_inicial'];
+            $periodosTmp['Periodo']['data_inicial'] = revertDate($date);
+            $datafinal = $periodosTmp['Periodo']['data_final'];
+            $periodosTmp['Periodo']['data_final'] = revertDate($datafinal);
+
+            $this->request->data = $periodosTmp;   
         }
     }
 

@@ -56,7 +56,16 @@ class AssociadosController extends AppController
 
         if ($this->request->is('post')) {
             $this->Associado->create();
-            if ($this->Associado->save($this->request->data)) {
+            $data = $this->request->data;
+
+            $dataDeAdmissao = $data['Associado']['dataDeAdmissao'];
+            $data['Associado']['dataDeAdmissao'] = revertDate($dataDeAdmissao);
+            $dataDesligamento = $data['Associado']['dataDesligamento'];
+            $data['Associado']['dataDesligamento'] = revertDate($dataDesligamento);
+            $dataDeNascimento = $data['Associado']['dataDeNascimento'];
+            $data['Associado']['dataDeNascimento'] = revertDate($dataDeNascimento);
+
+            if ($this->Associado->save($data)) {
                 $this->Session->setFlash(__('The associado has been saved.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
@@ -66,7 +75,10 @@ class AssociadosController extends AppController
         $cargos = $this->Associado->Cargo->find('list');
         $areas = $this->Associado->Area->find('list');
         $ativos = $model->getAtivo();
-        $this->set(compact('cargos', 'areas', 'ativos'));
+        $sexos = $model->getSexo();
+        $estadocivils = $model->getEstadocivil();
+        $filhos = $model->getFilhos();
+        $this->set(compact('cargos', 'areas', 'ativos', 'sexos', 'estadocivils', 'filhos'));
     }
 
     /**
@@ -79,18 +91,35 @@ class AssociadosController extends AppController
     public function edit($id = null)
     {
         if (!$this->Associado->exists($id)) {
-            throw new NotFoundException(__('Invalid associado'));
+            throw new NotFoundException(__('Associado inválido'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            if ($this->Associado->save($this->request->data)) {
-                $this->Session->setFlash(__('The associado has been saved.'));
+            $data = $this->request->data;
+            $dataDeAdmissao = $data['Associado']['dataDeAdmissao'];
+            $data['Associado']['dataDeAdmissao'] = revertDate($dataDeAdmissao);
+            $dataDesligamento = $data['Associado']['dataDesligamento'];
+            $data['Associado']['dataDesligamento'] = revertDate($dataDesligamento);
+            $dataDeNascimento = $data['Associado']['dataDeNascimento'];
+            $data['Associado']['dataDeNascimento'] = revertDate($dataDeNascimento);
+
+            if ($this->Associado->save($data)) {
+                $this->Session->setFlash(__('O associado foi salvo.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The associado could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('O associado náo pode ser salvo. Por favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Associado.' . $this->Associado->primaryKey => $id));
-            $this->request->data = $this->Associado->find('first', $options);
+            $associadosTmp = $this->Associado->find('first', $options);
+
+            $dataDeAdmissao = $associadosTmp['Associado']['dataDeAdmissao'];
+            $associadosTmp['Associado']['dataDeAdmissao'] = revertDate($dataDeAdmissao);
+            $dataDesligamento = $associadosTmp['Associado']['dataDesligamento'];
+            $associadosTmp['Associado']['dataDesligamento'] = revertDate($dataDesligamento);
+            $dataDeNascimento = $associadosTmp['Associado']['dataDeNascimento'];
+            $associadosTmp['Associado']['dataDeNascimento'] = revertDate($dataDeNascimento);
+
+            $this->request->data = $associadosTmp;
         }
         $cargos = $this->Associado->Cargo->find('list');
         $areas = $this->Associado->Area->find('list');
@@ -122,7 +151,7 @@ class AssociadosController extends AppController
     public function listaAniversario($id = null)
     {
         $data = date("m-d");
-        $options = array('conditions' => array("strftime('%m-%d',Associado.dataDeNascimento)" => $data));
+        $options = array('conditions' => array("strftime('%m-%d', Associado.dataDeNascimento)" => $data));
         $aniversariantes = $this->Associado->find('all', $options);
         $this->set(compact('aniversariantes'));
     }
@@ -151,3 +180,16 @@ class AssociadosController extends AppController
         return $this->redirect(array('action' => 'index'));
     }*/
 }
+
+function revertDate($date)
+{
+    if ($date != '') {
+        $dates = explode('-', $date);
+        $datesTmp[0] = $dates[2];
+        $datesTmp[1] = $dates[1];
+        $datesTmp[2] = $dates[0]; 
+        return join('-', $datesTmp);
+    } 
+    return $date;
+}
+

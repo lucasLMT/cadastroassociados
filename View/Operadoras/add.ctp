@@ -1,17 +1,21 @@
-<div class="operadoras form">
-<?php echo $this->Form->create('Operadora'); ?>
-	<fieldset>
-		<legend><?php echo __('Add Operadora'); ?></legend>
-	<?php
-		echo $this->Form->input('nome');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Adicionar operadora
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <?php echo $this->Form->create('Operadora'); ?>
+                	<div class="form-group">
+                    	<?php echo $this->Form->input('nome', array('label'=>'Operadora:','class'=>'form-control','rows'=>'1')); ?>
+                    </div>
+                    <button type="submit" class="btn btn-default">Enviar</button>
+                <?php echo $this->Form->end(); ?>
+            </div>
+        </div>
+        <!-- /.row (nested) -->
+    </div>
+    <!-- /.panel-body -->
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
 
-		<li><?php echo $this->Html->link(__('List Operadoras'), array('action' => 'index')); ?></li>
-	</ul>
-</div>
