@@ -39,7 +39,7 @@ class AssociadosController extends AppController
     public function view($id = null)
     {
         if (!$this->Associado->exists($id)) {
-            throw new NotFoundException(__('Invalid associado'));
+            throw new NotFoundException(__('Associado inválido.'));
         }
         $options = array('conditions' => array('Associado.' . $this->Associado->primaryKey => $id));
         $this->set('associado', $this->Associado->find('first', $options));
@@ -66,10 +66,10 @@ class AssociadosController extends AppController
             $data['Associado']['dataDeNascimento'] = revertDate($dataDeNascimento);
 
             if ($this->Associado->save($data)) {
-                $this->Session->setFlash(__('The associado has been saved.'));
+                $this->Session->setFlash(__('Associado adicionado.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The associado could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Não foi possível adicionar o associado. Por favor, Tente novamente.'));
             }
         }
         $cargos = $this->Associado->Cargo->find('list');
@@ -103,10 +103,10 @@ class AssociadosController extends AppController
             $data['Associado']['dataDeNascimento'] = revertDate($dataDeNascimento);
 
             if ($this->Associado->save($data)) {
-                $this->Session->setFlash(__('O associado foi salvo.'));
+                $this->Session->setFlash(__('Associado salvo.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('O associado náo pode ser salvo. Por favor, tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível salvar o associado. Por favor, Tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Associado.' . $this->Associado->primaryKey => $id));
@@ -137,13 +137,13 @@ class AssociadosController extends AppController
     {
         $this->Associado->id = $id;
         if (!$this->Associado->exists()) {
-            throw new NotFoundException(__('Invalid associado'));
+            throw new NotFoundException(__('Associado inválido.'));
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Associado->delete()) {
-            $this->Session->setFlash(__('The associado has been deleted.'));
+            $this->Session->setFlash(__('Associado removido.'));
         } else {
-            $this->Session->setFlash(__('The associado could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('Não foi possível remover o associado. Por favor, Tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }
@@ -187,9 +187,8 @@ function revertDate($date)
         $dates = explode('-', $date);
         $datesTmp[0] = $dates[2];
         $datesTmp[1] = $dates[1];
-        $datesTmp[2] = $dates[0]; 
+        $datesTmp[2] = $dates[0];
         return join('-', $datesTmp);
-    } 
+    }
     return $date;
 }
-

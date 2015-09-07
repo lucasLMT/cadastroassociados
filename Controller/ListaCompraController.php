@@ -26,7 +26,8 @@ class ListaCompraController extends AppController
      *
      * @return void
      */
-    public function listaAssociado($data_inicio, $data_fim, $associado, $modo, $todos)
+    public function listaAssociado($data_inicio, $data_fim, $associado,
+                                   $modo, $todos, $referencia)
     {
         if (($modo == 1) && !$todos) {
             $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
@@ -40,7 +41,9 @@ class ListaCompraController extends AppController
         }
         $compras = $this->ListaCompra->Compra->find('all', $options);
         $total = 0;
-        $this->set(compact('compras', 'data_inicio', 'data_fim', 'associado', 'total', 'modo', 'todos'));
+        $referencia = $referencia;
+        $this->set(compact('compras', 'data_inicio', 'data_fim', 'associado',
+                           'total', 'modo', 'todos','referencia'));
     }
 
     public function formAssociado($id = null)
@@ -55,11 +58,13 @@ class ListaCompraController extends AppController
 
             $data_inicio = $date[0]['Periodo']['data_inicial'];
             $data_fim = $date[0]['Periodo']['data_final'];
+            $referencia = $date[0]['Periodo']['referencia'];
 
             $this->redirect(array('controller' => 'ListaCompra', 'action' => 'listaAssociado', $data_inicio, $data_fim,
                 $data['ListaCompra']['associado_id'],
                 $data['ListaCompra']['modo_id'],
-                $data['ListaCompra']['todos']));
+                $data['ListaCompra']['todos'],
+                $referencia));
         }
         $associados = $this->ListaCompra->Associado->find('list');
         $periodos = $this->ListaCompra->Periodo->find('list');
@@ -144,7 +149,7 @@ class ListaCompraController extends AppController
         $this->set(compact('periodos'));
     }
 
-    public function viewpdf_compras_todas_analiticas($data_inicio, $data_fim, $associado)
+    public function viewpdf_compras_todas_analiticas($data_inicio, $data_fim, $associado, $referencia)
     {
 
       $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
@@ -153,6 +158,7 @@ class ListaCompraController extends AppController
 
         $compras = $this->ListaCompra->Compra->find('all', $options);
         $total = 0;
+        $referencia = $referencia;
 
         //Import /app/Vendor/Fpdf
         App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
@@ -161,12 +167,13 @@ class ListaCompraController extends AppController
         //Set fpdf variable to use in view
         $this->set('pdf', new FPDF("P", "mm", "A4"));
         //pass data to view
-        $this->set(compact('compras', 'data_inicio', 'data_fim', 'associado', 'total'));
+        $this->set(compact('compras', 'data_inicio', 'data_fim', 'associado',
+                           'total', 'referencia'));
         //render the pdf view (app/View/[view_name]/pdf.ctp)
         $this->render('pdf_compras_todas_analiticas');
     }
 
-    public function viewpdf_compras_analiticas($data_inicio, $data_fim, $associado)
+    public function viewpdf_compras_analiticas($data_inicio, $data_fim, $associado, $referencia)
     {
         $total = 0;
         $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
@@ -177,6 +184,8 @@ class ListaCompraController extends AppController
         foreach ($compras as $compra):
             $total += (float)$compra['Compra']['valor'];
         endforeach;
+        $referencia = $referencia;
+
 
         //Import /app/Vendor/Fpdf
         App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
@@ -185,43 +194,18 @@ class ListaCompraController extends AppController
         //Set fpdf variable to use in view
         $this->set('pdf', new FPDF("P", "mm", "A4"));
         //pass data to view
-        $this->set(compact('compras', 'total'));
+        $this->set(compact('compras', 'total', 'referencia'));
         //render the pdf view (app/View/[view_name]/pdf.ctp)
         $this->render('pdf_compras_analiticas');
     }
 
-    public function viewpdf_compras_sinteticas($data_inicio, $data_fim, $associado)
+    public function viewpdf_compras_sinteticas($data_inicio, $data_fim, $associado, $referencia)
     {
-        $total = 0;
         $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim,
-            'Compra.associado_id' => $associado),
+            'Compra.referencia <= ' => $data_fim),
             'order' => array('Compra.convenio_id'));
         $compras = $this->ListaCompra->Compra->find('all', $options);
-
-        $assoc_tmp = $compras[0]['Associado']['nome'];
-        $count = Count($compras);
-        $i = 1;
-        foreach ($compras as $compra):
-            if (($assoc_tmp <> $compra['Associado']['nome']) || ($count == $i)) {
-                if ($count == $i && $assoc_tmp == $compra['Associado']['nome'])
-                    $total += $compra['Compra']['valor'];
-                $assoc_tmp;
-                $total;
-                $associadosArray[$i - 1] = array('matricula' => $compra['Associado']['matricula'],
-                    'associado' => $compra['Associado']['nome'], 'total' => $total);
-                $total = $compra['Compra']['valor'] + 0;
-                if (($assoc_tmp <> $compra['Associado']['nome']) && ($count == $i)) {
-                    $associadosArray[$i - 1] = array('matricula' => $compra['Associado']['matricula'],
-                        'associado' => $compra['Associado']['nome'], 'total' => $total);
-                }
-                $assoc_tmp = $compra['Associado']['nome'];
-            } else {
-                $total += $compra['Compra']['valor'];
-            }
-
-            $i++;
-        endforeach;
+        $referencia = $referencia;
 
         //Import /app/Vendor/Fpdf
         App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
@@ -230,7 +214,7 @@ class ListaCompraController extends AppController
         //Set fpdf variable to use in view
         $this->set('pdf', new FPDF("P", "mm", "A4"));
         //pass data to view
-        $this->set(compact('associadosArray'));
+        $this->set(compact('compras', 'referencia'));
         //render the pdf view (app/View/[view_name]/pdf.ctp)
         $this->render('pdf_compras_sinteticas');
     }
@@ -304,18 +288,15 @@ class ListaCompraController extends AppController
 
     public function export_compras_todas_analiticas($data_inicio, $data_fim, $associado)
     {
-        $total = 0;
         $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim,
-            'Compra.associado_id' => $associado));
-        $compras = $this->ListaCompra->Compra->find('all', $options);
+            'Compra.referencia <= ' => $data_fim),
+            'order' => array('Compra.associado_id'));
 
-        foreach ($compras as $compra):
-            $total += (float)$compra['Compra']['valor'];
-        endforeach;
+        $compras = $this->ListaCompra->Compra->find('all', $options);
+        $total = 0;
 
         //$data = $this->Model->find('all');
-        $this->set(compact('compras', 'total'));
+        $this->set(compact('compras', 'data_inicio', 'data_fim', 'associado', 'total'));
     }
 
     public function export_compras_analiticas($data_inicio, $data_fim, $associado)
@@ -336,36 +317,13 @@ class ListaCompraController extends AppController
 
     public function export_compras_sinteticas($data_inicio, $data_fim, $associado)
     {
-        $total = 0;
         $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim,
-            'Compra.associado_id' => $associado),
+            'Compra.referencia <= ' => $data_fim),
             'order' => array('Compra.convenio_id'));
         $compras = $this->ListaCompra->Compra->find('all', $options);
 
-        $assoc_tmp = $compras[0]['Associado']['nome'];
-        $count = Count($compras);
-        $i = 1;
-        foreach ($compras as $compra):
-            if (($assoc_tmp <> $compra['Associado']['nome']) || ($count == $i)) {
-                if ($count == $i && $assoc_tmp == $compra['Associado']['nome'])
-                    $total += $compra['Compra']['valor'];
-                $assoc_tmp;
-                $total;
-                $associadosArray[$i - 1] = array('associado' => $compra['Associado']['nome'], 'total' => $total);
-                $total = $compra['Compra']['valor'] + 0;
-                if (($assoc_tmp <> $compra['Associado']['nome']) && ($count == $i)) {
-                    $associadosArray[$i - 1] = array('associado' => $compra['Associado']['nome'], 'total' => $total);
-                }
-                $assoc_tmp = $compra['Associado']['nome'];
-            } else {
-                $total += $compra['Compra']['valor'];
-            }
-
-            $i++;
-        endforeach;
         //$data = $this->Model->find('all');
-        $this->set(compact('associadosArray'));
+        $this->set(compact('compras'));
     }
 
     public function export_convenios_analiticos($data_inicio, $data_fim, $convenio)

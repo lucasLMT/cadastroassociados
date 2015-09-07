@@ -8,10 +8,13 @@
   $xls= new xlsHelper(new View(null));
 
   //input the export file name
-  $xls->setHeader('compras'.date('Y_m_d'));
+  $xls->setHeader('ComprasSinteticas'.date('Y_m_d'));
 
   $xls->addXmlHeader();
-  $xls->setWorkSheetName('Compras');
+  $xls->setWorkSheetName('Compras Sintéticas por Associado.');
+  $xls->openRow();
+  $xls->writeString('Compras Sintéticas por Associado.');
+  $xls->closeRow();
 
   //1st row for columns name
   $xls->openRow();
@@ -20,11 +23,33 @@
   $xls->closeRow();
 
   //rows for data
-  foreach ($associadosArray as $associado):
+  $assoc_tmp = $compras[0]['Associado']['nome'];
+  $count = Count($compras);
+  $total = 0;
+  $i = 1;
+  foreach ($compras as $compra):
+    if (($assoc_tmp <> $compra['Associado']['nome']) || ($count == $i)) {
+      if ($count == $i && $assoc_tmp == $compra['Associado']['nome'])
+  	  $total += $compra['Compra']['valor'];
+
     $xls->openRow();
-    $xls->writeString($associado['associado']);
-    $xls->writeNumber($associado['total']);
+    $xls->writeString($assoc_tmp);
+    $xls->writeString("R$".$total);
     $xls->closeRow();
+
+    $total = $compra['Compra']['valor'] + 0;
+    if (($assoc_tmp <> $compra['Associado']['nome']) && ($count == $i)) {
+
+      $xls->openRow();
+      $xls->writeString($compra['Associado']['nome']);
+      $xls->writeString("R$".$total);
+      $xls->closeRow();
+    }
+    $assoc_tmp = $compra['Associado']['nome'];
+  } else {
+      $total += $compra['Compra']['valor'];
+  }
+  $i++;
   endforeach;
 
   $xls->addXmlFooter();

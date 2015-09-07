@@ -59,10 +59,10 @@ class ComprasController extends AppController
             $data['Compra']['referencia'] = revertDate($referencia);
 
             if ($this->Compra->save($data)) {
-                $this->Session->setFlash(__('Compra salva.'));
+                $this->Session->setFlash(__('Compra adicionada.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('Não foi possível salvar a compra. Por favor, tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível adicionar a compra. Por favor, tente novamente.'));
             }
         }
         $convenios = $this->Compra->Convenio->find('list');
@@ -125,9 +125,9 @@ class ComprasController extends AppController
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Compra->delete()) {
-            $this->Session->setFlash(__('The compra has been deleted.'));
+            $this->Session->setFlash(__('Compra removida.'));
         } else {
-            $this->Session->setFlash(__('The compra could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('Não foi possível remover a compra. Por favor, Tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }
@@ -139,9 +139,8 @@ function revertDate($date)
         $dates = explode('-', $date);
         $datesTmp[0] = $dates[2];
         $datesTmp[1] = $dates[1];
-        $datesTmp[2] = $dates[0]; 
+        $datesTmp[2] = $dates[0];
         return join('-', $datesTmp);
-    } 
+    }
     return $date;
 }
-

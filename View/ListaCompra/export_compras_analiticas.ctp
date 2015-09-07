@@ -8,32 +8,41 @@
   $xls= new xlsHelper(new View(null));
 
   //input the export file name
-  $xls->setHeader('compras'.date('Y_m_d'));
+  $xls->setHeader('ComprasPorAssociado'.date('Y_m_d'));
 
   $xls->addXmlHeader();
-  $xls->setWorkSheetName('Compras');
+  $xls->setWorkSheetName('Compras por Associado.');
+  $xls->openRow();
+  $xls->writeString('Compras por Associado.');
+  $xls->closeRow();
 
   //1st row for columns name
   $xls->openRow();
-  $xls->writeString('Matricula');
-  $xls->writeString('Associado');
-  $xls->writeString('Convenio');
+  $xls->writeString("Associado: ".$compra['Associado']['nome']);
+  $xls->closeRow();
+  $xls->openRow();
+  $xls->writeString('Matrícula');
+  $xls->writeString('Descrição');
+  $xls->writeString('Convênio');
   $xls->writeString('Valor');
+  $xls->writeString('Observação');
   $xls->closeRow();
 
   //rows for data
   foreach ($compras as $compra):
+
     $xls->openRow();
     $xls->writeString($compra['Associado']['matricula']);
-    $xls->writeString($compra['Associado']['nome']);
+    $xls->writeString($compra['Compra']['descricao']);
     $xls->writeString($compra['Convenio']['nomeDoGrupo']);
-    $xls->writeNumber($compra['Compra']['valor']);
+    $xls->writeString("R$ ".$compra['Compra']['valor']);
+    $xls->writeString($compra['Compra']['observacao']);
     $xls->closeRow();
+
   endforeach;
 
   $xls->openRow();
-  $xls->writeString('TOTAL =');
-  $xls->writeString('');
+  $xls->writeString('Total: R$ ');
   $xls->writeNumber($total);
   $xls->closeRow();
 
