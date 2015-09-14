@@ -38,7 +38,7 @@
 						<?php echo $this->Form->input('contato', array('label'=>'Contato:','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
-						<?php echo $this->Form->input('status_id', array('label'=>'Status:','class'=>'form-control','rows'=>'1'));?>
+						<?php echo $this->Form->input('statu_id', array('label'=>'Status:','class'=>'form-control'));?>
 					</div>
 					<button type="submit" class="btn btn-default">Enviar</button>
 					<button type="reset" class="btn btn-default">Limpar</button>

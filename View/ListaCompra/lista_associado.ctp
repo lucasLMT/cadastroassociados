@@ -10,23 +10,23 @@
 	            <thead>
 	                <tr>
                     <?php if ($modo == 1) { ?>
-						<th><?php echo __('Matrícula'); ?></th>
-						<th><?php echo __('Associado'); ?></th>
-						<th><?php echo __('Convênio'); ?></th>
-						<th><?php echo __('Descrição'); ?></th>
-						<th><?php echo __('Referência'); ?></th>
-						<th><?php echo __('Observação'); ?></th>
-						<th><?php echo __('Valor'); ?></th>
+											<th><?php echo __('Matrícula'); ?></th>
+											<th><?php echo __('Associado'); ?></th>
+											<th><?php echo __('Convênio'); ?></th>
+											<th><?php echo __('Descrição'); ?></th>
+											<th><?php echo __('Referência'); ?></th>
+											<th><?php echo __('Observação'); ?></th>
+											<th><?php echo __('Valor'); ?></th>
                     <?php } else if ($modo == 2) {?>
-                        <th><?php echo __('Associado'); ?></th>
-                        <th><?php echo __('Total'); ?></th>
+                      <th><?php echo __('Associado'); ?></th>
+                      <th><?php echo __('Total'); ?></th>
                     <?php } ?>
 	                </tr>
 	            </thead>
 	            <tbody>
 					<?php if ($modo == 1) {
-						if (!$todos) {
-							foreach ($compras as $compra): ?>
+									if (!$todos) {
+										foreach ($compras as $compra): ?>
 	    					<tr class="odd gradeX">
 	    						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
 									<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
@@ -38,16 +38,16 @@
 	    						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
 	    					</tr>
 							<?php endforeach; ?>
-		                    <tr class="odd gradeX">
+		            <tr class="odd gradeX">
 								<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
 							</tr>
 				  <?php } else {
-				  			$assoc_tmp = $compras[0]['Associado']['nome'];
-				  			$count = Count($compras);
-							$i = 1;
-				  			foreach ($compras as $compra):
-				  				if (($assoc_tmp <> $compra['Associado']['nome']) || ($count == $i)) {
-				  					if (($assoc_tmp == $compra['Associado']['nome']) && ($count == $i)) { ?>
+				  				$assoc_tmp = $compras[0]['Associado']['nome'];
+				  				$count = Count($compras);
+									$i = 1;
+				  				foreach ($compras as $compra):
+										if (($assoc_tmp <> $compra['Associado']['nome']) || ($count == $i)) {
+				  						if (($assoc_tmp == $compra['Associado']['nome']) && ($count == $i)) { ?>
 										<tr class="odd gradeX">
 				    						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
 												<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
@@ -62,17 +62,17 @@
 											<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
 										</tr>
 				  			<?php		break;
-				  					}
-				  					if (($assoc_tmp <> $compra['Associado']['nome']) && ($count == $i)) { ?>
-				  						<tr class="odd gradeX">
-				    						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
-												<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
-				    						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
-				    						<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
-												<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
-				    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
-				    						<?php $total = (float)$compra['Compra']['valor']; ?>
-				    						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
+				  					  }
+				  						if (($assoc_tmp <> $compra['Associado']['nome']) && ($count == $i)) { ?>
+				  							<tr class="odd gradeX">
+				    							<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
+													<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
+				    							<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
+				    							<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
+													<td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+				    							<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
+				    							<?php $total = (float)$compra['Compra']['valor']; ?>
+				    							<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
 				    					</tr>
 				    					<tr class="odd gradeX">
 											<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
@@ -81,11 +81,11 @@
 				  					} ?>
 					  				<tr class="odd gradeX">
 										<td><?php echo h('Total: '.$total); ?>&nbsp; </td>
-									</tr>
-					  			<?php
-					  				$assoc_tmp = $compra['Associado']['nome'];
-					  				$total = 0;
-					  			} ?>
+										</tr>
+					  		<?php
+					  					$assoc_tmp = $compra['Associado']['nome'];
+					  					$total = 0;
+					  				} ?>
 		    					<tr class="odd gradeX">
 		    						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
 										<td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
@@ -101,13 +101,13 @@
 							endforeach;
 						}
                 	 } else if ($modo == 2) {
-                            $assoc_tmp = $compras[0]['Associado']['nome'];
-							$count = Count($compras);
-							$i = 1;
-              foreach ($compras as $compra):
-              		if (($assoc_tmp <> $compra['Associado']['nome']) || ($count == $i)) {
-									if ($count == $i && $assoc_tmp == $compra['Associado']['nome'])
-										$total += $compra['Compra']['valor'];
+                      $assoc_tmp = $compras[0]['Associado']['nome'];
+							        $count = Count($compras);
+											$i = 1;
+              				foreach ($compras as $compra):
+              					if (($assoc_tmp <> $compra['Associado']['nome']) || ($count == $i)) {
+													if ($count == $i && $assoc_tmp == $compra['Associado']['nome'])
+														$total += $compra['Compra']['valor'];
                     ?>
 								  <tr class="odd gradeX">
                     <td><?php echo h($assoc_tmp); ?>&nbsp;</td>
@@ -146,7 +146,8 @@
             'full_base' => true,
 						$data_inicio,
 						$data_fim,
-						$associado
+						$associado,
+						$referencia
         ),
         array(
         	'class' => 'btn btn-success',
@@ -162,7 +163,8 @@
             'full_base' => true,
 						$data_inicio,
 						$data_fim,
-						$associado
+						$associado,
+						$referencia
         ),
         array(
         	'class' => 'btn btn-success',
@@ -178,14 +180,16 @@
             'full_base' => true,
 						$data_inicio,
 						$data_fim,
-						$associado
+						$associado,
+						$referencia
         ),
         array(
         	'class' => 'btn btn-success',
             'role' => 'button'
         	)
     );
-	}?>
+	}
+?>
 <?php
   if (($modo == 1) && !$todos) {
 	  echo $this->Html->link(

@@ -167,3 +167,15 @@ class LinhasTelefonicasController extends AppController
         $this->set(compact('associados', 'modos'));
     }
 }
+
+function revertDate($date)
+{
+    if ($date != '') {
+        $dates = explode('-', $date);
+        $datesTmp[0] = $dates[2];
+        $datesTmp[1] = $dates[1];
+        $datesTmp[2] = $dates[0];
+        return join('-', $datesTmp);
+    }
+    return $date;
+}

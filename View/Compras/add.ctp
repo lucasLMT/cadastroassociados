@@ -14,16 +14,16 @@
 					<?php echo $this->Form->input('convenio_id', array('label'=>'Convênio:','class'=>'form-control'));?>
 					</div>
 					<div class="form-group">
-						<?php echo $this->Form->input('valor', array('label'=>'Valor:','class'=>'form-control','rows'=>'1'));?>
+					<?php echo $this->Form->input('valor', array('label'=>'Valor:','class'=>'form-control','rows'=>'1'));?>
 					</div>
           <div class="form-group">
-						<?php echo $this->Form->input('descricao', array('label'=>'descrição:','class'=>'form-control','rows'=>'4'));?>
+					<?php echo $this->Form->input('descricao', array('label'=>'Descrição:','class'=>'form-control','rows'=>'4'));?>
 					</div>
           <div class="form-group">
-						<?php echo $this->Form->input('referencia', array('label'=>'Referência:','class'=>'form-control date','rows'=>'1'));?>
+					<?php echo $this->Form->input('referencia', array('label'=>'Referência:','class'=>'form-control date','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
-						<?php echo $this->Form->input('observacao', array('label'=>'Observação:','class'=>'form-control','rows'=>'4'));?>
+					<?php echo $this->Form->input('observacao', array('label'=>'Observação:','class'=>'form-control','rows'=>'4'));?>
 					</div>
 					<button type="submit" class="btn btn-default">Salvar</button>
 				<?php echo $this->Form->end(); ?>

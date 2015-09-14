@@ -38,7 +38,7 @@ class ConveniosController extends AppController
     public function view($id = null)
     {
         if (!$this->Convenio->exists($id)) {
-            throw new NotFoundException(__('Invalid convenio'));
+            throw new NotFoundException(__('Convênio inválido.'));
         }
         $options = array('conditions' => array('Convenio.' . $this->Convenio->primaryKey => $id));
         $this->set('convenio', $this->Convenio->find('first', $options));
@@ -51,16 +51,18 @@ class ConveniosController extends AppController
      */
     public function add()
     {
+        $model = ClassRegistry::init('Convenio');
+
         if ($this->request->is('post')) {
             $this->Convenio->create();
             if ($this->Convenio->save($this->request->data)) {
-                $this->Session->setFlash(__('The convenio has been saved.'));
+                $this->Session->setFlash(__('Convênio adicionado.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The convenio could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Não foi possível adicionar o convênio. Por favor, Tente novamente.'));
             }
         }
-        $status = $model->getAtivo();
+        $status = $model->getStatus();
         $this->set(compact('status'));
     }
 
@@ -74,14 +76,14 @@ class ConveniosController extends AppController
     public function edit($id = null)
     {
         if (!$this->Convenio->exists($id)) {
-            throw new NotFoundException(__('Invalid convenio'));
+            throw new NotFoundException(__('Convênio inválido.'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Convenio->save($this->request->data)) {
-                $this->Session->setFlash(__('The convenio has been saved.'));
+                $this->Session->setFlash(__('Convênio salvo.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The convenio could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Não foi possível salvar o convênio. Por favor, Tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Convenio.' . $this->Convenio->primaryKey => $id));
@@ -102,13 +104,13 @@ class ConveniosController extends AppController
     {
         $this->Convenio->id = $id;
         if (!$this->Convenio->exists()) {
-            throw new NotFoundException(__('Invalid convenio'));
+            throw new NotFoundException(__('Convênio inválido.'));
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Convenio->delete()) {
-            $this->Session->setFlash(__('The convenio has been deleted.'));
+            $this->Session->setFlash(__('Convênio removido.'));
         } else {
-            $this->Session->setFlash(__('The convenio could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('Não foi possível remover o convênio. Por favor, Tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }

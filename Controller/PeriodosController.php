@@ -38,7 +38,7 @@ class PeriodosController extends AppController
     public function view($id = null)
     {
         if (!$this->Periodo->exists($id)) {
-            throw new NotFoundException(__('Invalid periodo'));
+            throw new NotFoundException(__('Período inválido.'));
         }
         $options = array('conditions' => array('Periodo.' . $this->Periodo->primaryKey => $id));
         $this->set('periodo', $this->Periodo->find('first', $options));
@@ -56,15 +56,15 @@ class PeriodosController extends AppController
             $data = $this->request->data;
 
             $datainicial = $data['Periodo']['data_inicial'];
-            $data['Periodo']['data_inicial'] = revertDate($date);
+            $data['Periodo']['data_inicial'] = revertDate($datainicial);
             $datafinal = $data['Periodo']['data_final'];
             $data['Periodo']['data_final'] = revertDate($datafinal);
 
             if ($this->Periodo->save($data)) {
-                $this->Session->setFlash(__('The periodo has been saved.'));
+                $this->Session->setFlash(__('Período adicionado com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The periodo could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Falha ao adicionar o período. Tente novamente.'));
             }
         }
     }
@@ -79,32 +79,32 @@ class PeriodosController extends AppController
     public function edit($id = null)
     {
         if (!$this->Periodo->exists($id)) {
-            throw new NotFoundException(__('Invalid periodo'));
+            throw new NotFoundException(__('Período inválido.'));
         }
         if ($this->request->is(array('post', 'put'))) {
             $data = $this->request->data;
 
             $datainicial = $data['Periodo']['data_inicial'];
-            $data['Periodo']['data_inicial'] = revertDate($date);
+            $data['Periodo']['data_inicial'] = revertDate($datainicial);
             $datafinal = $data['Periodo']['data_final'];
             $data['Periodo']['data_final'] = revertDate($datafinal);
 
             if ($this->Periodo->save($data)) {
-                $this->Session->setFlash(__('The periodo has been saved.'));
+                $this->Session->setFlash(__('Período editado com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The periodo could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Falha ao salvar o período. Tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Periodo.' . $this->Periodo->primaryKey => $id));
             $periodosTmp = $this->Periodo->find('first', $options);
 
             $datainicial = $periodosTmp['Periodo']['data_inicial'];
-            $periodosTmp['Periodo']['data_inicial'] = revertDate($date);
+            $periodosTmp['Periodo']['data_inicial'] = revertDate($datainicial);
             $datafinal = $periodosTmp['Periodo']['data_final'];
             $periodosTmp['Periodo']['data_final'] = revertDate($datafinal);
 
-            $this->request->data = $periodosTmp;   
+            $this->request->data = $periodosTmp;
         }
     }
 
@@ -119,14 +119,26 @@ class PeriodosController extends AppController
     {
         $this->Periodo->id = $id;
         if (!$this->Periodo->exists()) {
-            throw new NotFoundException(__('Invalid periodo'));
+            throw new NotFoundException(__('Período inválido.'));
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Periodo->delete()) {
-            $this->Session->setFlash(__('The periodo has been deleted.'));
+            $this->Session->setFlash(__('Período deletado com sucesso.'));
         } else {
-            $this->Session->setFlash(__('The periodo could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('Falha ao remover o período. Tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }
+}
+
+function revertDate($date)
+{
+    if ($date != '') {
+        $dates = explode('-', $date);
+        $datesTmp[0] = $dates[2];
+        $datesTmp[1] = $dates[1];
+        $datesTmp[2] = $dates[0];
+        return join('-', $datesTmp);
+    }
+    return $date;
 }

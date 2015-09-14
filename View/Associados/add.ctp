@@ -23,7 +23,7 @@
                         <?php echo $this->Form->input('endereco', array('label'=>'Endereço:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('bairro', array('label'=>'Bairro:','class'=>'form-control date','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('bairro', array('label'=>'Bairro:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('CEP', array('label'=>'CEP:','class'=>'form-control cep','rows'=>'1')); ?>
