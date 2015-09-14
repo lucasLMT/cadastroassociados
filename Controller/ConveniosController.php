@@ -51,6 +51,8 @@ class ConveniosController extends AppController
      */
     public function add()
     {
+        $model = ClassRegistry::init('Convenio');
+
         if ($this->request->is('post')) {
             $this->Convenio->create();
             if ($this->Convenio->save($this->request->data)) {
@@ -60,7 +62,7 @@ class ConveniosController extends AppController
                 $this->Session->setFlash(__('Não foi possível adicionar o convênio. Por favor, Tente novamente.'));
             }
         }
-        $status = $model->getAtivo();
+        $status = $model->getStatus();
         $this->set(compact('status'));
     }
 

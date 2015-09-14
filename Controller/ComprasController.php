@@ -99,8 +99,8 @@ class ComprasController extends AppController
             $options = array('conditions' => array('Compra.' . $this->Compra->primaryKey => $id));
             $comprasTmp = $this->Compra->find('first', $options);
 
-            $referencia = $associadosTmp['Compra']['referencia'];
-            $associadosTmp['Compra']['referencia'] = revertDate($referencia);
+            $referencia = $comprasTmp['Compra']['referencia'];
+            $comprasTmp['Compra']['referencia'] = revertDate($referencia);
 
             $this->request->data = $comprasTmp;
 

@@ -56,7 +56,7 @@ class Convenio extends AppModel {
             1 => 'Ativo',
             2 => 'Inativo',
         );
-	}	
+	}
 
 /**
  * Validation rules
@@ -107,6 +107,6 @@ class Convenio extends AppModel {
 		'percDesc'=> array(),
 		'contato'=> array(),
 		'status' => array(),
-	);		
+	);
 */
 }
