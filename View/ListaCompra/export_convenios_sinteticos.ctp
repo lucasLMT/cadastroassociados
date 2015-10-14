@@ -8,10 +8,13 @@
   $xls= new xlsHelper(new View(null));
 
   //input the export file name
-  $xls->setHeader('convenios'.date('Y_m_d'));
+  $xls->setHeader('ConveniosSinteticos'.date('Y_m_d'));
 
   $xls->addXmlHeader();
-  $xls->setWorkSheetName('Convenios');
+  $xls->setWorkSheetName('Compras Sintéticas por Convênios.');
+  $xls->openRow();
+  $xls->writeString('Compras Sintéticas por Convênios.');
+  $xls->closeRow();
 
   //1st row for columns name
   $xls->openRow();
@@ -20,11 +23,33 @@
   $xls->closeRow();
 
   //rows for data
-  foreach ($conveniosArray as $convenio):
+  $convenio_tmp = $compras[0]['Associado']['nome'];
+  $count = Count($compras);
+  $total = 0;
+  $i = 1;
+  foreach ($compras as $compra):
+    if (($convenio_tmp <> $compra['Convenio']['razaoSocial']) || ($count == $i)) {
+      if ($count == $i && $convenio_tmp == $compra['Convenio']['razaoSocial'])
+  	  $total += $compra['Compra']['valor'];
+
     $xls->openRow();
-    $xls->writeString($convenio['convenio']);
-    $xls->writeNumber($convenio['total']);
+    $xls->writeString($convenio_tmp);
+    $xls->writeString("R$".$total);
     $xls->closeRow();
+
+    $total = $compra['Compra']['valor'] + 0;
+    if (($convenio_tmp <> $compra['Convenio']['razaoSocial']) && ($count == $i)) {
+
+      $xls->openRow();
+      $xls->writeString($compra['Convenio']['razaoSocial']);
+      $xls->writeString("R$".$total);
+      $xls->closeRow();
+    }
+    $convenio_tmp = $compra['Convenio']['razaoSocial'];
+  } else {
+      $total += $compra['Compra']['valor'];
+  }
+  $i++;
   endforeach;
 
   $xls->addXmlFooter();

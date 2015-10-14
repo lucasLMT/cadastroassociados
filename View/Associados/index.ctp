@@ -55,7 +55,7 @@
             <td><?php echo h($associado['Associado']['nome']); ?>&nbsp;</td>
 						<td><?php echo h($associado['Associado']['telefone']); ?>&nbsp;</td>
 						<td><?php echo h($associado['Cargo']['id']); ?>&nbsp;</td>
-						<td><?php echo h($associado['Area']['id']); ?>&nbsp;</td>
+            <td><?php echo h($associado['Area']['nome']); ?>&nbsp;</td>
 						<td><?php echo h($associado['Associado']['salario']); ?>&nbsp;</td>
 						<td class="actions">
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $associado['Associado']['id']),
@@ -71,4 +71,18 @@
 	    </div>
 	</div>
 	<!-- /.panel-body -->
+</div>
+<p>
+<?php
+	echo $this->Paginator->counter(array(
+	'format' => __('Página {:page} de {:pages}, exibindo {:current} registros de {:count} no total, registro inicial {:start}, registro final {:end}')
+	));
+?>
+</p>
+<div class="paging">
+<?php
+	echo $this->Paginator->prev('< ' . __('Anterior '), array(), null, array('class' => 'prev disabled'));
+	echo $this->Paginator->numbers(array('separator' => ' '));
+	echo $this->Paginator->next(__(' Próximo') . ' >', array(), null, array('class' => 'next disabled'));
+?>
 </div>

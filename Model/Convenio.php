@@ -8,7 +8,7 @@ App::uses('AppModel', 'Model');
  */
 class Convenio extends AppModel {
 
-	public $displayField = 'nomeDoGrupo';
+	public $displayField = 'razaoSocial';
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
