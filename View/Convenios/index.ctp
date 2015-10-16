@@ -29,7 +29,6 @@
 						        <th><?php echo $this->Paginator->sort('matricula', 'Matrícula'); ?></th>
 						        <th><?php echo $this->Paginator->sort('percDesc', 'Per desconto'); ?></th>
 						        <th><?php echo $this->Paginator->sort('contato'); ?></th>
-						        <th><?php echo $this->Paginator->sort('status'); ?></th>
 						        <th class="actions"><?php echo __('Gerenciamento'); ?></th>
 	                </tr>
 	            </thead>
@@ -40,7 +39,6 @@
 						<td><?php echo h($convenio['Convenio']['matricula']); ?>&nbsp;</td>
 						<td><?php echo h($convenio['Convenio']['percDesc']); ?>&nbsp;</td>
 						<td><?php echo h($convenio['Convenio']['contato']); ?>&nbsp;</td>
-						<td><?php echo h($convenio['Convenio']['statu_id']); ?>&nbsp;</td>
 						<td class="actions">
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $convenio['Convenio']['id']),
 							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>
@@ -55,4 +53,18 @@
 	    </div>
 	</div>
 	<!-- /.panel-body -->
+</div>
+<p>
+<?php
+	echo $this->Paginator->counter(array(
+	'format' => __('Página {:page} de {:pages}, exibindo {:current} registros de {:count} no total, registro inicial {:start}, registro final {:end}')
+	));
+?>
+</p>
+<div class="paging">
+<?php
+	echo $this->Paginator->prev('< ' . __('Anterior '), array(), null, array('class' => 'prev disabled'));
+	echo $this->Paginator->numbers(array('separator' => ' '));
+	echo $this->Paginator->next(__(' Próximo') . ' >', array(), null, array('class' => 'next disabled'));
+?>
 </div>

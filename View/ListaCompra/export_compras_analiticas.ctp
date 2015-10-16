@@ -34,7 +34,7 @@
     $xls->openRow();
     $xls->writeString($compra['Associado']['matricula']);
     $xls->writeString($compra['Compra']['descricao']);
-    $xls->writeString($compra['Convenio']['nomeDoGrupo']);
+    $xls->writeString($compra['Convenio']['razaoSocial']);
     $xls->writeString("R$ ".$compra['Compra']['valor']);
     $xls->writeString($compra['Compra']['observacao']);
     $xls->closeRow();

@@ -1,5 +1,5 @@
 <br>
-<?php 
+<?php
     echo $this->Html->link(
         'Cadastrar um novo cargo',
         array(
@@ -39,7 +39,7 @@
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $cargo['Cargo']['id']),
 							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>
 							<?php echo $this->Form->postLink(__('Apagar'), array('action' => 'delete', $cargo['Cargo']['id']),
-							array('class' => 'btn btn-danger btn-sm','role' => 'button'), __('Você tem certeza que deseja remover %s?', 
+							array('class' => 'btn btn-danger btn-sm','role' => 'button'), __('Você tem certeza que deseja remover %s?',
 							$cargo['Cargo']['nome'])); ?>
 						</td>
 					</tr>
@@ -49,4 +49,18 @@
 	    </div>
 	</div>
 	<!-- /.panel-body -->
+</div>
+<p>
+<?php
+	echo $this->Paginator->counter(array(
+	'format' => __('Página {:page} de {:pages}, exibindo {:current} registros de {:count} no total, registro inicial {:start}, registro final {:end}')
+	));
+?>
+</p>
+<div class="paging">
+<?php
+	echo $this->Paginator->prev('< ' . __('Anterior '), array(), null, array('class' => 'prev disabled'));
+	echo $this->Paginator->numbers(array('separator' => ' '));
+	echo $this->Paginator->next(__(' Próximo') . ' >', array(), null, array('class' => 'next disabled'));
+?>
 </div>

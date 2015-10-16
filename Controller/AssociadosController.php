@@ -18,6 +18,10 @@ class AssociadosController extends AppController
      */
     public $components = array('Paginator');
 
+    public $paginate = array(
+        // other keys here.
+        'maxLimit' => 1000
+    );
     /**
      * index method
      *

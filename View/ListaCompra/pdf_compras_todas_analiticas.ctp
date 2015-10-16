@@ -8,13 +8,13 @@ $pdf->Cell(0,40,"",1,1,'C'); // Célula do cabeçalho
 $pdf->Image($logo,16,18,60);
 $pdf->SetFont('Arial','B',10);
 $pdf->SetXY(60,10);
-$pdf->Cell(50,13,utf8_decode("AFSEBRAE - Associação dos funcionários do SEBRAE\CE"));
+$pdf->Cell(50,13,utf8_decode("AFSEBRAE - Associação dos Funcionários do SEBRAE\CE"));
 $pdf->SetFont('Arial','B',10);
 $pdf->SetXY(82,20);
-$pdf->Cell(50,8,utf8_decode("Todas as compras analíticas por associados. Mês: ".$referencia));
+$pdf->Cell(50,8,utf8_decode("Todas as Compras Analíticas por Associados. Mês: ".$referencia));
 $pdf->Ln();
 $pdf->SetXY(82,28);
-$pdf->Cell(15,7,("Data: ".$date));
+$pdf->Cell(15,7,($date));
 $pdf->Ln(22);
 // Column headings
 $header = array(utf8_decode('Matrícula'),utf8_decode('Descrição'),
@@ -42,7 +42,7 @@ foreach($compras as $compra){
       $pdf->Ln();
       $pdf->Cell($w[0],7,$compra['Associado']['matricula'],1,0,'C');
       $pdf->Cell($w[1],7,utf8_decode($compra['Compra']['descricao']),1);
-      $pdf->Cell($w[2],7,utf8_decode($compra['Convenio']['nomeDoGrupo']),1);
+      $pdf->Cell($w[2],7,utf8_decode($compra['Convenio']['razaoSocial']),1);
       $pdf->Cell($w[3],7,("R$".$compra['Compra']['valor']),1,0,'C');
       $pdf->Cell($w[4],7,utf8_decode($compra['Compra']['observacao']),1);
       $pdf->Ln();
@@ -51,7 +51,7 @@ foreach($compras as $compra){
     } elseif (($i <> $count) && ($total <> 0)){
         $pdf->Cell($w[0],7,$compra['Associado']['matricula'],1,0,'C');
         $pdf->Cell($w[1],7,utf8_decode($compra['Compra']['descricao']),1);
-        $pdf->Cell($w[2],7,utf8_decode($compra['Convenio']['nomeDoGrupo']),1);
+        $pdf->Cell($w[2],7,utf8_decode($compra['Convenio']['razaoSocial']),1);
         $pdf->Cell($w[3],7,("R$".$compra['Compra']['valor']),1,0,'C');
         $pdf->Cell($w[4],7,utf8_decode($compra['Compra']['observacao']),1);
         $pdf->Ln();
@@ -60,7 +60,7 @@ foreach($compras as $compra){
     } elseif ($i == $count)  {
         $pdf->Cell($w[0],7,$compra['Associado']['matricula'],1,0,'C');
         $pdf->Cell($w[1],7,utf8_decode($compra['Compra']['descricao']),1);
-        $pdf->Cell($w[2],7,utf8_decode($compra['Convenio']['nomeDoGrupo']),1);
+        $pdf->Cell($w[2],7,utf8_decode($compra['Convenio']['razaoSocial']),1);
         $pdf->Cell($w[3],7,("R$".$compra['Compra']['valor']),1,0,'C');
         $pdf->Cell($w[4],7,utf8_decode($compra['Compra']['observacao']),1);
         $pdf->Ln();
@@ -82,7 +82,7 @@ foreach($compras as $compra){
 		$pdf->Ln();
 		$pdf->Cell($w[0],7,$compra['Associado']['matricula'],1,0,'C');
 		$pdf->Cell($w[1],7,utf8_decode($compra['Compra']['descricao']),1);
-		$pdf->Cell($w[2],7,utf8_decode($compra['Convenio']['nomeDoGrupo']),1);
+		$pdf->Cell($w[2],7,utf8_decode($compra['Convenio']['razaoSocial']),1);
 		$pdf->Cell($w[3],7,("R$".$compra['Compra']['valor']),1,0,'C');
 		$pdf->Cell($w[4],7,utf8_decode($compra['Compra']['observacao']),1);
 		$pdf->Ln();

@@ -40,7 +40,7 @@
 					<tr class="odd gradeX">
 						<td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
             <td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
-						<td><?php echo h($compra['Convenio']['nomeDoGrupo']); ?>&nbsp;</td>
+						<td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
             <td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
@@ -59,4 +59,18 @@
 	    </div>
 	</div>
 	<!-- /.panel-body -->
+</div>
+<p>
+<?php
+	echo $this->Paginator->counter(array(
+	'format' => __('Página {:page} de {:pages}, exibindo {:current} registros de {:count} no total, registro inicial {:start}, registro final {:end}')
+	));
+?>
+</p>
+<div class="paging">
+<?php
+	echo $this->Paginator->prev('< ' . __('Anterior '), array(), null, array('class' => 'prev disabled'));
+	echo $this->Paginator->numbers(array('separator' => ' '));
+	echo $this->Paginator->next(__(' Próximo') . ' >', array(), null, array('class' => 'next disabled'));
+?>
 </div>
