@@ -43,7 +43,6 @@
             <th><?php echo $this->Paginator->sort('nome'); ?></th>
 						<th><?php echo $this->Paginator->sort('telefone'); ?></th>
 						<th><?php echo $this->Paginator->sort('cargo_id'); ?></th>
-						<th><?php echo $this->Paginator->sort('area_id'); ?></th>
 						<th><?php echo $this->Paginator->sort('salario', 'Salário'); ?></th>
 						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
 					</tr>
@@ -54,8 +53,7 @@
 						<td><?php echo h($associado['Associado']['matricula']); ?>&nbsp;</td>
             <td><?php echo h($associado['Associado']['nome']); ?>&nbsp;</td>
 						<td><?php echo h($associado['Associado']['telefone']); ?>&nbsp;</td>
-						<td><?php echo h($associado['Cargo']['id']); ?>&nbsp;</td>
-            <td><?php echo h($associado['Area']['nome']); ?>&nbsp;</td>
+						<td><?php echo h($associado['Cargo']['nome']); ?>&nbsp;</td>
 						<td><?php echo h($associado['Associado']['salario']); ?>&nbsp;</td>
 						<td class="actions">
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $associado['Associado']['id']),

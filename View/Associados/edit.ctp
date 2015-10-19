@@ -60,9 +60,6 @@
                         <?php echo $this->Form->input('salario', array('label'=>'Salário:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('valor adicional', array('label'=>'Valor adicional:','class'=>'form-control','rows'=>'1')); ?>
-                    </div>
-                    <div class="form-group">
                         <?php echo $this->Form->input('mensalidade', array('label'=>'Contribuição:','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">

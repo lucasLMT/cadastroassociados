@@ -22,9 +22,6 @@
           <div class="form-group">
 					<?php echo $this->Form->input('referencia', array('label'=>'Referência:','class'=>'form-control date','rows'=>'1'));?>
 					</div>
-					<div class="form-group">
-					<?php echo $this->Form->input('observacao', array('label'=>'Observação:','class'=>'form-control','rows'=>'4'));?>
-					</div>
 					<button type="submit" class="btn btn-default">Salvar</button>
 				<?php echo $this->Form->end(); ?>
 			</div>

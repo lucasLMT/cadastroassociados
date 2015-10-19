@@ -69,6 +69,8 @@ class AssociadosController extends AppController
             $dataDeNascimento = $data['Associado']['dataDeNascimento'];
             $data['Associado']['dataDeNascimento'] = revertDate($dataDeNascimento);
 
+            $data['Associado']['mensalidade'] = $data['Associado']['salario'] * 0.09;
+
             if ($this->Associado->save($data)) {
                 $this->Session->setFlash(__('Associado adicionado.'));
                 return $this->redirect(array('action' => 'index'));
@@ -106,6 +108,8 @@ class AssociadosController extends AppController
             $dataDeNascimento = $data['Associado']['dataDeNascimento'];
             $data['Associado']['dataDeNascimento'] = revertDate($dataDeNascimento);
 
+            $data['Associado']['mensalidade'] = $data['Associado']['salario'] * 0.09;
+
             if ($this->Associado->save($data)) {
                 $this->Session->setFlash(__('Associado salvo.'));
                 return $this->redirect(array('action' => 'index'));
@@ -127,7 +131,11 @@ class AssociadosController extends AppController
         }
         $cargos = $this->Associado->Cargo->find('list');
         $areas = $this->Associado->Area->find('list');
-        $this->set(compact('cargos', 'areas'));
+        $ativos = $model->getAtivo();
+        $sexos = $model->getSexo();
+        $estadocivils = $model->getEstadocivil();
+        $filhos = $model->getFilhos();
+        $this->set(compact('cargos', 'areas', 'ativos', 'sexos', 'estadocivils', 'filhos'));
     }
 
     /**

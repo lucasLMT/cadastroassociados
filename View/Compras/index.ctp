@@ -30,7 +30,6 @@
 						<th><?php echo $this->Paginator->sort('convenio_id','Convênio'); ?></th>
 						<th><?php echo $this->Paginator->sort('descricao','Descrição'); ?></th>
             <th><?php echo $this->Paginator->sort('referencia','Referência'); ?></th>
-						<th><?php echo $this->Paginator->sort('observacao','Observação'); ?></th>
 						<th><?php echo $this->Paginator->sort('valor'); ?></th>
 						<th class="actions"><?php echo __('Gerenciamento'); ?></th>
 	                </tr>
@@ -43,7 +42,6 @@
 						<td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
             <td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
-						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
 						<td><?php echo h($compra['Compra']['valor']); ?>&nbsp;</td>
 						<td class="actions">
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $compra['Compra']['id']),
