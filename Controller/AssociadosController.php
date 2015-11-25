@@ -96,6 +96,8 @@ class AssociadosController extends AppController
      */
     public function edit($id = null)
     {
+        $model = ClassRegistry::init('Associado');
+        
         if (!$this->Associado->exists($id)) {
             throw new NotFoundException(__('Associado inválido'));
         }
@@ -168,7 +170,7 @@ class AssociadosController extends AppController
         $this->set(compact('aniversariantes'));
     }
 
-    public function sendEmail($associados, $dest = null)
+    /*public function sendEmail($associados, $dest = null)
     {
         $dest = 'destinatario@gmail.com';
         $Email = new CakeEmail('gmail');
@@ -179,7 +181,7 @@ class AssociadosController extends AppController
         $Email->message('Test message.');
         $Email->send('message');
         return $this->redirect(array('action' => 'index'));
-    }
+    }*/
 
     /*public function send_email($dest=null)
     {
@@ -191,6 +193,18 @@ class AssociadosController extends AppController
         $Email->send();
         return $this->redirect(array('action' => 'index'));
     }*/
+
+    public function search(){
+      //$this->isAdmin();
+      $associado = $this->request->data;
+      if(!empty($associado)) {
+          $result = $this->Associado->find('all',array('conditions'=>array('Associado.nome LIKE'=> "%".$associado['Associado']['Busca']."%")));
+          $this->set(compact('result'));
+      } else {
+          $this->redirect(array('controller'=>'associado','action'=>'index'));
+      }
+    }
+
 }
 
 function revertDate($date)

@@ -20,11 +20,11 @@
 	                </tr>
 	            </thead>
 	            <tbody>
-					<?php 
+					<?php
 					foreach ($linhasTelefonicas as $linhasTelefonica): ?>
 					<tr class="odd gradeX">
 						<td><?php echo h($linhasTelefonica['Associado']['nome']); ?>&nbsp;</td>
-						<td><?php echo h($linhasTelefonica['LinhasTelefonica']['Operadora']); ?>&nbsp;</td>
+						<td><?php echo h($linhasTelefonica['Operadora']['nome']); ?>&nbsp;</td>
 						<td><?php echo h($linhasTelefonica['LinhasTelefonica']['Numero']); ?>&nbsp;</td>
 						<td><?php echo h($linhasTelefonica['LinhasTelefonica']['modelo']); ?>&nbsp;</td>
 						<td><?php echo h($linhasTelefonica['LinhasTelefonica']['data']); ?>&nbsp;</td>
