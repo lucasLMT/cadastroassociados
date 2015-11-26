@@ -22,11 +22,11 @@ $header = array(utf8_decode('Matrícula'),utf8_decode('Associado'), 'Valor');
 // Column widths
 $w = array(40,125,25);
 //Convenio
-$pdf->Cell(0,7,utf8_decode("Convênio: ".$compras[0]['Convenio']['razaoSocial']),1,0,'C');
+$pdf->Cell(0,6,utf8_decode("Convênio: ".$compras[0]['Convenio']['razaoSocial']),1,0,'C');
 $pdf->Ln();
 // Header
 for($i=0;$i<count($header);$i++)
-    $pdf->Cell($w[$i],7,$header[$i],1,0,'C');
+    $pdf->Cell($w[$i],6,$header[$i],1,0,'C');
 $pdf->Ln();
 
 /*// Header
@@ -37,12 +37,16 @@ $pdf->Ln();*/
 // Data
 foreach($compras as $compra)
 {
-  $pdf->Cell($w[0],7,$compra['Associado']['matricula'],1,0,'C');
-  $pdf->Cell($w[1],7,utf8_decode($compra['Associado']['nome']),1);
-  $pdf->Cell($w[2],7,"R$".$compra['Compra']['valor'],1,0,'C');
+  $pdf->Cell($w[0],6,$compra['Associado']['matricula'],1,0,'C');
+  $pdf->Cell($w[1],6,utf8_decode($compra['Associado']['nome']),1);
+  $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+  $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );
+  $pdf->Cell($w[2],6,$valor,1,0,'C');
   $pdf->Ln();
 }
-$pdf->Cell(0,7,utf8_decode("Total: R$".$total),1,0,'R');
+$this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+$total = $this->Number->currency($total,'BRL' );
+$pdf->Cell(0,6,utf8_decode("Total: ".$total),1,0,'R');
 
 $pdf->AliasNbPages();
 $pdf->SetAutoPageBreak(true);

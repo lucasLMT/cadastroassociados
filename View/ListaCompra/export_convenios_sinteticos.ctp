@@ -34,7 +34,9 @@
 
     $xls->openRow();
     $xls->writeString($convenio_tmp);
-    $xls->writeString("R$".$total);
+    $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+    $total = $this->Number->currency($total,'BRL' );
+    $xls->writeString($total);
     $xls->closeRow();
 
     $total = $compra['Compra']['valor'] + 0;
@@ -42,7 +44,9 @@
 
       $xls->openRow();
       $xls->writeString($compra['Convenio']['razaoSocial']);
-      $xls->writeString("R$".$total);
+      $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+      $total = $this->Number->currency($total,'BRL' );
+      $xls->writeString($total);
       $xls->closeRow();
     }
     $convenio_tmp = $compra['Convenio']['razaoSocial'];

@@ -23,7 +23,7 @@ $header = array(utf8_decode('Convênio'),'Total');
 $w = array(165,25);
 // Header
 for($i=0;$i<count($header);$i++)
-    $pdf->Cell($w[$i],7,$header[$i],1,0,'C');
+    $pdf->Cell($w[$i],6,$header[$i],1,0,'C');
 $pdf->Ln();
 
 /*// Header
@@ -41,14 +41,18 @@ foreach ($compras as $compra):
     if ($count == $i && $convenio_tmp == $compra['Convenio']['razaoSocial'])
       $total += $compra['Compra']['valor'];
 
-  $pdf->Cell($w[0],8,utf8_decode($convenio_tmp),1);
-  $pdf->Cell($w[1],8,("R$".$total),1,0,'C');
+  $pdf->Cell($w[0],6,utf8_decode($convenio_tmp),1);
+  $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+  $total = $this->Number->currency($total,'BRL' );
+  $pdf->Cell($w[1],6,($total),1,0,'C');
   $pdf->Ln();
 
   $total = $compra['Compra']['valor'] + 0;
   if (($convenio_tmp <> $compra['Convenio']['razaoSocial']) && ($count == $i)) {
-    $pdf->Cell($w[0],8,utf8_decode($compra['Convenio']['razaoSocial']),1);
-    $pdf->Cell($w[1],8,("R$".$total),1,0,'C');
+    $pdf->Cell($w[0],6,utf8_decode($compra['Convenio']['razaoSocial']),1);
+    $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+    $total = $this->Number->currency($total,'BRL' );
+    $pdf->Cell($w[1],6,($total),1,0,'C');
     $pdf->Ln();
   };
 

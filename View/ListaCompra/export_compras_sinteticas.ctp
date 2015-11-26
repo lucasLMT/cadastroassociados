@@ -34,7 +34,9 @@
 
     $xls->openRow();
     $xls->writeString($assoc_tmp);
-    $xls->writeString("R$".$total);
+    $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+    $total = $this->Number->currency($total,'BRL' );
+    $xls->writeString($total);
     $xls->closeRow();
 
     $total = $compra['Compra']['valor'] + 0;
@@ -42,7 +44,9 @@
 
       $xls->openRow();
       $xls->writeString($compra['Associado']['nome']);
-      $xls->writeString("R$".$total);
+      $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+      $total = $this->Number->currency($total,'BRL' );
+      $xls->writeString($total);
       $xls->closeRow();
     }
     $assoc_tmp = $compra['Associado']['nome'];
