@@ -207,7 +207,7 @@ class ListaCompraController extends AppController
     {
         $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
             'Compra.referencia <= ' => $data_fim),
-            'order' => array('Compra.convenio_id'));
+            'order' => array('Compra.associado_id'));
         $compras = $this->ListaCompra->Compra->find('all', $options);
         $referencia = $referencia;
 
@@ -301,7 +301,7 @@ class ListaCompraController extends AppController
     {
         $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
             'Compra.referencia <= ' => $data_fim),
-            'order' => array('Compra.convenio_id'));
+            'order' => array('Compra.associado_id'));
         $compras = $this->ListaCompra->Compra->find('all', $options);
 
         //$data = $this->Model->find('all');

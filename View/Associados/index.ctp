@@ -2,7 +2,7 @@
 <div class="search">
     <?= $this->Form->create(null, ['action' => 'search']) ?>
     <?= $this->Form->input('Busca', ['required' => true]) ?>
-    <?= $this->Form->button('Buscar') ?>
+    <?= $this->Form->button('Buscar', array('class' => 'btn btn-info','role' => 'button')) ?>
     <?= $this->Form->end() ?>
 </div>
 <?php
@@ -28,7 +28,7 @@
             'full_base' => true
         ),
         array(
-        	'class' => 'btn btn-info',
+        	'class' => 'btn btn-success',
             'role' => 'button'
         	)
     );
@@ -88,8 +88,8 @@
 </p>
 <div class="paging">
 <?php
-	echo $this->Paginator->prev('< ' . __('Anterior '), array(), null, array('class' => 'prev disabled'));
-	echo $this->Paginator->numbers(array('separator' => ' '));
-	echo $this->Paginator->next(__(' Próximo') . ' >', array(), null, array('class' => 'next disabled'));
+	echo $this->Paginator->prev('< ' . __('Anterior   '), array(), null, array('class' => 'prev disabled'));
+	echo $this->Paginator->numbers(array('separator' => '  '));
+	echo $this->Paginator->next(__('   Próximo') . ' >', array(), null, array('class' => 'next disabled'));
 ?>
 </div>
