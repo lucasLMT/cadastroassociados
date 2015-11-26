@@ -57,7 +57,7 @@
                         <?php echo $this->Form->input('area_id', array('label'=>'Área:','class'=>'form-control')); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->Form->input('salario', array('label'=>'Salário:','class'=>'form-control','rows'=>'1')); ?>
+                        <?php echo $this->Form->input('salario', array('label'=>'Salário: (Exemplo 1234.56)','class'=>'form-control','rows'=>'1')); ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->Form->input('mensalidade', array('label'=>'Contribuição:','class'=>'form-control','rows'=>'1')); ?>

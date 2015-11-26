@@ -39,9 +39,14 @@
 					<tr class="odd gradeX">
 						<td><?php echo h($saudePlano['SaudePlano']['nome']); ?>&nbsp;</td>
 						<td><?php echo h($saudePlano['SaudePlano']['tipo']); ?>&nbsp;</td>
-						<td><?php echo h($saudePlano['SaudePlano']['valorAssociado']); ?>&nbsp;</td>
-						<td><?php echo h($saudePlano['SaudePlano']['valorSebrae']); ?>&nbsp;</td>
-						<td><?php echo h($saudePlano['SaudePlano']['valorAFSebrae']); ?>&nbsp;</td>
+            <?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+                  $valorAssociado = $this->Number->currency($saudePlano['SaudePlano']['valorAssociado'],'BRL' );
+                  $valorSebrae = $this->Number->currency($saudePlano['SaudePlano']['valorSebrae'],'BRL' );
+                  $valorAFSebrae = $this->Number->currency($saudePlano['SaudePlano']['valorAFSebrae'],'BRL' );
+            ?>
+            <td><?php echo h($valorAssociado); ?>&nbsp;</td>
+						<td><?php echo h($valorSebrae); ?>&nbsp;</td>
+						<td><?php echo h($valorAFSebrae); ?>&nbsp;</td>
 						<td><?php echo h($saudePlano['SaudePlano']['observacao']); ?>&nbsp;</td>
 						<td class="actions">
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $saudePlano['SaudePlano']['id']),

@@ -34,7 +34,10 @@
 					<?php foreach ($cargos as $cargo): ?>
 					<tr class="odd gradeX">
 						<td><?php echo h($cargo['Cargo']['nome']); ?>&nbsp;</td>
-						<td><?php echo h($cargo['Cargo']['valorAlmoço']); ?>&nbsp;</td>
+            <?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+                  $valor = $this->Number->currency($cargo['Cargo']['valorAlmoço'],'BRL' );
+            ?>
+            <td><?php echo h($valor); ?>&nbsp;</td>
 						<td class="actions">
 							<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $cargo['Cargo']['id']),
 							array('class' => 'btn btn-warning btn-sm','role' => 'button')); ?>

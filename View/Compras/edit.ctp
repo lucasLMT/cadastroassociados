@@ -23,7 +23,7 @@
 						<?php echo $this->Form->input('referencia', array('label'=>'Referência:','class'=>'form-control date','rows'=>'1'));?>
 					</div>
 					<div class="form-group">
-						<?php echo $this->Form->input('valor', array('label'=>'Valor:','class'=>'form-control','rows'=>'1'));?>
+						<?php echo $this->Form->input('valor', array('label'=>'Valor: (Exemplo 1234.56)','class'=>'form-control','rows'=>'1'));?>
 					</div>
 					<button type="submit" class="btn btn-default">Salvar</button>
 				<?php echo $this->Form->end(); ?>

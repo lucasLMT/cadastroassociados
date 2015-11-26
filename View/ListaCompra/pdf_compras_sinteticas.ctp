@@ -23,7 +23,7 @@ $header = array(utf8_decode('Associado'),'Total');
 $w = array(155,35);
 // Header
 for($i=0;$i<count($header);$i++)
-    $pdf->Cell($w[$i],7,$header[$i],1,0,'C');
+    $pdf->Cell($w[$i],6,$header[$i],1,0,'C');
 $pdf->Ln();
 /*// Header
 foreach($header as $col)
@@ -40,15 +40,19 @@ foreach ($compras as $compra):
     if ($count == $i && $assoc_tmp == $compra['Associado']['nome'])
 	  $total += $compra['Compra']['valor'];
 
-  $pdf->Cell($w[0],7,utf8_decode($assoc_tmp),1);
-  $pdf->Cell($w[1],7,("R$".$total),1,0,'C');
+  $pdf->Cell($w[0],6,utf8_decode($assoc_tmp),1);
+  $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+  $total = $this->Number->currency($total,'BRL' );
+  $pdf->Cell($w[1],6,($total),1,0,'C');
   $pdf->Ln();
 
   $total = $compra['Compra']['valor'] + 0;
   if (($assoc_tmp <> $compra['Associado']['nome']) && ($count == $i)) {
 
-    $pdf->Cell($w[0],7,utf8_decode($compra['Associado']['nome']),1);
-    $pdf->Cell($w[1],7,("R$".$total),1,0,'C');
+    $pdf->Cell($w[0],6,utf8_decode($compra['Associado']['nome']),1);
+    $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+		$total = $this->Number->currency($total,'BRL' );
+    $pdf->Cell($w[1],6,($total),1,0,'C');
     $pdf->Ln();
   }
   $assoc_tmp = $compra['Associado']['nome'];
