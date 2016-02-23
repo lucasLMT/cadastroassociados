@@ -1,4 +1,17 @@
 <br>
+<div class="search">
+    <?= $this->Form->create(null, ['action' => 'search']) ?>
+    <?= $this->Form->input('Busca', array('label'=>'',
+    									  'class'=>'form-control',
+    									  'rows'=>'1',
+    									  'required'=>true,
+    									  'style'=>'width:400px; float:left',
+    									  'div'=>false,
+    									  'placeholder'=>'Buscar area')) ?>
+    <?= $this->Form->button('Buscar', array('class' => 'btn btn-info','role' => 'button', 'div'=>false)) ?>
+    <?= $this->Form->end() ?>
+</div>
+
 <?php
     echo $this->Html->link(
         'Cadastrar uma nova área',
@@ -26,7 +39,7 @@
 	        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	            <thead>
 	                <tr>
-	                    <th><?php echo $this->Paginator->sort('nome'); ?></th>
+	                    <th><?php echo $this->Paginator->sort('Nome'); ?></th>
 	                    <th class="actions"><?php echo __('Gerenciamento'); ?></th>
 	                </tr>
 	            </thead>
@@ -48,4 +61,18 @@
 	    </div>
 	</div>
 	<!-- /.panel-body -->
+</div>
+<p>
+<?php
+	echo $this->Paginator->counter(array(
+	'format' => __('Página {:page} de {:pages}, exibindo {:current} registros de {:count} no total, registro inicial {:start}, registro final {:end}')
+	));
+?>
+</p>
+<div class="paging">
+<?php
+	echo $this->Paginator->prev('< ' . __('Anterior '), array(), null, array('class' => 'prev disabled'));
+	echo $this->Paginator->numbers(array('separator' => ' '));
+	echo $this->Paginator->next(__(' Próximo') . ' >', array(), null, array('class' => 'next disabled'));
+?>
 </div>

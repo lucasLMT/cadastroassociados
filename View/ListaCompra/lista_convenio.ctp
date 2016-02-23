@@ -14,7 +14,7 @@
 											<th><?php echo __('Convênio'); ?></th>
 											<th><?php echo __('Referência'); ?></th>
 											<th><?php echo __('Valor'); ?></th>
-											<th><?php echo __('Observação'); ?></th>
+											<th><?php echo __('Descrição'); ?></th>
                     <?php } else {?>
                         <th><?php echo __('Convênio'); ?></th>
                         <th><?php echo __('Total'); ?></th>
@@ -34,7 +34,7 @@
 			                  $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );
 			            ?>
 									<td><?php echo h($valor); ?>&nbsp;</td>
-	    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
+	    						<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
 	    					</tr>
 							<?php endforeach; ?>
 		                    <tr class="odd gradeX">
@@ -58,7 +58,7 @@
 						                  $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );
 						            ?>
 												<td><?php echo h($valor); ?>&nbsp;</td>
-				    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
+				    						<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
 				    					</tr>
 				    					<tr class="odd gradeX">
 											<td><?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
@@ -82,7 +82,7 @@
 						                  $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );
 						            ?>
 												<td><?php echo h($valor); ?>&nbsp;</td>
-				    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
+				    						<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
 				    					</tr>
 				    					<tr class="odd gradeX">
 											<td><?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
@@ -109,7 +109,7 @@
 													$valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );
 										?>
 										<td><?php echo h($valor); ?>&nbsp;</td>
-		    						<td><?php echo h($compra['Compra']['observacao']); ?>&nbsp;</td>
+		    						<td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
 		    					</tr>
 						<?php   $i++;
 							endforeach;

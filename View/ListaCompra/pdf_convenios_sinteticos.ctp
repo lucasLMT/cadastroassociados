@@ -42,7 +42,7 @@ foreach ($compras as $compra):
       $total += $compra['Compra']['valor'];
 
   $pdf->Cell($w[0],6,utf8_decode($convenio_tmp),1);
-  $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+  $this->Number->addFormat('BRL', array('before'=> '', 'thousands' => '.', 'decimals' => ','));
   $total = $this->Number->currency($total,'BRL' );
   $pdf->Cell($w[1],6,($total),1,0,'C');
   $pdf->Ln();
@@ -50,7 +50,7 @@ foreach ($compras as $compra):
   $total = $compra['Compra']['valor'] + 0;
   if (($convenio_tmp <> $compra['Convenio']['razaoSocial']) && ($count == $i)) {
     $pdf->Cell($w[0],6,utf8_decode($compra['Convenio']['razaoSocial']),1);
-    $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+    $this->Number->addFormat('BRL', array('before'=> '', 'thousands' => '.', 'decimals' => ','));
     $total = $this->Number->currency($total,'BRL' );
     $pdf->Cell($w[1],6,($total),1,0,'C');
     $pdf->Ln();
@@ -64,10 +64,10 @@ $i++;
 endforeach;
 
 $pdf->AliasNbPages();
-$pdf->SetAutoPageBreak(true);
-$pdf->SetY(-266);
-$pdf->SetFont('Arial','I',8);
-$pdf->Cell(0,10,utf8_decode('Página ').$pdf->PageNo().'/{nb}',0,0,'R');
+$pdf->SetAutoPageBreak(true,4);
+//$pdf->SetY(-266);
+//$pdf->SetFont('Arial','I',8);
+//$pdf->Cell(0,10,utf8_decode('Página ').$pdf->PageNo().'/{nb}',0,0,'R');
 
 $pdf->Output('ConvenioSinteticos.pdf','D');
 ?>
