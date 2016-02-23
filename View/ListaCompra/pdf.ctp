@@ -1,7 +1,7 @@
 <?php
 
 $fpdf->AddPage();
-$fpdf->SetFont('Arial','B',20);
+$fpdf->SetFont('Arial', 'B', 20);
 //debug($compras);
 //$fpdf->Cell(100,4,'Compras',1,0,'C');
 //$fpdf->Cell(40);
@@ -10,18 +10,18 @@ $fpdf->SetFont('Arial','B',20);
 
 /*----------------------- Cabeçalho do Formulário ------------------------ */
 
-$fpdf->SetXY(15,15);// Posicionando as células
-$fpdf->Cell(180,45,"Compras por associado",1,1,'C');// Célula do cabeçalho
-$fpdf->SetFont('Arial','B',15);
+$fpdf->SetXY(15, 15);// Posicionando as células
+$fpdf->Cell(180, 45, "Compras por associado", 1, 1, 'C');// Célula do cabeçalho
+$fpdf->SetFont('Arial', 'B', 15);
 
 /* Colunas do Formulário */
-$fpdf->SetFont('Arial','B',9);// Configurando a fonte
+$fpdf->SetFont('Arial', 'B', 9);// Configurando a fonte
 //$fpdf->SetXY(15,110);// Posicionando as células
-$fpdf->Cell(60,4,"Associado",1,1,'C');// Configurando as células
+$fpdf->Cell(60, 4, "Associado", 1, 1, 'C');// Configurando as células
 //$fpdf->SetXY(75,110);
-$fpdf->Cell(60,4,"Convenio",1,0,'C');
+$fpdf->Cell(60, 4, "Convenio", 1, 0, 'C');
 //$fpdf->SetXY (135,110);
-$fpdf->Cell (60,4,"Valor",1,0,'C');
+$fpdf->Cell(60, 4, "Valor", 1, 0, 'C');
 //$fpdf->SetXY(135,110);
 //$fpdf->Cell(140,15,"Valor",1,1,'C');
 //$fpdf->SetXY (275,110);
@@ -32,12 +32,12 @@ $fpdf->Cell (60,4,"Valor",1,0,'C');
 //$fpdf->Cell (60,15,"Valor",1,1,'C');
 
 /* ------------------------ Conteúdo ----------------------------------*/
-$fpdf->SetFont('Times','i',10);
-foreach($compras as $compra){
-  $fpdf->Cell(60,4,$compra['Associado']['nome'],1,0,'C');
-  $fpdf->Cell(60,4,$compra['Convenio']['nomeDoGrupo'],1,0,'C');
-  $fpdf->Cell(60,4,$compra['Compra']['valor'],1,0,'C');
-  $fpdf->Ln(4);
+$fpdf->SetFont('Times', 'i', 10);
+foreach ($compras as $compra) {
+    $fpdf->Cell(60, 4, $compra['Associado']['nome'], 1, 0, 'C');
+    $fpdf->Cell(60, 4, $compra['Convenio']['nomeDoGrupo'], 1, 0, 'C');
+    $fpdf->Cell(60, 4, $compra['Compra']['valor'], 1, 0, 'C');
+    $fpdf->Ln(4);
 }
 
 
@@ -55,6 +55,6 @@ foreach($compras as $compra){
 //$fpdf->Cell(63,15,$valor_real,1,1,'C');
 
 /*------------------------------ Rodapé ---------------------------------*/
-$fpdf->Output('test.pdf','D');
+$fpdf->Output('test.pdf', 'D');
 
 ?>

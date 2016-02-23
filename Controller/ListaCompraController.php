@@ -43,7 +43,7 @@ class ListaCompraController extends AppController
         $total = 0;
         $referencia = $referencia;
         $this->set(compact('compras', 'data_inicio', 'data_fim', 'associado',
-                           'total', 'modo', 'todos','referencia'));
+            'total', 'modo', 'todos', 'referencia'));
     }
 
     public function formAssociado($id = null)
@@ -89,7 +89,7 @@ class ListaCompraController extends AppController
         $total = 0;
         $referencia = $referencia;
         $this->set(compact('compras', 'data_inicio', 'data_fim', 'convenio',
-                           'total', 'modo', 'todos', 'referencia'));
+            'total', 'modo', 'todos', 'referencia'));
     }
 
     public function formConvenio($id = null)
@@ -156,9 +156,9 @@ class ListaCompraController extends AppController
     public function viewpdf_compras_todas_analiticas($data_inicio, $data_fim, $associado, $referencia)
     {
 
-      $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-          'Compra.referencia <= ' => $data_fim),
-          'order' => array('Compra.associado_id'));
+        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
+            'Compra.referencia <= ' => $data_fim),
+            'order' => array('Compra.associado_id'));
 
         $compras = $this->ListaCompra->Compra->find('all', $options);
         $total = 0;
@@ -172,7 +172,7 @@ class ListaCompraController extends AppController
         $this->set('pdf', new FPDF("P", "mm", "A4"));
         //pass data to view
         $this->set(compact('compras', 'data_inicio', 'data_fim', 'associado',
-                           'total', 'referencia'));
+            'total', 'referencia'));
         //render the pdf view (app/View/[view_name]/pdf.ctp)
         $this->render('pdf_compras_todas_analiticas');
     }

@@ -7,35 +7,35 @@
         <div class="row">
             <div class="col-lg-6">
                 <?php echo $this->Form->create('LinhasTelefonica'); ?>
-                	<?php echo $this->Form->input('id'); ?>
-                    <div class="form-group">
-                        <?php echo $this->Form->input('associado_id', array('label'=>'Associado:','class'=>'form-control')); ?>
-                    </div>
-                    <div class="form-group">
-                        <?php echo $this->Form->input('operadora_id', array('label'=>'Operadora:','class'=>'form-control')); ?>
-                    </div>
-                    <div class="form-group">
-                        <?php echo $this->Form->input('Numero', array('label'=>'Número:','class'=>'form-control','rows'=>'1')); ?>
-                    </div>
-                    <div class="form-group">
-                        <?php echo $this->Form->input('modelo', array('label'=>'Modelo:','class'=>'form-control', 'rows'=>'1')); ?>
-                    </div>
-                    <div class="form-group">
-                        <?php echo $this->Form->input('imei', array('label'=>'Imei:','class'=>'form-control','rows'=>'1')); ?>
-                    </div>
-                    <div class="form-group">
-                        <?php echo $this->Form->input('notafiscal', array('label'=>'Nota fiscal:','class'=>'form-control','rows'=>'1')); ?>
-                    </div>
-                    <div class="form-group">
-                        <?php echo $this->Form->input('data', array('label'=>'Data:','class'=>'form-control date','rows'=>'1')); ?>
-                    </div>
-                    <div class="form-group">
-                        <?php echo $this->Form->input('devolucao', array('label'=>'Data de devolução:','class'=>'form-control date','rows'=>'1')); ?>
-                    </div>
-                    <div class="form-group">
-                        <?php echo $this->Form->input('observacao', array('label'=>'Observação:','class'=>'form-control','rows'=>'4')); ?>
-                    </div>
-                    <button type="submit" class="btn btn-default">Salvar</button>
+                <?php echo $this->Form->input('id'); ?>
+                <div class="form-group">
+                    <?php echo $this->Form->input('associado_id', array('label' => 'Associado:', 'class' => 'form-control')); ?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('operadora_id', array('label' => 'Operadora:', 'class' => 'form-control')); ?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('Numero', array('label' => 'Número:', 'class' => 'form-control', 'rows' => '1')); ?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('modelo', array('label' => 'Modelo:', 'class' => 'form-control', 'rows' => '1')); ?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('imei', array('label' => 'Imei:', 'class' => 'form-control', 'rows' => '1')); ?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('notafiscal', array('label' => 'Nota fiscal:', 'class' => 'form-control', 'rows' => '1')); ?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('data', array('label' => 'Data:', 'class' => 'form-control date', 'rows' => '1')); ?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('devolucao', array('label' => 'Data de devolução:', 'class' => 'form-control date', 'rows' => '1')); ?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('observacao', array('label' => 'Observação:', 'class' => 'form-control', 'rows' => '4')); ?>
+                </div>
+                <button type="submit" class="btn btn-default">Salvar</button>
                 <?php echo $this->Form->end(); ?>
             </div>
         </div>

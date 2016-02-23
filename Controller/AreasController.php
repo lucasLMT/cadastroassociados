@@ -110,15 +110,16 @@ class AreasController extends AppController
         return $this->redirect(array('action' => 'index'));
     }
 
-    public function search(){
-      //$this->isAdmin();
-      $area = $this->request->data;
-      if(!empty($area)) {
-          $result = $this->Area->find('all',array('conditions'=>array('Area.nome LIKE'=> "%".$area['Area']['Busca']."%")));
-          $this->set(compact('result'));
-      } else {
-          $this->redirect(array('controller'=>'area','action'=>'index'));
-      }
+    public function search()
+    {
+        //$this->isAdmin();
+        $area = $this->request->data;
+        if (!empty($area)) {
+            $result = $this->Area->find('all', array('conditions' => array('Area.nome LIKE' => "%" . $area['Area']['Busca'] . "%")));
+            $this->set(compact('result'));
+        } else {
+            $this->redirect(array('controller' => 'area', 'action' => 'index'));
+        }
     }
 
 }

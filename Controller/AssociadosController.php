@@ -22,6 +22,7 @@ class AssociadosController extends AppController
         // other keys here.
         'maxLimit' => 1000
     );
+
     /**
      * index method
      *
@@ -97,7 +98,7 @@ class AssociadosController extends AppController
     public function edit($id = null)
     {
         $model = ClassRegistry::init('Associado');
-        
+
         if (!$this->Associado->exists($id)) {
             throw new NotFoundException(__('Associado inválido'));
         }
@@ -194,15 +195,16 @@ class AssociadosController extends AppController
         return $this->redirect(array('action' => 'index'));
     }*/
 
-    public function search(){
-      //$this->isAdmin();
-      $associado = $this->request->data;
-      if(!empty($associado)) {
-          $result = $this->Associado->find('all',array('conditions'=>array('Associado.nome LIKE'=> "%".$associado['Associado']['Busca']."%")));
-          $this->set(compact('result'));
-      } else {
-          $this->redirect(array('controller'=>'associado','action'=>'index'));
-      }
+    public function search()
+    {
+        //$this->isAdmin();
+        $associado = $this->request->data;
+        if (!empty($associado)) {
+            $result = $this->Associado->find('all', array('conditions' => array('Associado.nome LIKE' => "%" . $associado['Associado']['Busca'] . "%")));
+            $this->set(compact('result'));
+        } else {
+            $this->redirect(array('controller' => 'associado', 'action' => 'index'));
+        }
     }
 
 }

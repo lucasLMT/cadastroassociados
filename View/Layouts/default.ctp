@@ -21,18 +21,18 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <html>
 <?php echo $this->element('head'); ?>
 <body>
-	<div id="wrapper">
-		<?php echo $this->element('navbar') ?>
-		<div id="page-wrapper">
-            <!-- /.row -->
-            
-            <?php echo $this->Session->flash(); ?>
-			<?php echo $this->fetch('content'); ?>
-        </div>
-        <!-- /#page-wrapper -->
+<div id="wrapper">
+    <?php echo $this->element('navbar') ?>
+    <div id="page-wrapper">
+        <!-- /.row -->
 
-	</div>	
-	<?php echo $this->element('footer') ?>
+        <?php echo $this->Session->flash(); ?>
+        <?php echo $this->fetch('content'); ?>
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<?php echo $this->element('footer') ?>
 </body>
 <?php echo $this->Js->writeBuffer(); ?>
 </html>

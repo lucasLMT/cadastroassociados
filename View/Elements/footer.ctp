@@ -1,3 +1,3 @@
 <footer>
-	<?php echo $this->fetch('script'); ?>
+    <?php echo $this->fetch('script'); ?>
 </footer>
