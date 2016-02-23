@@ -18,7 +18,7 @@
 
   //1st row for columns name
   $xls->openRow();
-  $xls->writeString("Convênio: ".$compra['Convenio']['razaoSocial']);
+  $xls->writeString("Convênio: ".$compras[0]['Convenio']['razaoSocial']);
   $xls->closeRow();
   $xls->openRow();
   $xls->writeString('Associado');
@@ -29,7 +29,7 @@
   foreach ($compras as $compra):
     $xls->openRow();
     $xls->writeString($compra['Associado']['nome']);
-    $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+    $this->Number->addFormat('BRL', array('before'=> '', 'thousands' => '.', 'decimals' => ','));
     $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );
     $xls->writeString($valor);
     $xls->closeRow();
@@ -37,7 +37,7 @@
 
   $xls->openRow();
   $xls->writeString('Total: ');
-  $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+  $this->Number->addFormat('BRL', array('before'=> '', 'thousands' => '.', 'decimals' => ','));
   $total = $this->Number->currency($total,'BRL' );
   $xls->writeNumber($total);
   $xls->closeRow();

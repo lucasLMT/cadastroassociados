@@ -26,7 +26,6 @@
 	            <thead>
 	                <tr>
 	                	<th><?php echo $this->Paginator->sort('razaoSocial', 'Convênio'); ?></th>
-						        <th><?php echo $this->Paginator->sort('matricula', 'Matrícula'); ?></th>
 						        <th><?php echo $this->Paginator->sort('percDesc', 'Per desconto'); ?></th>
 						        <th><?php echo $this->Paginator->sort('contato'); ?></th>
 						        <th class="actions"><?php echo __('Gerenciamento'); ?></th>
@@ -36,7 +35,6 @@
 					<?php foreach ($convenios as $convenio): ?>
 					<tr class="odd gradeX">
 						<td><?php echo h($convenio['Convenio']['razaoSocial']); ?>&nbsp;</td>
-						<td><?php echo h($convenio['Convenio']['matricula']); ?>&nbsp;</td>
 						<td><?php echo h($convenio['Convenio']['percDesc']); ?>&nbsp;</td>
 						<td><?php echo h($convenio['Convenio']['contato']); ?>&nbsp;</td>
 						<td class="actions">

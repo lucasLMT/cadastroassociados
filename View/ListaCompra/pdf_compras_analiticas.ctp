@@ -16,13 +16,20 @@ $pdf->Ln();
 $pdf->SetXY(82,28);
 $pdf->Cell(15,7,($date));
 $pdf->Ln(22);
+
+$pdf->AliasNbPages();
+$pdf->SetAutoPageBreak(true,4);
+//$pdf->SetY(266);
+//$pdf->SetFont('Arial','I',8);
+//$pdf->Cell(0,10,utf8_decode('Página ').$pdf->PageNo().'/{nb}',0,0,'R');
+
 // Column headings
-$header = array(utf8_decode('Descrição'), utf8_decode('Convênio'),
-                'Valor', utf8_decode('Observação'));
+$header = array(utf8_decode('Convênio'),
+                'Valor', utf8_decode('Descrição'));
 // Column widths
-$w = array(45,97,23,25);
+$w = array(100,25,65);
 // Associado
-$pdf->Cell(0,6,utf8_decode($compras[0]['Associado']['matricula']." - ".$compras[0]['Associado']['nome']),1,0,'C');
+$pdf->Cell(0,6,utf8_decode($compras[0]['Associado']['matricula']." - ".$compras[0]['Associado']['nome']),1,0,'L');
 $pdf->Ln();
 // Header
 for($i=0;$i<count($header);$i++)
@@ -38,23 +45,17 @@ $pdf->Ln();*/
 foreach($compras as $compra)
 {
   //$pdf->Cell($w[0],6,$compra['Associado']['matricula'],1,0,'C');
-  $pdf->Cell($w[0],6,utf8_decode($compra['Compra']['descricao']),1);
-  $pdf->Cell($w[1],6,utf8_decode($compra['Convenio']['razaoSocial']),1,0,'C');
-  $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+  //$pdf->Cell($w[0],6,utf8_decode($compra['Compra']['descricao']),1);  
+  $pdf->Cell($w[0],6,utf8_decode($compra['Convenio']['razaoSocial']),1,0,'L');
+  $this->Number->addFormat('BRL', array('before'=> '', 'thousands' => '.', 'decimals' => ','));
   $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );
-  $pdf->Cell($w[2],6,($valor),1,0,'C');
-  $pdf->Cell($w[3],6,utf8_decode($compra['Compra']['observacao']),1);
+  $pdf->Cell($w[1],6,($valor),1,0,'C');
+  $pdf->Cell($w[2],6,utf8_decode($compra['Compra']['descricao']),1);
   $pdf->Ln();
 }
-$this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+$this->Number->addFormat('BRL', array('before'=> '', 'thousands' => '.', 'decimals' => ','));
 $total = $this->Number->currency($total,'BRL' );
 $pdf->Cell(0,6,utf8_decode("Total: ".$total),1,0,'R');
-
-$pdf->AliasNbPages();
-$pdf->SetAutoPageBreak(true);
-$pdf->SetY(-266);
-$pdf->SetFont('Arial','I',8);
-$pdf->Cell(0,10,utf8_decode('Página ').$pdf->PageNo().'/{nb}',0,0,'R');
 
 $pdf->Output('ComprasPorAssociado.pdf','D')
 ?>

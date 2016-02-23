@@ -18,9 +18,10 @@ $pdf->Cell(15,7,($date));
 $pdf->Ln(22);
 
 // Column headings
-$header = array(utf8_decode('Matrícula'),utf8_decode('Associado'), 'Valor');
+$header = array(utf8_decode('Matrícula'),utf8_decode('Associado'), 'Valor',
+                utf8_decode('Descrição'));
 // Column widths
-$w = array(40,125,25);
+$w = array(20,100,20,50);
 //Convenio
 $pdf->Cell(0,6,utf8_decode("Convênio: ".$compras[0]['Convenio']['razaoSocial']),1,0,'C');
 $pdf->Ln();
@@ -39,20 +40,21 @@ foreach($compras as $compra)
 {
   $pdf->Cell($w[0],6,$compra['Associado']['matricula'],1,0,'C');
   $pdf->Cell($w[1],6,utf8_decode($compra['Associado']['nome']),1);
-  $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+  $this->Number->addFormat('BRL', array('before'=> '', 'thousands' => '.', 'decimals' => ','));
   $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );
   $pdf->Cell($w[2],6,$valor,1,0,'C');
+  $pdf->Cell($w[3],6,utf8_decode($compra['Compra']['descricao']),1);
   $pdf->Ln();
 }
-$this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+$this->Number->addFormat('BRL', array('before'=> '', 'thousands' => '.', 'decimals' => ','));
 $total = $this->Number->currency($total,'BRL' );
 $pdf->Cell(0,6,utf8_decode("Total: ".$total),1,0,'R');
 
 $pdf->AliasNbPages();
-$pdf->SetAutoPageBreak(true);
-$pdf->SetY(-266);
-$pdf->SetFont('Arial','I',8);
-$pdf->Cell(0,10,utf8_decode('Página ').$pdf->PageNo().'/{nb}',0,0,'R');
+$pdf->SetAutoPageBreak(true,4);
+//$pdf->SetY(-266);
+//$pdf->SetFont('Arial','I',8);
+//$pdf->Cell(0,10,utf8_decode('Página ').$pdf->PageNo().'/{nb}',0,0,'R');
 
 $pdf->Output('ConveniosAnaliticos.pdf','D');
 ?>
