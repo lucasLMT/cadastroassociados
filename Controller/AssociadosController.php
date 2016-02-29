@@ -171,29 +171,11 @@ class AssociadosController extends AppController
         $this->set(compact('aniversariantes'));
     }
 
-    /*public function sendEmail($associados, $dest = null)
+    public function todosAssociados()
     {
-        $dest = 'destinatario@gmail.com';
-        $Email = new CakeEmail('gmail');
-        $Email->to($dest);
-        $Email->subject('Aniversariantes do dia.');
-        //$Email->replyTo();
-        $Email->from('AFSEBRAE');
-        $Email->message('Test message.');
-        $Email->send('message');
-        return $this->redirect(array('action' => 'index'));
-    }*/
-
-    /*public function send_email($dest=null)
-    {
-        $Email = new CakeEmail('gmail');
-        $Email->to($dest);
-        $Email->subject('Automagically generated email');
-        $Email->replyTo('the_mail_you_want_to_receive_replies@yourdomain.com');
-        $Email->from('your_user@gmail.com');
-        $Email->send();
-        return $this->redirect(array('action' => 'index'));
-    }*/
+        $this->Associado->recursive = 0;
+        $this->set('associados', $this->Paginator->paginate());
+    }
 
     public function search()
     {

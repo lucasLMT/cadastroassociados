@@ -56,16 +56,16 @@
                     <?php echo $this->Form->input('area_id', array('label' => 'Área:', 'class' => 'form-control')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('salario', array('label' => 'Salário: (Exemplo 1234.56)', 'class' => 'form-control', 'rows' => '1')); ?>
+                    <?php echo $this->Form->input('salario', array('label' => 'Salário: (Exemplo 1234.56)', 'class' => 'form-control salario', 'rows' => '1')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('mensalidade', array('label' => 'Contribuição:', 'class' => 'form-control', 'rows' => '1')); ?>
+                    <?php echo $this->Form->input('mensalidade', array('label' => 'Contribuição:', 'class' => 'form-control mensalidade', 'rows' => '1')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('ativo_id', array('label' => 'Status:', 'class' => 'form-control')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('filho_id', array('label' => 'Pai ou Mãe:', 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('filho_id', array('label' => 'Filhos:', 'class' => 'form-control')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('mensagem', array('label' => 'Mensagem:', 'class' => 'form-control', 'rows' => '4')); ?>

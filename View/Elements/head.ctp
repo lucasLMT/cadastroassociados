@@ -35,6 +35,14 @@
             $(".date").mask("99-99-9999");
             $(".cpf").mask("999.999.999-99");
             $(".cep").mask("99.999-999");
+
+            $(".salario").blur(function (){
+                if (($(".salario").val() != "") && ($(".salario").val() != 0)) {
+                    $(".mensalidade").val($(".salario").val() * 0.09);
+                } else {
+                    $(".mensalidade").val("");
+                }
+            });
         });
     </script>
 

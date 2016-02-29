@@ -56,7 +56,7 @@ echo $this->Html->link(
                     <th><?php echo $this->Paginator->sort('nome'); ?></th>
                     <th><?php echo $this->Paginator->sort('telefone'); ?></th>
                     <th><?php echo $this->Paginator->sort('cargo_id'); ?></th>
-                    <th><?php echo $this->Paginator->sort('salario', 'Salário'); ?></th>
+                    <th><?php echo $this->Paginator->sort('area_id'); ?></th>
                     <th class="actions"><?php echo __('Gerenciamento'); ?></th>
                 </tr>
                 </thead>
@@ -67,11 +67,7 @@ echo $this->Html->link(
                         <td><?php echo h($associado['Associado']['nome']); ?>&nbsp;</td>
                         <td><?php echo h($associado['Associado']['telefone']); ?>&nbsp;</td>
                         <td><?php echo h($associado['Cargo']['nome']); ?>&nbsp;</td>
-                        <?php debug($associado['Associado']['salario']); ?>
-                        <?php $this->Number->addFormat('BRL', array('before' => 'R$', 'thousands' => '.', 'decimals' => ','));
-                        $salario = $this->Number->currency($associado['Associado']['salario'], 'BRL');
-                        ?>
-                        <td><?php echo h($salario); ?> </td>
+                        <td><?php echo h($associado['Area']['nome']); ?>&nbsp;</td>
                         <td class="actions">
                             <?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $associado['Associado']['id']),
                                 array('class' => 'btn btn-warning btn-sm', 'role' => 'button')); ?>

@@ -11,10 +11,10 @@
                 echo $this->Form->input('id');
                 ?>
                 <div class="form-group">
-                    <?php echo $this->Form->input('associado_id', array('label' => 'Nome:', 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('convenio_id', array('label' => 'Convênio:', 'class' => 'form-control')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('convenio_id', array('label' => 'Convênio:', 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('associado_id', array('label' => 'Nome:', 'class' => 'form-control')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('descricao', array('label' => 'Descrição:', 'class' => 'form-control')); ?>

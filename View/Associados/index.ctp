@@ -17,7 +17,7 @@ echo $this->Html->link(
     'Mostrar todos os associados',
     array(
         'controller' => 'Associados',
-        'action' => 'todos_associados',
+        'action' => 'todosAssociados',
         'full_base' => true
     ),
     array(
