@@ -17,6 +17,12 @@ class CargosController extends AppController
      */
     public $components = array('Paginator');
 
+    public $paginate = array(
+        'order' => array(
+            'Cargo.nome' => 'asc'
+        )
+    );
+
     /**
      * index method
      *
@@ -25,6 +31,7 @@ class CargosController extends AppController
     public function index()
     {
         $this->Cargo->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('cargos', $this->Paginator->paginate());
     }
 
@@ -54,10 +61,10 @@ class CargosController extends AppController
         if ($this->request->is('post')) {
             $this->Cargo->create();
             if ($this->Cargo->save($this->request->data)) {
-                $this->Session->setFlash(__('The cargo has been saved.'));
+                $this->Session->setFlash(__('O cargo foi salvo com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The cargo could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('O cargo não pode ser salvo, tente novamente.'));
             }
         }
     }
@@ -72,14 +79,14 @@ class CargosController extends AppController
     public function edit($id = null)
     {
         if (!$this->Cargo->exists($id)) {
-            throw new NotFoundException(__('Invalid cargo'));
+            throw new NotFoundException(__('Cargo inválido.'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Cargo->save($this->request->data)) {
-                $this->Session->setFlash(__('The cargo has been saved.'));
+                $this->Session->setFlash(__('O cargo foi atualizado com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The cargo could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('O cargo não pode ser atualizado, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Cargo.' . $this->Cargo->primaryKey => $id));
@@ -98,13 +105,13 @@ class CargosController extends AppController
     {
         $this->Cargo->id = $id;
         if (!$this->Cargo->exists()) {
-            throw new NotFoundException(__('Invalid cargo'));
+            throw new NotFoundException(__('Cargo inválido.'));
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Cargo->delete()) {
-            $this->Session->setFlash(__('The cargo has been deleted.'));
+            $this->Session->setFlash(__('O cargo foi deletado com sucesso.'));
         } else {
-            $this->Session->setFlash(__('The cargo could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('O cargo não pode ser deletado, tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }

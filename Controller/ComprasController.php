@@ -17,6 +17,12 @@ class ComprasController extends AppController
      */
     public $components = array('Paginator');
 
+    public $paginate = array(
+        'order' => array(
+            'Compra.referencia' => 'DESC'
+        )
+    );
+
     /**
      * index method
      *
@@ -25,6 +31,7 @@ class ComprasController extends AppController
     public function index()
     {
         $this->Compra->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('compras', $this->Paginator->paginate());
     }
 
@@ -65,8 +72,8 @@ class ComprasController extends AppController
                 $this->Session->setFlash(__('Não foi possível adicionar a compra. Por favor, tente novamente.'));
             }
         }
-        $convenios = $this->Compra->Convenio->find('list');
-        $associados = $this->Compra->Associado->find('list');
+        $convenios = $this->Compra->Convenio->find('list', array('order' => 'razaoSocial ASC'));
+        $associados = $this->Compra->Associado->find('list', array('order' => 'nome ASC'));
         $this->set(compact('convenios', 'associados'));
     }
 
@@ -105,8 +112,8 @@ class ComprasController extends AppController
             $this->request->data = $comprasTmp;
 
         }
-        $convenios = $this->Compra->Convenio->find('list');
-        $associados = $this->Compra->Associado->find('list');
+        $convenios = $this->Compra->Convenio->find('list', array('order' => 'razaoSocial ASC'));
+        $associados = $this->Compra->Associado->find('list', array('order' => 'nome ASC'));
         $this->set(compact('convenios', 'associados'));
     }
 

@@ -17,6 +17,11 @@ class AreasController extends AppController
      */
     public $components = array('Paginator', 'CsvView.CsvView');
 
+    public $paginate = array(
+        'order' => array(
+            'Area.nome' => 'asc'
+        )
+    );
 
     /**
      * index method
@@ -26,6 +31,7 @@ class AreasController extends AppController
     public function index()
     {
         $this->Area->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('areas', $this->Paginator->paginate());
     }
 
@@ -39,7 +45,7 @@ class AreasController extends AppController
     public function view($id = null)
     {
         if (!$this->Area->exists($id)) {
-            throw new NotFoundException(__('Invalid area'));
+            throw new NotFoundException(__('Área inválida'));
         }
         $options = array('conditions' => array('Area.' . $this->Area->primaryKey => $id));
         $this->set('area', $this->Area->find('first', $options));
@@ -55,10 +61,10 @@ class AreasController extends AppController
         if ($this->request->is('post')) {
             $this->Area->create();
             if ($this->Area->save($this->request->data)) {
-                $this->Session->setFlash(__('The area has been saved.'));
+                $this->Session->setFlash(__('A área foi salva com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The area could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('A nova área não pode ser salva, tente novamente.'));
             }
         }
     }
@@ -77,10 +83,10 @@ class AreasController extends AppController
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Area->save($this->request->data)) {
-                $this->Session->setFlash(__('The area has been saved.'));
+                $this->Session->setFlash(__('A área foi atualizada com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The area could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('A área não pode ser salva, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Area.' . $this->Area->primaryKey => $id));
@@ -103,9 +109,9 @@ class AreasController extends AppController
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Area->delete()) {
-            $this->Session->setFlash(__('The area has been deleted.'));
+            $this->Session->setFlash(__('A área foi deletada com sucesso.'));
         } else {
-            $this->Session->setFlash(__('The area could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('A área não pode ser deletada, tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }

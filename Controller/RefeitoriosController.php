@@ -17,6 +17,12 @@ class RefeitoriosController extends AppController
      */
     public $components = array('Paginator');
 
+    public $paginate = array(
+        'order' => array(
+            'Refeitorio.data' => 'DESC'
+        )
+    );
+
     /**
      * index method
      *
@@ -25,6 +31,7 @@ class RefeitoriosController extends AppController
     public function index()
     {
         $this->Refeitorio->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('refeitorios', $this->Paginator->paginate());
     }
 
@@ -60,7 +67,7 @@ class RefeitoriosController extends AppController
                 $this->Session->setFlash(__('The refeitorio could not be saved. Please, try again.'));
             }
         }
-        $associados = $this->Refeitorio->Associado->find('list');
+        $associados = $this->Refeitorio->Associado->find('list', array('order' => 'nome ASC'));
         $this->set(compact('associados'));
     }
 
@@ -87,7 +94,7 @@ class RefeitoriosController extends AppController
             $options = array('conditions' => array('Refeitorio.' . $this->Refeitorio->primaryKey => $id));
             $this->request->data = $this->Refeitorio->find('first', $options);
         }
-        $associados = $this->Refeitorio->Associado->find('list');
+        $associados = $this->Refeitorio->Associado->find('list', array('order' => 'nome ASC'));
         $this->set(compact('associados'));
     }
 

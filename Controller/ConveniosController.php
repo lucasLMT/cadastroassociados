@@ -17,6 +17,12 @@ class ConveniosController extends AppController
      */
     public $components = array('Paginator');
 
+    public $paginate = array(
+        'order' => array(
+            'Convenio.razaoSocial' => 'asc'
+        )
+    );
+
     /**
      * index method
      *
@@ -25,6 +31,7 @@ class ConveniosController extends AppController
     public function index()
     {
         $this->Convenio->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('convenios', $this->Paginator->paginate());
     }
 
@@ -89,8 +96,6 @@ class ConveniosController extends AppController
             $options = array('conditions' => array('Convenio.' . $this->Convenio->primaryKey => $id));
             $this->request->data = $this->Convenio->find('first', $options);
         }
-        $grupos = $this->Convenio->Grupo->find('list');
-        $this->set(compact('grupos'));
     }
 
     /**

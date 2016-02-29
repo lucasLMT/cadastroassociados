@@ -66,8 +66,8 @@ class ListaCompraController extends AppController
                 $data['ListaCompra']['todos'],
                 $referencia));
         }
-        $associados = $this->ListaCompra->Associado->find('list');
-        $periodos = $this->ListaCompra->Periodo->find('list');
+        $associados = $this->ListaCompra->Associado->find('list', array('order' => 'nome ASC'));
+        $periodos = $this->ListaCompra->Periodo->find('list', array('order' => 'id DESC'));
         $modos = $model->getModeList();
         $this->set(compact('associados', 'periodos', 'modos'));
     }
@@ -113,8 +113,8 @@ class ListaCompraController extends AppController
                 $data['ListaCompra']['todos'],
                 $referencia));
         }
-        $convenios = $this->ListaCompra->Convenio->find('list');
-        $periodos = $this->ListaCompra->Periodo->find('list');
+        $convenios = $this->ListaCompra->Convenio->find('list', array('order' => 'razaoSocial ASC'));
+        $periodos = $this->ListaCompra->Periodo->find('list', array('order' => 'id DESC'));
         $modos = $model->getModeList();
         $this->set(compact('convenios', 'periodos', 'modos'));
     }

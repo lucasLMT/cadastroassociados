@@ -34,10 +34,4 @@ class Compra extends AppModel
         )
     );
 
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-
 }

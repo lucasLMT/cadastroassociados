@@ -17,6 +17,12 @@ class SaudePlanosController extends AppController
      */
     public $components = array('Paginator');
 
+    public $paginate = array(
+        'order' => array(
+            'SaudePlano.nome' => 'asc'
+        )
+    );
+
     /**
      * index method
      *
@@ -25,6 +31,7 @@ class SaudePlanosController extends AppController
     public function index()
     {
         $this->SaudePlano->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('saudePlanos', $this->Paginator->paginate());
     }
 

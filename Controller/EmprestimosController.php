@@ -17,6 +17,12 @@ class EmprestimosController extends AppController
      */
     public $components = array('Paginator');
 
+    public $paginate = array(
+        'order' => array(
+            'Emprestimo.titulo' => 'asc'
+        )
+    );
+
     /**
      * index method
      *
@@ -25,6 +31,7 @@ class EmprestimosController extends AppController
     public function index()
     {
         $this->Emprestimo->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('emprestimos', $this->Paginator->paginate());
     }
 
@@ -60,7 +67,7 @@ class EmprestimosController extends AppController
                 $this->Session->setFlash(__('The emprestimo could not be saved. Please, try again.'));
             }
         }
-        $associados = $this->Emprestimo->Associado->find('list');
+        $associados = $this->Emprestimo->Associado->find('list', array('order' => 'nome ASC'));
         $this->set(compact('associados'));
     }
 
@@ -87,7 +94,7 @@ class EmprestimosController extends AppController
             $options = array('conditions' => array('Emprestimo.' . $this->Emprestimo->primaryKey => $id));
             $this->request->data = $this->Emprestimo->find('first', $options);
         }
-        $associados = $this->Emprestimo->Associado->find('list');
+        $associados = $this->Emprestimo->Associado->find('list', array('order' => 'nome ASC'));
         $this->set(compact('associados'));
     }
 

@@ -20,7 +20,11 @@ class AssociadosController extends AppController
 
     public $paginate = array(
         // other keys here.
-        'maxLimit' => 1000
+        //'limit' => 30,
+        //'maxLimit' => 1000,
+        'order' => array(
+            'Associado.nome' => 'asc'
+        )
     );
 
     /**
@@ -31,6 +35,7 @@ class AssociadosController extends AppController
     public function index()
     {
         $this->Associado->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('associados', $this->Paginator->paginate());
     }
 
@@ -79,8 +84,8 @@ class AssociadosController extends AppController
                 $this->Session->setFlash(__('Não foi possível adicionar o associado. Por favor, Tente novamente.'));
             }
         }
-        $cargos = $this->Associado->Cargo->find('list');
-        $areas = $this->Associado->Area->find('list');
+        $cargos = $this->Associado->Cargo->find('list', array('order' => 'nome ASC'));
+        $areas = $this->Associado->Area->find('list', array('order' => 'nome ASC'));
         $ativos = $model->getAtivo();
         $sexos = $model->getSexo();
         $estadocivils = $model->getEstadocivil();
@@ -132,8 +137,8 @@ class AssociadosController extends AppController
 
             $this->request->data = $associadosTmp;
         }
-        $cargos = $this->Associado->Cargo->find('list');
-        $areas = $this->Associado->Area->find('list');
+        $cargos = $this->Associado->Cargo->find('list', array('order' => 'nome ASC'));
+        $areas = $this->Associado->Area->find('list', array('order' => 'nome ASC'));
         $ativos = $model->getAtivo();
         $sexos = $model->getSexo();
         $estadocivils = $model->getEstadocivil();
@@ -174,6 +179,7 @@ class AssociadosController extends AppController
     public function todosAssociados()
     {
         $this->Associado->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('associados', $this->Paginator->paginate());
     }
 

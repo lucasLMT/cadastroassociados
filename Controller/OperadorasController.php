@@ -17,6 +17,12 @@ class OperadorasController extends AppController
      */
     public $components = array('Paginator');
 
+    public $paginate = array(
+        'order' => array(
+            'Operadora.nome' => 'asc'
+        )
+    );
+
     /**
      * index method
      *
@@ -25,6 +31,7 @@ class OperadorasController extends AppController
     public function index()
     {
         $this->Operadora->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('operadoras', $this->Paginator->paginate());
     }
 

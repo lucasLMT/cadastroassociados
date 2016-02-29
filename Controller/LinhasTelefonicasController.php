@@ -17,6 +17,12 @@ class LinhasTelefonicasController extends AppController
      */
     public $components = array('Paginator');
 
+    public $paginate = array(
+        'order' => array(
+            'LinhasTelefonica.associado_id' => 'asc'
+        )
+    );
+
     /**
      * index method
      *
@@ -25,6 +31,7 @@ class LinhasTelefonicasController extends AppController
     public function index()
     {
         $this->LinhasTelefonica->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('linhasTelefonicas', $this->Paginator->paginate());
     }
 
@@ -67,8 +74,8 @@ class LinhasTelefonicasController extends AppController
                 $this->Session->setFlash(__('The linhas telefonica could not be saved. Please, try again.'));
             }
         }
-        $associados = $this->LinhasTelefonica->Associado->find('list');
-        $operadoras = $this->LinhasTelefonica->Operadora->find('list');
+        $associados = $this->LinhasTelefonica->Associado->find('list', array('order' => 'nome ASC'));
+        $operadoras = $this->LinhasTelefonica->Operadora->find('list', array('order' => 'nome ASC'));
         $this->set(compact('associados', 'operadoras'));
     }
 
@@ -109,8 +116,9 @@ class LinhasTelefonicasController extends AppController
 
             $this->request->data = $linhasTmp;
         }
-        $associados = $this->LinhasTelefonica->Associado->find('list');
-        $this->set(compact('associados'));
+        $associados = $this->LinhasTelefonica->Associado->find('list', array('order' => 'nome ASC'));
+        $operadoras = $this->LinhasTelefonica->Operadora->find('list', array('order' => 'nome ASC'));
+        $this->set(compact('associados', 'operadoras'));
     }
 
     /**
@@ -162,7 +170,7 @@ class LinhasTelefonicasController extends AppController
                 $data['LinhasTelefonica']['modo_id'],
                 $data['LinhasTelefonica']['numero']));
         }
-        $associados = $this->LinhasTelefonica->Associado->find('list');
+        $associados = $this->LinhasTelefonica->Associado->find('list', array('order' => 'nome ASC'));
         $modos = $model->getModeList();
         $this->set(compact('associados', 'modos'));
     }
