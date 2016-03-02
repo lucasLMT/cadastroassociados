@@ -162,8 +162,7 @@ if ($modo == 1) {
             'controller' => 'ListaCompra',
             'action' => 'viewpdf_convenios_analiticos',
             'full_base' => true,
-            $data_inicio,
-            $data_fim,
+            $periodo,
             $convenio,
             $referencia
         ),
@@ -179,8 +178,7 @@ if ($modo == 1) {
             'controller' => 'ListaCompra',
             'action' => 'viewpdf_convenios_sinteticos',
             'full_base' => true,
-            $data_inicio,
-            $data_fim,
+            $periodo,
             $convenio,
             $referencia
         ),
@@ -198,8 +196,7 @@ if ($modo == 1) {
         array(
             'controller' => 'ListaCompra',
             'action' => 'export_convenios_analiticos',
-            $data_inicio,
-            $data_fim,
+            $periodo,
             $convenio
         ),
         array(
@@ -213,8 +210,7 @@ if ($modo == 1) {
         array(
             'controller' => 'ListaCompra',
             'action' => 'export_convenios_sinteticos',
-            $data_inicio,
-            $data_fim,
+            $periodo,
             $convenio
         ),
         array(

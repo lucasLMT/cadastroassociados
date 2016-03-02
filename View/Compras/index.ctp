@@ -30,6 +30,7 @@ echo $this->Html->link(
                     <th><?php echo $this->Paginator->sort('convenio_id', 'Convênio'); ?></th>
                     <th><?php echo $this->Paginator->sort('descricao', 'Descrição'); ?></th>
                     <th><?php echo $this->Paginator->sort('referencia', 'Referência'); ?></th>
+                    <th><?php echo $this->Paginator->sort('periodo', 'Período')?></th>
                     <th><?php echo $this->Paginator->sort('valor'); ?></th>
                     <th class="actions"><?php echo __('Gerenciamento'); ?></th>
                 </tr>
@@ -42,6 +43,7 @@ echo $this->Html->link(
                         <td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>
                         <td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
                         <td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+                        <td><?php echo h($compra['Periodo']['referencia']); ?>&nbsp;</td>
                         <?php $this->Number->addFormat('BRL', array('before' => 'R$', 'thousands' => '.', 'decimals' => ','));
                         $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
                         ?>

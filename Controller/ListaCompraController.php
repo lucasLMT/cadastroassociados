@@ -26,23 +26,23 @@ class ListaCompraController extends AppController
      *
      * @return void
      */
-    public function listaAssociado($data_inicio, $data_fim, $associado,
+    public function listaAssociado($periodo, $associado,
                                    $modo, $todos, $referencia)
     {
         if (($modo == 1) && !$todos) {
-            $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-                'Compra.referencia <= ' => $data_fim,
+            $options = array('conditions' => array(
+                'Compra.periodo_id' => $periodo,
                 'Compra.associado_id' => $associado),
                 'order' => array('Compra.referencia'));
         } else {
-            $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-                'Compra.referencia <= ' => $data_fim),
+            $options = array('conditions' => array(
+                'Compra.periodo_id' => $periodo),
                 'order' => array('Compra.associado_id'));
         }
         $compras = $this->ListaCompra->Compra->find('all', $options);
         $total = 0;
         $referencia = $referencia;
-        $this->set(compact('compras', 'data_inicio', 'data_fim', 'associado',
+        $this->set(compact('compras', 'periodo', 'associado',
             'total', 'modo', 'todos', 'referencia'));
     }
 
@@ -56,11 +56,10 @@ class ListaCompraController extends AppController
             $date_conditions = array('conditions' => array('Periodo.id' => $data['ListaCompra']['periodo_id']));
             $date = $this->ListaCompra->Periodo->find('all', $date_conditions);
 
-            $data_inicio = $date[0]['Periodo']['data_inicial'];
-            $data_fim = $date[0]['Periodo']['data_final'];
             $referencia = $date[0]['Periodo']['referencia'];
 
-            $this->redirect(array('controller' => 'ListaCompra', 'action' => 'listaAssociado', $data_inicio, $data_fim,
+            $this->redirect(array('controller' => 'ListaCompra', 'action' => 'listaAssociado',
+                $data['ListaCompra']['periodo_id'],
                 $data['ListaCompra']['associado_id'],
                 $data['ListaCompra']['modo_id'],
                 $data['ListaCompra']['todos'],
@@ -72,29 +71,26 @@ class ListaCompraController extends AppController
         $this->set(compact('associados', 'periodos', 'modos'));
     }
 
-    public function listaConvenio($data_inicio, $data_fim, $convenio, $modo,
+    public function listaConvenio($periodo, $convenio, $modo,
                                   $todos, $referencia)
     {
-
         if (($modo == 1) && !$todos) {
-            $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-                'Compra.referencia <= ' => $data_fim,
+            $options = array('conditions' => array(
+                'Compra.periodo_id' => $periodo,
                 'Compra.convenio_id' => $convenio));
         } else {
-            $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-                'Compra.referencia <= ' => $data_fim),
+            $options = array('conditions' => array(
+                'Compra.periodo_id' => $periodo),
                 'order' => array('Compra.convenio_id'));
         }
         $compras = $this->ListaCompra->Compra->find('all', $options);
         $total = 0;
-        $referencia = $referencia;
-        $this->set(compact('compras', 'data_inicio', 'data_fim', 'convenio',
+        $this->set(compact('compras', 'periodo', 'convenio',
             'total', 'modo', 'todos', 'referencia'));
     }
 
     public function formConvenio($id = null)
     {
-
         $model = ClassRegistry::init('ListaCompra');
 
         if ($this->request->is('post')) {
@@ -103,11 +99,10 @@ class ListaCompraController extends AppController
             $date_conditions = array('conditions' => array('Periodo.id' => $data['ListaCompra']['periodo_id']));
             $date = $this->ListaCompra->Periodo->find('all', $date_conditions);
 
-            $data_inicio = $date[0]['Periodo']['data_inicial'];
-            $data_fim = $date[0]['Periodo']['data_final'];
             $referencia = $date[0]['Periodo']['referencia'];
 
-            $this->redirect(array('controller' => 'ListaCompra', 'action' => 'listaConvenio', $data_inicio, $data_fim,
+            $this->redirect(array('controller' => 'ListaCompra', 'action' => 'listaConvenio',
+                $data['ListaCompra']['periodo_id'],
                 $data['ListaCompra']['convenio_id'],
                 $data['ListaCompra']['modo_id'],
                 $data['ListaCompra']['todos'],
@@ -119,50 +114,38 @@ class ListaCompraController extends AppController
         $this->set(compact('convenios', 'periodos', 'modos'));
     }
 
-    public function listaDevedores($data_inicio, $data_fim)
+    public function listaDevedores($periodo)
     {
-
-        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim),
+        $options = array('conditions' => array(
+            'Compra.periodo_id' => $periodo),
             'order' => array('Compra.associado_id'));
 
         $compras = $this->ListaCompra->Compra->find('all', $options);
         $total = 0;
-        $this->set(compact('compras', 'data_inicio', 'data_fim', 'total'));
-
+        $this->set(compact('compras', 'periodo', 'total'));
     }
 
     public function formDevedores()
     {
-
         $model = ClassRegistry::init('ListaCompra');
 
         if ($this->request->is('post')) {
-
             $data = $this->request->data;
-            $date_conditions = array('conditions' => array('Periodo.id' => $data['ListaCompra']['periodo_id']));
-            $date = $this->ListaCompra->Periodo->find('all', $date_conditions);
-
-            $data_inicio = $date[0]['Periodo']['data_inicial'];
-            $data_fim = $date[0]['Periodo']['data_final'];
-
-            $this->redirect(array('controller' => 'ListaCompra', 'action' => 'listaDevedores', $data_inicio, $data_fim));
-
+            $this->redirect(array('controller' => 'ListaCompra', 'action' => 'listaDevedores', $data['ListaCompra']['periodo_id']));
         }
         $periodos = $this->ListaCompra->Periodo->find('list');
         $this->set(compact('periodos'));
     }
 
-    public function viewpdf_compras_todas_analiticas($data_inicio, $data_fim, $associado, $referencia)
+    public function viewpdf_compras_todas_analiticas($periodo, $associado, $referencia)
     {
 
-        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim),
+        $options = array('conditions' => array(
+            'Compra.periodo_id' => $periodo),
             'order' => array('Compra.associado_id'));
 
         $compras = $this->ListaCompra->Compra->find('all', $options);
         $total = 0;
-        $referencia = $referencia;
 
         //Import /app/Vendor/Fpdf
         App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
@@ -177,19 +160,17 @@ class ListaCompraController extends AppController
         $this->render('pdf_compras_todas_analiticas');
     }
 
-    public function viewpdf_compras_analiticas($data_inicio, $data_fim, $associado, $referencia)
+    public function viewpdf_compras_analiticas($periodo, $associado, $referencia)
     {
         $total = 0;
-        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim,
+        $options = array('conditions' => array(
+            'Compra.periodo_id' => $periodo,
             'Compra.associado_id' => $associado));
         $compras = $this->ListaCompra->Compra->find('all', $options);
 
         foreach ($compras as $compra):
             $total += (float)$compra['Compra']['valor'];
         endforeach;
-        $referencia = $referencia;
-
 
         //Import /app/Vendor/Fpdf
         App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
@@ -203,13 +184,12 @@ class ListaCompraController extends AppController
         $this->render('pdf_compras_analiticas');
     }
 
-    public function viewpdf_compras_sinteticas($data_inicio, $data_fim, $associado, $referencia)
+    public function viewpdf_compras_sinteticas($periodo, $associado, $referencia)
     {
-        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim),
+        $options = array('conditions' => array(
+            'Compra.periodo_id' => $periodo),
             'order' => array('Compra.associado_id'));
         $compras = $this->ListaCompra->Compra->find('all', $options);
-        $referencia = $referencia;
 
         //Import /app/Vendor/Fpdf
         App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
@@ -223,14 +203,13 @@ class ListaCompraController extends AppController
         $this->render('pdf_compras_sinteticas');
     }
 
-    public function viewpdf_convenios_analiticos($data_inicio, $data_fim, $convenio, $referencia)
+    public function viewpdf_convenios_analiticos($periodo, $convenio, $referencia)
     {
         $total = 0;
-        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim,
+        $options = array('conditions' => array(
+            'Compra.periodo_id' => $periodo,
             'Compra.convenio_id' => $convenio));
         $compras = $this->ListaCompra->Compra->find('all', $options);
-        $referencia = $referencia;
 
         foreach ($compras as $compra):
             $total += (float)$compra['Compra']['valor'];
@@ -248,13 +227,12 @@ class ListaCompraController extends AppController
         $this->render('pdf_convenios_analiticos');
     }
 
-    public function viewpdf_convenios_sinteticos($data_inicio, $data_fim, $convenio, $referencia)
+    public function viewpdf_convenios_sinteticos($periodo, $convenio, $referencia)
     {
-        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim),
+        $options = array('conditions' => array(
+            'Compra.periodo_id ' => $periodo),
             'order' => array('Compra.convenio_id'));
         $compras = $this->ListaCompra->Compra->find('all', $options);
-        $referencia = $referencia;
 
         //Import /app/Vendor/Fpdf
         App::import('Vendor', 'Fpdf', array('file' => 'fpdf/fpdf.php'));
@@ -268,24 +246,24 @@ class ListaCompraController extends AppController
         $this->render('pdf_convenios_sinteticos');
     }
 
-    public function export_compras_todas_analiticas($data_inicio, $data_fim, $associado)
+    public function export_compras_todas_analiticas($periodo, $associado)
     {
-        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim),
+        $options = array('conditions' => array(
+            'Compra.periodo_id' => $periodo),
             'order' => array('Compra.associado_id'));
 
         $compras = $this->ListaCompra->Compra->find('all', $options);
         $total = 0;
 
         //$data = $this->Model->find('all');
-        $this->set(compact('compras', 'data_inicio', 'data_fim', 'associado', 'total'));
+        $this->set(compact('compras', 'periodo', 'associado', 'total'));
     }
 
-    public function export_compras_analiticas($data_inicio, $data_fim, $associado)
+    public function export_compras_analiticas($periodo, $associado)
     {
         $total = 0;
-        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim,
+        $options = array('conditions' => array(
+            'Compra.periodo_id' => $periodo,
             'Compra.associado_id' => $associado));
         $compras = $this->ListaCompra->Compra->find('all', $options);
 
@@ -297,10 +275,10 @@ class ListaCompraController extends AppController
         $this->set(compact('compras', 'total'));
     }
 
-    public function export_compras_sinteticas($data_inicio, $data_fim, $associado)
+    public function export_compras_sinteticas($periodo, $associado)
     {
-        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim),
+        $options = array('conditions' => array(
+            'Compra.periodo_id' => $periodo),
             'order' => array('Compra.associado_id'));
         $compras = $this->ListaCompra->Compra->find('all', $options);
 
@@ -308,11 +286,11 @@ class ListaCompraController extends AppController
         $this->set(compact('compras'));
     }
 
-    public function export_convenios_analiticos($data_inicio, $data_fim, $convenio)
+    public function export_convenios_analiticos($periodo, $convenio)
     {
         $total = 0;
-        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim,
+        $options = array('conditions' => array(
+            'Compra.periodo_id' => $periodo,
             'Compra.convenio_id' => $convenio));
         $compras = $this->ListaCompra->Compra->find('all', $options);
 
@@ -324,10 +302,10 @@ class ListaCompraController extends AppController
         $this->set(compact('compras', 'total'));
     }
 
-    public function export_convenios_sinteticos($data_inicio, $data_fim, $convenio)
+    public function export_convenios_sinteticos($periodo, $convenio)
     {
-        $options = array('conditions' => array('Compra.referencia >= ' => $data_inicio,
-            'Compra.referencia <= ' => $data_fim),
+        $options = array('conditions' => array(
+            'Compra.periodo_id' => $periodo),
             'order' => array('Compra.convenio_id'));
         $compras = $this->ListaCompra->Compra->find('all', $options);
 

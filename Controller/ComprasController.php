@@ -74,7 +74,8 @@ class ComprasController extends AppController
         }
         $convenios = $this->Compra->Convenio->find('list', array('order' => 'razaoSocial ASC'));
         $associados = $this->Compra->Associado->find('list', array('order' => 'nome ASC'));
-        $this->set(compact('convenios', 'associados'));
+        $periodos = $this->Compra->Periodo->find('list');
+        $this->set(compact('convenios', 'associados', 'periodos'));
     }
 
     /**
@@ -114,7 +115,8 @@ class ComprasController extends AppController
         }
         $convenios = $this->Compra->Convenio->find('list', array('order' => 'razaoSocial ASC'));
         $associados = $this->Compra->Associado->find('list', array('order' => 'nome ASC'));
-        $this->set(compact('convenios', 'associados'));
+        $periodos = $this->Compra->Periodo->find('list');
+        $this->set(compact('convenios', 'associados', 'periodos'));
     }
 
     /**

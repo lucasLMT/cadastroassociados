@@ -65,8 +65,7 @@ echo $this->Html->link(
         'controller' => 'ListaCompra',
         'action' => 'viewpdf',
         'full_base' => true,
-        $data_inicio,
-        $data_fim
+        $periodo
     ),
     array(
         'class' => 'btn btn-success',
@@ -80,8 +79,7 @@ echo $this->Html->link(
     array(
         'controller' => 'ListaCompra',
         'action' => 'export',
-        $data_inicio,
-        $data_fim
+        $periodo
     ),
     array(
         'class' => 'btn btn-info',

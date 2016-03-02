@@ -31,6 +31,10 @@ class Compra extends AppModel
             'conditions' => '',
             'fields' => '',
             'order' => ''
+        ),
+        'Periodo' => array(
+            'className' => 'Periodo',
+            'foreignKey' => 'periodo_id'
         )
     );
 

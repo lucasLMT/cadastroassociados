@@ -171,8 +171,7 @@ if (($modo == 1) && !$todos) {
             'controller' => 'ListaCompra',
             'action' => 'viewpdf_compras_analiticas',
             'full_base' => true,
-            $data_inicio,
-            $data_fim,
+            $periodo,
             $associado,
             $referencia
         ),
@@ -188,8 +187,7 @@ if (($modo == 1) && !$todos) {
             'controller' => 'ListaCompra',
             'action' => 'viewpdf_compras_sinteticas',
             'full_base' => true,
-            $data_inicio,
-            $data_fim,
+            $periodo,
             $associado,
             $referencia
         ),
@@ -205,8 +203,7 @@ if (($modo == 1) && !$todos) {
             'controller' => 'ListaCompra',
             'action' => 'viewpdf_compras_todas_analiticas',
             'full_base' => true,
-            $data_inicio,
-            $data_fim,
+            $periodo,
             $associado,
             $referencia
         ),
@@ -224,8 +221,7 @@ if (($modo == 1) && !$todos) {
         array(
             'controller' => 'ListaCompra',
             'action' => 'export_compras_analiticas',
-            $data_inicio,
-            $data_fim,
+            $periodo,
             $associado
         ),
         array(
@@ -239,8 +235,7 @@ if (($modo == 1) && !$todos) {
         array(
             'controller' => 'ListaCompra',
             'action' => 'export_compras_sinteticas',
-            $data_inicio,
-            $data_fim,
+            $periodo,
             $associado
         ),
         array(
@@ -254,8 +249,7 @@ if (($modo == 1) && !$todos) {
         array(
             'controller' => 'ListaCompra',
             'action' => 'export_compras_todas_analiticas',
-            $data_inicio,
-            $data_fim,
+            $periodo,
             $associado
         ),
         array(
