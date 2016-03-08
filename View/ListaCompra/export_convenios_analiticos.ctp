@@ -29,16 +29,12 @@ $xls->closeRow();
 foreach ($compras as $compra):
     $xls->openRow();
     $xls->writeString($compra['Associado']['nome']);
-    $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-    $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
-    $xls->writeString($valor);
+    $xls->writeString($compra['Compra']['valor']);
     $xls->closeRow();
 endforeach;
 
 $xls->openRow();
 $xls->writeString('Total: ');
-$this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-$total = $this->Number->currency($total, 'BRL');
 $xls->writeNumber($total);
 $xls->closeRow();
 

@@ -41,12 +41,8 @@ echo $this->Html->link(
                         <td><?php echo h($refeitorio['Refeitorio']['data']); ?>&nbsp;</td>
                         <td><?php echo h($refeitorio['Refeitorio']['qtd_associado']); ?>&nbsp;</td>
                         <td><?php echo h($refeitorio['Refeitorio']['qtd_convidado']); ?>&nbsp;</td>
-                        <?php $this->Number->addFormat('BRL', array('before' => 'R$', 'thousands' => '.', 'decimals' => ','));
-                        $preco_asc = $this->Number->currency($refeitorio['Refeitorio']['preco_asc'], 'BRL');
-                        $preco_conv = $this->Number->currency($refeitorio['Refeitorio']['preco_conv'], 'BRL');
-                        ?>
-                        <td><?php echo h($preco_asc); ?>&nbsp;</td>
-                        <td><?php echo h($preco_conv); ?>&nbsp;</td>
+                        <td><?php echo h($refeitorio['Refeitorio']['preco_asc']); ?>&nbsp;</td>
+                        <td><?php echo h($refeitorio['Refeitorio']['preco_conv']); ?>&nbsp;</td>
                         <td class="actions">
                             <?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $refeitorio['Refeitorio']['id']),
                                 array('class' => 'btn btn-warning btn-sm', 'role' => 'button')); ?>

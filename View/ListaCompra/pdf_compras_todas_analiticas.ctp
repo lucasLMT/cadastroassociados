@@ -52,9 +52,7 @@ foreach ($compras as $compra) {
             //$pdf->Cell($w[0],7,$compra['Associado']['matricula'],1,0,'C');
             //$pdf->Cell($w[0],6,utf8_decode($compra['Compra']['descricao']),1);
             $pdf->Cell($w[0], 6, utf8_decode($compra['Convenio']['razaoSocial']), 1);
-            $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-            $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
-            $pdf->Cell($w[1], 6, ($valor), 1, 0, 'C');
+            $pdf->Cell($w[1], 6, ($compra['Compra']['valor']), 1, 0, 'C');
             $pdf->Cell($w[2], 6, utf8_decode($compra['Compra']['descricao']), 1);
             $pdf->Ln();
             $total += (float)$compra['Compra']['valor'];
@@ -63,9 +61,7 @@ foreach ($compras as $compra) {
             //$pdf->Cell($w[0],7,$compra['Associado']['matricula'],1,0,'C');
             //$pdf->Cell($w[0],6,utf8_decode($compra['Compra']['descricao']),1);
             $pdf->Cell($w[0], 6, utf8_decode($compra['Convenio']['razaoSocial']), 1);
-            $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-            $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
-            $pdf->Cell($w[1], 6, ($valor), 1, 0, 'C');
+            $pdf->Cell($w[1], 6, ($compra['Compra']['valor']), 1, 0, 'C');
             $pdf->Cell($w[2], 6, utf8_decode($compra['Compra']['descricao']), 1);
             $pdf->Ln();
             $total += (float)$compra['Compra']['valor'];
@@ -74,21 +70,15 @@ foreach ($compras as $compra) {
             //$pdf->Cell($w[0],7,$compra['Associado']['matricula'],1,0,'C');
             //$pdf->Cell($w[0],6,utf8_decode($compra['Compra']['descricao']),1);
             $pdf->Cell($w[0], 6, utf8_decode($compra['Convenio']['razaoSocial']), 1);
-            $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-            $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
-            $pdf->Cell($w[1], 6, ($valor), 1, 0, 'C');
+            $pdf->Cell($w[1], 6, ($compra['Compra']['valor']), 1, 0, 'C');
             $pdf->Cell($w[2], 6, utf8_decode($compra['Compra']['descricao']), 1);
             $pdf->Ln();
             $total += (float)$compra['Compra']['valor'];
-            $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-            $total = $this->Number->currency($total, 'BRL');
             $pdf->Cell(0, 6, utf8_decode("Total: " . $total), 1, 0, 'R');
             $pdf->Ln();
         };
     };
     if ($assoc_tmp <> $compra['Associado']['nome']) {
-        $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-        $total = $this->Number->currency($total, 'BRL');
         $pdf->Cell(0, 6, utf8_decode("Total: " . $total), 1, 0, 'R');
         $pdf->Ln();
         $assoc_tmp = $compra['Associado']['nome'];
@@ -102,16 +92,12 @@ foreach ($compras as $compra) {
         //$pdf->Cell($w[0],7,$compra['Associado']['matricula'],1,0,'C');
         //$pdf->Cell($w[0],6,utf8_decode($compra['Compra']['descricao']),1);
         $pdf->Cell($w[0], 6, utf8_decode($compra['Convenio']['razaoSocial']), 1);
-        $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-        $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
-        $pdf->Cell($w[1], 6, ($valor), 1, 0, 'C');
+        $pdf->Cell($w[1], 6, ($compra['Compra']['valor']), 1, 0, 'C');
         $pdf->Cell($w[2], 6, utf8_decode($compra['Compra']['descricao']), 1);
         $pdf->Ln();
         $total += (float)$compra['Compra']['valor'];
 
-        if ($last_iteration) {
-            $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-            $total = $this->Number->currency($total, 'BRL');
+        if ($last_iteration) {            
             $pdf->Cell(0, 6, utf8_decode("Total: " . $total), 1, 0, 'R');
             $pdf->Ln();
         };

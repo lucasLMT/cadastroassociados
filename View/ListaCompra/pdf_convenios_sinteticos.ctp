@@ -42,16 +42,12 @@ foreach ($compras as $compra):
             $total += $compra['Compra']['valor'];
 
         $pdf->Cell($w[0], 6, utf8_decode($convenio_tmp), 1);
-        $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-        $total = $this->Number->currency($total, 'BRL');
         $pdf->Cell($w[1], 6, ($total), 1, 0, 'C');
         $pdf->Ln();
 
         $total = $compra['Compra']['valor'] + 0;
         if (($convenio_tmp <> $compra['Convenio']['razaoSocial']) && ($count == $i)) {
-            $pdf->Cell($w[0], 6, utf8_decode($compra['Convenio']['razaoSocial']), 1);
-            $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-            $total = $this->Number->currency($total, 'BRL');
+            $pdf->Cell($w[0], 6, utf8_decode($compra['Convenio']['razaoSocial']), 1);            
             $pdf->Cell($w[1], 6, ($total), 1, 0, 'C');
             $pdf->Ln();
         };

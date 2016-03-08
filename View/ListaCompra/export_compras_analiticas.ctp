@@ -21,7 +21,6 @@ $xls->openRow();
 $xls->writeString($compras[0]['Associado']['matricula'] . " - " . $compras[0]['Associado']['nome']);
 $xls->closeRow();
 $xls->openRow();
-//$xls->writeString('Matrícula');
 $xls->writeString('Convênio');
 $xls->writeString('Valor');
 $xls->writeString('Descrição');
@@ -31,11 +30,8 @@ $xls->closeRow();
 foreach ($compras as $compra):
 
     $xls->openRow();
-    //$xls->writeString($compra['Associado']['matricula']);
     $xls->writeString($compra['Convenio']['razaoSocial']);
-    $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-    $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
-    $xls->writeString($valor);
+    $xls->writeString($compra['Compra']['valor']);
     $xls->writeString($compra['Compra']['descricao']);
     $xls->closeRow();
 
@@ -43,8 +39,6 @@ endforeach;
 
 $xls->openRow();
 $xls->writeString('Total: ');
-$this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-$total = $this->Number->currency($total, 'BRL');
 $xls->writeNumber($total);
 $xls->closeRow();
 

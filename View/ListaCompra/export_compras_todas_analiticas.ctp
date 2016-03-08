@@ -36,9 +36,7 @@ foreach ($compras as $compra) {
             $xls->openRow();
             $xls->writeString($compra['Associado']['matricula']);
             $xls->writeString($compra['Convenio']['nomeDoGrupo']);
-            $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-            $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
-            $xls->writeString($valor);
+            $xls->writeString($compra['Compra']['valor']);
             $xls->writeString($compra['Compra']['descricao']);
             $xls->closeRow();
             $total += (float)$compra['Compra']['valor'];
@@ -47,9 +45,7 @@ foreach ($compras as $compra) {
             $xls->openRow();
             $xls->writeString($compra['Associado']['matricula']);
             $xls->writeString($compra['Convenio']['nomeDoGrupo']);
-            $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-            $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
-            $xls->writeString($valor);
+            $xls->writeString($compra['Compra']['valor']);
             $xls->writeString($compra['Compra']['descricao']);
             $xls->closeRow();
             $total += (float)$compra['Compra']['valor'];
@@ -58,16 +54,12 @@ foreach ($compras as $compra) {
             $xls->openRow();
             $xls->writeString($compra['Associado']['matricula']);
             $xls->writeString($compra['Convenio']['nomeDoGrupo']);
-            $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-            $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
-            $xls->writeString($valor);
+            $xls->writeString($compra['Compra']['valor']);
             $xls->writeString($compra['Compra']['descricao']);
             $xls->closeRow();
             $total += (float)$compra['Compra']['valor'];
             $xls->openRow();
             $xls->writeString('Total: ');
-            $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-            $total = $this->Number->currency($total, 'BRL');
             $xls->writeNumber($total);
             $xls->closeRow();
         };
@@ -75,8 +67,6 @@ foreach ($compras as $compra) {
     if ($assoc_tmp <> $compra['Associado']['nome']) {
         $xls->openRow();
         $xls->writeString('Total: ');
-        $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-        $total = $this->Number->currency($total, 'BRL');
         $xls->writeNumber($total);
         $xls->closeRow();
         $assoc_tmp = $compra['Associado']['nome'];
@@ -94,9 +84,7 @@ foreach ($compras as $compra) {
         $xls->openRow();
         $xls->writeString($compra['Associado']['matricula']);
         $xls->writeString($compra['Convenio']['nomeDoGrupo']);
-        $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-        $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
-        $xls->writeString($valor);
+        $xls->writeString($compra['Compra']['valor']);
         $xls->writeString($compra['Compra']['descricao']);
         $xls->closeRow();
         $total += (float)$compra['Compra']['valor'];
@@ -104,8 +92,6 @@ foreach ($compras as $compra) {
         if ($last_iteration) {
             $xls->openRow();
             $xls->writeString('Total: ');
-            $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-            $total = $this->Number->currency($total, 'BRL');
             $xls->writeNumber($total);
             $xls->closeRow();
         };
