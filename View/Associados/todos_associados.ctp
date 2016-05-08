@@ -66,7 +66,9 @@ echo $this->Html->link(
                     <tr class="odd gradeX">
                         <td><?php echo h($associado['Associado']['matricula']); ?>&nbsp;</td>
                         <td><?php echo h($associado['Associado']['nome']); ?>&nbsp;</td>
-                        <td><?php echo h($associado['Associado']['salario']); ?>&nbsp;</td>
+                        <?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+                              $salario = $this->Number->currency($associado['Associado']['salario'],'BRL' ); ?>
+                        <td><?php echo h($salario); ?>&nbsp;</td>
                         <td><?php echo h($associado['Associado']['telefone']); ?>&nbsp;</td>
                         <td><?php echo h($associado['Cargo']['nome']); ?>&nbsp;</td>
                         <td><?php echo h($associado['Area']['nome']); ?>&nbsp;</td>

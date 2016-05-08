@@ -14,13 +14,13 @@
                     <?php echo $this->Form->input('tipo', array('label' => 'Tipo:', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('valorAssociado', array('type' => 'decimal','label' => 'Valor para o assocaido: (Exemplo 1.234,56)', 'class' => 'form-control', 'rows' => '1')); ?>
+                    <?php echo $this->Form->input('valorAssociado', array('label' => 'Valor para o assocaido: (Exemplo 1234.56)', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('valorSebrae', array('type' => 'decimal','label' => 'Valor para o Sebrae: (Exemplo 1.234,56)', 'class' => 'form-control', 'rows' => '1')); ?>
+                    <?php echo $this->Form->input('valorSebrae', array('label' => 'Valor para o Sebrae: (Exemplo 1234.56)', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('valorAFSebrae', array('type' => 'decimal','label' => 'Valor para a Associação dos Funcionários: (Exemplo 1.234,56)', 'class' => 'form-control', 'rows' => '1')); ?>
+                    <?php echo $this->Form->input('valorAFSebrae', array('label' => 'Valor para a Associação dos Funcionários: (Exemplo 1234.56)', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('observacao', array('label' => 'Observação:', 'class' => 'form-control', 'rows' => '4')); ?>
