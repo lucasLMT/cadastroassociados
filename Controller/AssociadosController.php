@@ -170,8 +170,8 @@ class AssociadosController extends AppController
 
     public function listaAniversario($id = null)
     {
-        $data = date("m-d");
-        $options = array('conditions' => array("strftime('%m-%d', Associado.dataDeNascimento)" => $data));
+        $data = date("m");
+        $options = array('conditions' => array("strftime('%m', Associado.dataDeNascimento)" => $data));
         $aniversariantes = $this->Associado->find('all', $options);
         $this->set(compact('aniversariantes'));
     }

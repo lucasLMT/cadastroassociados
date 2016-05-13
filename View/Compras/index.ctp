@@ -44,9 +44,8 @@ echo $this->Html->link(
                         <td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
                         <td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
                         <td><?php echo h($compra['Periodo']['referencia']); ?>&nbsp;</td>
-                        <?php $this->Number->addFormat('BRL', array('before' => 'R$', 'thousands' => '.', 'decimals' => ','));
-                        $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
-                        ?>
+                        <?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+                              $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' ); ?>
                         <td><?php echo h($valor); ?>&nbsp;</td>
                         <td class="actions">
                             <?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $compra['Compra']['id']),

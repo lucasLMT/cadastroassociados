@@ -26,7 +26,7 @@ $xls->closeRow();
 $assoc_tmp = $compras[0]['Associado']['nome'];
 $count = Count($compras);
 $total = 0;
-$i = 1;
+$i = 0;
 foreach ($compras as $compra):
     if (($assoc_tmp <> $compra['Associado']['nome']) || ($count == $i)) {
         if ($count == $i && $assoc_tmp == $compra['Associado']['nome'])
@@ -34,8 +34,8 @@ foreach ($compras as $compra):
 
         $xls->openRow();
         $xls->writeString($assoc_tmp);
-        $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-        $total = $this->Number->currency($total, 'BRL');
+        $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+        $total = $this->Number->currency($total,'BRL' );
         $xls->writeString($total);
         $xls->closeRow();
 
@@ -44,8 +44,8 @@ foreach ($compras as $compra):
 
             $xls->openRow();
             $xls->writeString($compra['Associado']['nome']);
-            $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-            $total = $this->Number->currency($total, 'BRL');
+            $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+            $total = $this->Number->currency($total,'BRL' );
             $xls->writeString($total);
             $xls->closeRow();
         }

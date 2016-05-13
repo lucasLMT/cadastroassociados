@@ -43,17 +43,15 @@ $pdf->Ln();*/
 
 // Data
 foreach ($compras as $compra) {
-    //$pdf->Cell($w[0],6,$compra['Associado']['matricula'],1,0,'C');
-    //$pdf->Cell($w[0],6,utf8_decode($compra['Compra']['descricao']),1);
     $pdf->Cell($w[0], 6, utf8_decode($compra['Convenio']['razaoSocial']), 1, 0, 'L');
-    $this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-    $valor = $this->Number->currency($compra['Compra']['valor'], 'BRL');
-    $pdf->Cell($w[1], 6, ($valor), 1, 0, 'C');
+    $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+    $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );
+    $pdf->Cell($w[1],6,($valor),1,0,'C');
     $pdf->Cell($w[2], 6, utf8_decode($compra['Compra']['descricao']), 1);
     $pdf->Ln();
 }
-$this->Number->addFormat('BRL', array('before' => '', 'thousands' => '.', 'decimals' => ','));
-$total = $this->Number->currency($total, 'BRL');
+$this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+$total = $this->Number->currency($total,'BRL' );
 $pdf->Cell(0, 6, utf8_decode("Total: " . $total), 1, 0, 'R');
 
 $pdf->Output('ComprasPorAssociado.pdf', 'D')
