@@ -20,7 +20,8 @@
                 <?php foreach ($aniversariantes as $associado): ?>
                     <tr class="odd gradeX">
                         <td><?php echo h($associado['Associado']['nome']); ?>&nbsp;</td>
-                        <td><?php echo h($associado['Associado']['dataDeNascimento']); ?>&nbsp;</td>
+                        <td><?php $dataAniversario = revertDate($associado['Associado']['dataDeNascimento']);
+                                  echo h($dataAniversario); ?>&nbsp;</td>
                         <td><?php echo h($associado['Area']['nome']); ?>&nbsp;</td>
                         <!--<td class="actions">
                             <?php echo $this->Html->link(__('Email'), array('action' => 'sendEmail', $associado['Associado']['id']),

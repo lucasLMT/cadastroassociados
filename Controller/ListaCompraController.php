@@ -29,7 +29,6 @@ class ListaCompraController extends AppController
     public function listaAssociado($periodo, $associado,
                                    $modo, $todos, $referencia)
     {
-        debug($referencia);
         if (($modo == 1) && !$todos) {
             $options = array('conditions' => array(
                 'Compra.periodo_id' => $periodo,
@@ -56,8 +55,7 @@ class ListaCompraController extends AppController
             $date_conditions = array('conditions' => array('Periodo.id' => $data['ListaCompra']['periodo_id']));
             $date = $this->ListaCompra->Periodo->find('all', $date_conditions);
 
-            $referencia = $date[0]['Periodo']['referencia'];
-            //debug($referencia);
+            $referencia = $date[0]['Periodo']['referencia'];            
 
             $this->redirect(array('controller' => 'ListaCompra', 'action' => 'listaAssociado',
                 $data['ListaCompra']['periodo_id'],

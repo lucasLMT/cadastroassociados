@@ -31,7 +31,7 @@ class ComprasController extends AppController
     public function index()
     {
         $this->Compra->recursive = 0;
-        $this->Paginator->settings = $this->paginate;
+        $this->Paginator->settings = array('order' => 'Compra.id DESC');
         $this->set('compras', $this->Paginator->paginate());
     }
 
@@ -62,8 +62,8 @@ class ComprasController extends AppController
             $this->Compra->create();
             $data = $this->request->data;
 
-            $referencia = $data['Compra']['referencia'];
-            $data['Compra']['referencia'] = revertDate($referencia);
+            //$referencia = $data['Compra']['referencia'];
+            //$data['Compra']['referencia'] = revertDate($referencia);
 
             if ($this->Compra->save($data)) {
                 $this->Session->setFlash(__('Compra adicionada.'));
