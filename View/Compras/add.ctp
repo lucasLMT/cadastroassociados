@@ -27,10 +27,7 @@
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('periodo_id', array('label' => 'Período:', 'class' => 'form-control')); ?>
-                </div>
-                <div class="form-group">
-                    <?php echo $this->Form->input('referencia', array('label' => 'Referência:', 'class' => 'form-control date', 'rows' => '1')); ?>
-                </div>
+                </div>                
                 <button type="submit" class="btn btn-default" id="btn">Salvar</button>
                 <?php echo $this->Form->end(); ?>
             </div>

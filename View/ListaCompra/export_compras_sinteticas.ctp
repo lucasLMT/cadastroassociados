@@ -26,7 +26,7 @@ $xls->closeRow();
 $assoc_tmp = $compras[0]['Associado']['nome'];
 $count = Count($compras);
 $total = 0;
-$i = 0;
+$i = 1;
 foreach ($compras as $compra):
     if (($assoc_tmp <> $compra['Associado']['nome']) || ($count == $i)) {
         if ($count == $i && $assoc_tmp == $compra['Associado']['nome'])
