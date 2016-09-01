@@ -8,7 +8,7 @@
 $xls = new xlsHelper(new View(null));
 
 //input the export file name
-$xls->setHeader('ConveniosSinteticos' . date('Y_m_d'));
+$xls->setHeader('ConveniosSinteticos' . date('d-m-Y'));
 
 $xls->addXmlHeader();
 $xls->setWorkSheetName('Compras Sintéticas por Convênios.');
@@ -23,10 +23,10 @@ $xls->writeString('Total');
 $xls->closeRow();
 
 //rows for data
-$convenio_tmp = $compras[0]['Associado']['nome'];
+$convenio_tmp = $compras[0]['Convenio']['razaoSocial'];
 $count = Count($compras);
 $total = 0;
-$i = 0;
+$i = 1;
 foreach ($compras as $compra):
     if (($convenio_tmp <> $compra['Convenio']['razaoSocial']) || ($count == $i)) {
         if ($count == $i && $convenio_tmp == $compra['Convenio']['razaoSocial'])

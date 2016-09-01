@@ -111,5 +111,5 @@ foreach ($compras as $compra) {
     $i++;
 };
 
-$pdf->Output('TodasComprasPorAssociado.pdf', 'D')
+$pdf->Output('TodasComprasPorAssociado'.date('d-m-Y').'.pdf', 'D')
 ?>

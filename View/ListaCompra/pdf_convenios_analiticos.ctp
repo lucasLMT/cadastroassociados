@@ -55,5 +55,5 @@ $pdf->SetAutoPageBreak(true, 4);
 //$pdf->SetFont('Arial','I',8);
 //$pdf->Cell(0,10,utf8_decode('Página ').$pdf->PageNo().'/{nb}',0,0,'R');
 
-$pdf->Output('ConveniosAnaliticos.pdf', 'D');
+$pdf->Output('ConveniosAnaliticos'.date('d-m-Y').'.pdf', 'D');
 ?>

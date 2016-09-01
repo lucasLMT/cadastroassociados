@@ -68,5 +68,5 @@ foreach ($compras as $compra):
     $i++;
 endforeach;
 
-$pdf->Output('ComprasSinteticas.pdf', 'D');
+$pdf->Output('ComprasSinteticas'.date('d-m-Y').'.pdf', 'D');
 ?>

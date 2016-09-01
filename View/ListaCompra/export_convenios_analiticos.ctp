@@ -8,7 +8,7 @@
 $xls = new xlsHelper(new View(null));
 
 //input the export file name
-$xls->setHeader('ConveniosAnaliticos' . date('Y_m_d'));
+$xls->setHeader('ConveniosAnaliticos' . date('d-m-Y'));
 
 $xls->addXmlHeader();
 $xls->setWorkSheetName('Compras Analíticas por Convênios.');

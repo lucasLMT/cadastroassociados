@@ -7,7 +7,7 @@
 $xls = new xlsHelper(new View(null));
 
 //input the export file name
-$xls->setHeader('TodasComprasAnaliticas' . date('Y_m_d'));
+$xls->setHeader('TodasComprasAnaliticas' . date('d-m-Y'));
 
 $xls->addXmlHeader();
 $xls->setWorkSheetName('Todas as compras analíticas por associados.');
@@ -18,8 +18,8 @@ $xls->closeRow();
 // Data
 $assoc_tmp = $compras[0]['Associado']['nome'];
 $count = Count($compras);
-$i = 0;
 $total = 0;
+$i = 1;
 foreach ($compras as $compra) {
     $last_iteration = !(--$count); //boolean true/false
     if ($assoc_tmp == $compra['Associado']['nome']) {
