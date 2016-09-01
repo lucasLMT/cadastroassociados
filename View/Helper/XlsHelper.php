@@ -25,9 +25,9 @@ class XlsHelper extends AppHelper
         header("Content-Type: application/vnd.ms-excel; charset=UTF-8");
         header("Content-Type: application/force-download");
         header("Content-Type: application/download");;
-        //header("Content-Disposition: inline; filename=\"".$filename.".xls\"");
+        header("Content-Disposition: inline; filename=\"".$filename.".xls\"");
         // Name the file to .xlsx to solve the excel/openoffice file opening problem
-        header("Content-Disposition: inline; filename=\"" . $filename . ".xlsx\"");
+        //header("Content-Disposition: inline; filename=\"" . $filename . ".xlsx\"");
     }
 
     /**

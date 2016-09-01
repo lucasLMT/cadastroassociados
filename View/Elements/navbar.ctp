@@ -76,30 +76,6 @@
                 <li>
                     <?php
                     echo $this->Html->link(
-                        'Cargos',
-                        array(
-                            'controller' => 'Cargos',
-                            'action' => 'index',
-                            'full_base' => true
-                        )
-                    );
-                    ?>
-                </li>
-                <li>
-                    <?php
-                    echo $this->Html->link(
-                        'Convênios',
-                        array(
-                            'controller' => 'Convenios',
-                            'action' => 'index',
-                            'full_base' => true
-                        )
-                    );
-                    ?>
-                </li>
-                <li>
-                    <?php
-                    echo $this->Html->link(
                         'Associados',
                         array(
                             'controller' => 'Associados',
@@ -115,66 +91,6 @@
                         'Compras',
                         array(
                             'controller' => 'Compras',
-                            'action' => 'index',
-                            'full_base' => true
-                        )
-                    );
-                    ?>
-                </li>
-                <li>
-                    <?php
-                    echo $this->Html->link(
-                        'Planos de saúde',
-                        array(
-                            'controller' => 'saudePlanos',
-                            'action' => 'index',
-                            'full_base' => true
-                        )
-                    );
-                    ?>
-                </li>
-                <li>
-                    <?php
-                    echo $this->Html->link(
-                        'Linhas telefônicas',
-                        array(
-                            'controller' => 'LinhasTelefonicas',
-                            'action' => 'index',
-                            'full_base' => true
-                        )
-                    );
-                    ?>
-                </li>
-                <li>
-                    <?php
-                    echo $this->Html->link(
-                        'Operadoras telefônicas',
-                        array(
-                            'controller' => 'Operadoras',
-                            'action' => 'index',
-                            'full_base' => true
-                        )
-                    );
-                    ?>
-                </li>
-                <li>
-                    <?php
-                    echo $this->Html->link(
-                        'Relatório das linhas',
-                        array(
-                            'controller' => 'LinhasTelefonicas',
-                            'action' => 'formLinhas',
-                            'full_base' => true
-                        )
-                    );
-                    ?>
-                </li>
-                <li>
-                    <?php
-                    echo $this->Html->link(
-                        'Períodos',
-                        array(
-                            'controller' => 'Periodos',
                             'action' => 'index',
                             'full_base' => true
                         )
@@ -208,10 +124,94 @@
                 <li>
                     <?php
                     echo $this->Html->link(
+                        'Convênios',
+                        array(
+                            'controller' => 'Convenios',
+                            'action' => 'index',
+                            'full_base' => true
+                        )
+                    );
+                    ?>
+                </li>
+                <li>
+                    <?php
+                    echo $this->Html->link(
+                        'Cargos',
+                        array(
+                            'controller' => 'Cargos',
+                            'action' => 'index',
+                            'full_base' => true
+                        )
+                    );
+                    ?>
+                </li>
+                <li>
+                    <?php
+                    echo $this->Html->link(
                         'Devedores',
                         array(
                             'controller' => 'ListaCompra',
                             'action' => 'formDevedores',
+                            'full_base' => true
+                        )
+                    );
+                    ?>
+                </li>
+                <li>
+                    <?php /*
+                    echo $this->Html->link(
+                        'Planos de saúde',
+                        array(
+                            'controller' => 'saudePlanos',
+                            'action' => 'index',
+                            'full_base' => true
+                        )
+                    );
+                  */?>
+                </li>
+                <li>
+                    <?php
+                    echo $this->Html->link(
+                        'Linhas Telefônicas',
+                        array(
+                            'controller' => 'LinhasTelefonicas',
+                            'action' => 'index',
+                            'full_base' => true
+                        )
+                    );
+                    ?>
+                </li>
+                <li>
+                    <?php
+                    echo $this->Html->link(
+                        'Operadoras Telefônicas',
+                        array(
+                            'controller' => 'Operadoras',
+                            'action' => 'index',
+                            'full_base' => true
+                        )
+                    );
+                    ?>
+                </li>
+                <li>
+                    <?php
+                    echo $this->Html->link(
+                        'Períodos',
+                        array(
+                            'controller' => 'Periodos',
+                            'action' => 'index',
+                            'full_base' => true
+                        )
+                    );
+                    ?>
+                </li>
+                <li>
+                    <?php
+                    echo $this->Html->link(
+                        'Relatório das linhas',
+                        array(
+                            'controller' => 'LinhasTelefonicas',
+                            'action' => 'formLinhas',
                             'full_base' => true
                         )
                     );

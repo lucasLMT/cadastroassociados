@@ -8,7 +8,7 @@
 $xls = new xlsHelper(new View(null));
 
 //input the export file name
-$xls->setHeader('ComprasPorAssociado' . date('Y_m_d'));
+$xls->setHeader('ComprasPorAssociado' . date('d-m-Y'));
 
 $xls->addXmlHeader();
 $xls->setWorkSheetName('Compras por Associado.');

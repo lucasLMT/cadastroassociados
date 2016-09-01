@@ -54,5 +54,5 @@ $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'deci
 $total = $this->Number->currency($total,'BRL' );
 $pdf->Cell(0, 6, utf8_decode("Total: " . $total), 1, 0, 'R');
 
-$pdf->Output('ComprasPorAssociado.pdf', 'D')
+$pdf->Output('ComprasPorAssociado'.date('d-m-Y').'.pdf', 'D')
 ?>
