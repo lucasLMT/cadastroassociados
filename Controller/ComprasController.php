@@ -146,19 +146,7 @@ class ComprasController extends AppController
         $this->Compra->recursive = 0;
         $this->Paginator->settings = $this->paginate;
         $this->set('compras', $this->Paginator->paginate());
-    }
-
-    public function search()
-    {
-        //$this->isAdmin();
-        $associado = $this->request->data;
-        if (!empty($associado)) {
-            $result = $this->Compra->Associado->find('all', array('conditions' => array('Compra.nome LIKE' => "%" . $associado['Compras']['Busca'] . "%")));
-            $this->set(compact('result'));
-        } else {
-            $this->redirect(array('controller' => 'compras', 'action' => 'index'));
-        }
-    }
+    }    
 
 }
 
