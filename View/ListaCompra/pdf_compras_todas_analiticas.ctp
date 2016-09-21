@@ -152,5 +152,4 @@ foreach ($compras as $compra) {
     $i++;
 };
 header ("Location: " .$this->Html->url(array('controller' => 'ListaCompra', 'action' => 'formAssociado')));
-//$pdf->Output('TodasComprasPorAssociado_'.date('d-m-Y').'.pdf', 'F')
 ?>
