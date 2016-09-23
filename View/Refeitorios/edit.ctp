@@ -14,18 +14,20 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('data', array('label' => 'Data:', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
+                <!--
                 <div class="form-group">
-                    <?php echo $this->Form->input('qtd_associado', array('label' => 'Quantidade, valor associado:', 'class' => 'form-control', 'rows' => '1')); ?>
-                </div>
+                    <?php// echo $this->Form->input('qtd_associado', array('label' => 'Quantidade, valor associado:', 'class' => 'form-control', 'rows' => '1')); ?>
+                </div>-->
                 <div class="form-group">
                     <?php echo $this->Form->input('qtd_convidado', array('label' => 'Quantidade, valor convidado:', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
+                <!--
                 <div class="form-group">
-                    <?php echo $this->Form->input('preco_asc', array('label' => 'Preço associado: (Exemplo 1234.56)', 'class' => 'form-control', 'rows' => '1')); ?>
+                    <?php// echo $this->Form->input('preco_asc', array('label' => 'Preço associado: (Exemplo 1234.56)', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('preco_conv', array('label' => 'Preço convidado: (Exemplo 1234.56)', 'class' => 'form-control', 'rows' => '1')); ?>
-                </div>
+                    <?php// echo $this->Form->input('preco_conv', array('label' => 'Preço convidado: (Exemplo 1234.56)', 'class' => 'form-control', 'rows' => '1')); ?>
+                </div>-->
                 <button type="submit" class="btn btn-default">Salvar</button>
                 <?php echo $this->Form->end(); ?>
             </div>

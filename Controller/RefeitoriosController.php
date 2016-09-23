@@ -60,6 +60,17 @@ class RefeitoriosController extends AppController
     {
         if ($this->request->is('post')) {
             $this->Refeitorio->create();
+
+            $data = $this->request->data;
+            $idAssociado = $data['Refeitorio']['associado_id'];
+
+            $options = array('conditions' => array('Associado.' . $this->Refeitorio->Associado->primaryKey => $idAssociado));
+            $associado = $this->Refeitorio->Associado->find('first', $options);
+
+            $data['Refeitorio']['total'] = 16;
+            debug($associado['Area']['valorref']);
+
+
             if ($this->Refeitorio->save($this->request->data)) {
                 $this->Session->setFlash(__('The refeitorio has been saved.'));
                 return $this->redirect(array('action' => 'index'));
