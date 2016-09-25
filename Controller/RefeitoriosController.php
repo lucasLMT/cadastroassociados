@@ -67,15 +67,16 @@ class RefeitoriosController extends AppController
             $options = array('conditions' => array('Associado.' . $this->Refeitorio->Associado->primaryKey => $idAssociado));
             $associado = $this->Refeitorio->Associado->find('first', $options);
 
-            $data['Refeitorio']['total'] = 16;
-            debug($associado['Area']['valorref']);
+            $valorref = $associado['Area']['valorref'] ;
+            $data['Refeitorio']['total'] = $valorref * ($data['Refeitorio']['qtd_convidado'] + 1);
 
+            $data['Refeitorio']['qtd_associado'] = 1;
 
-            if ($this->Refeitorio->save($this->request->data)) {
-                $this->Session->setFlash(__('The refeitorio has been saved.'));
+            if ($this->Refeitorio->save($data)) {
+                $this->Session->setFlash(__('O registro foi inserido com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The refeitorio could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('O registro não pode ser salvo. Por favor, tente novamente.'));
             }
         }
         $associados = $this->Refeitorio->Associado->find('list', array('order' => 'nome ASC'));
@@ -95,11 +96,20 @@ class RefeitoriosController extends AppController
             throw new NotFoundException(__('Invalid refeitorio'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            if ($this->Refeitorio->save($this->request->data)) {
-                $this->Session->setFlash(__('The refeitorio has been saved.'));
+            $data = $this->request->data;
+            $idAssociado = $data['Refeitorio']['associado_id'];
+
+            $options = array('conditions' => array('Associado.' . $this->Refeitorio->Associado->primaryKey => $idAssociado));
+            $associado = $this->Refeitorio->Associado->find('first', $options);
+
+            $valorref = $associado['Area']['valorref'] ;
+            $data['Refeitorio']['total'] = $valorref * ($data['Refeitorio']['qtd_convidado'] + 1);
+
+            if ($this->Refeitorio->save($data)) {
+                $this->Session->setFlash(__('Registro alterado com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The refeitorio could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Ocorreu um erro na alteração. Por favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Refeitorio.' . $this->Refeitorio->primaryKey => $id));

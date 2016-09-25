@@ -29,7 +29,7 @@ echo $this->Html->link(
                     <th><?php echo $this->Paginator->sort('data'); ?></th>
                     <th><?php echo $this->Paginator->sort('qtd_associado', 'Quantidade'); ?></th>
                     <th><?php echo $this->Paginator->sort('qtd_convidado', 'Quantidade convidado'); ?></th>
-                    <!--<th><?php// echo $this->Paginator->sort('preco_asc', 'Preço associado'); ?></th>-->
+                    <th><?php echo $this->Paginator->sort('total', 'Total'); ?></th>
                     <!--<th><?php// echo $this->Paginator->sort('preco_conv', 'Preço convidado'); ?></th>-->
                     <th class="actions"><?php echo __('Gerenciamento'); ?></th>
                 </tr>
@@ -41,7 +41,7 @@ echo $this->Html->link(
                         <td><?php echo h($refeitorio['Refeitorio']['data']); ?>&nbsp;</td>
                         <td><?php echo h($refeitorio['Refeitorio']['qtd_associado']); ?>&nbsp;</td>
                         <td><?php echo h($refeitorio['Refeitorio']['qtd_convidado']); ?>&nbsp;</td>
-                        <td><?php echo h($refeitorio['Refeitorio']['total']); ?>&nbsp;?></td>
+                        <td><?php echo h($refeitorio['Refeitorio']['total']); ?>&nbsp;</td>
                         <!--<td><?php//  echo h($refeitorio['Refeitorio']['preco_conv']); ?>&nbsp;?></td>-->
                         <td class="actions">
                             <?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $refeitorio['Refeitorio']['id']),
