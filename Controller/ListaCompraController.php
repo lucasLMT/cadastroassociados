@@ -55,7 +55,7 @@ class ListaCompraController extends AppController
             $date_conditions = array('conditions' => array('Periodo.id' => $data['ListaCompra']['periodo_id']));
             $date = $this->ListaCompra->Periodo->find('all', $date_conditions);
 
-            $referencia = $date[0]['Periodo']['referencia'];            
+            $referencia = $date[0]['Periodo']['referencia'];
 
             $this->redirect(array('controller' => 'ListaCompra', 'action' => 'listaAssociado',
                 $data['ListaCompra']['periodo_id'],
@@ -274,7 +274,7 @@ class ListaCompraController extends AppController
         $this->set(compact('compras', 'total'));
     }
 
-    public function export_compras_sinteticas($periodo, $associado)
+    public function export_compras_sinteticas($periodo, $associado, $valorTotal)
     {
         $options = array('conditions' => array(
             'Compra.periodo_id' => $periodo),
@@ -282,7 +282,7 @@ class ListaCompraController extends AppController
         $compras = $this->ListaCompra->Compra->find('all', $options);
 
         //$data = $this->Model->find('all');
-        $this->set(compact('compras'));
+        $this->set(compact('compras', 'valorTotal'));
     }
 
     public function export_convenios_analiticos($periodo, $convenio)
@@ -301,7 +301,7 @@ class ListaCompraController extends AppController
         $this->set(compact('compras', 'total'));
     }
 
-    public function export_convenios_sinteticos($periodo, $convenio)
+    public function export_convenios_sinteticos($periodo, $convenio, $valorTotal)
     {
         $options = array('conditions' => array(
             'Compra.periodo_id' => $periodo),
@@ -309,6 +309,6 @@ class ListaCompraController extends AppController
         $compras = $this->ListaCompra->Compra->find('all', $options);
 
         //$data = $this->Model->find('all');
-        $this->set(compact('compras'));
+        $this->set(compact('compras', 'valorTotal'));
     }
 }

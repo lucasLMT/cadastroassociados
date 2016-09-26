@@ -108,7 +108,8 @@
                             <?php $i++;
                         endforeach;
                     }
-                } else {
+                } else if ($modo == 2){
+                    $valorTotal = 0;
                     $conv_tmp = $compras[0]['Convenio']['razaoSocial'];
                     $count = Count($compras);
                     $i = 1;
@@ -116,6 +117,7 @@
                         if (($conv_tmp <> $compra['Convenio']['razaoSocial']) || ($count == $i)) {
                             if ($count == $i && $conv_tmp == $compra['Convenio']['razaoSocial'])
                                 $total += $compra['Compra']['valor'];
+                                $valorTotal += $total;
                             ?>
                             <tr class="odd gradeX">
                                 <td><?php echo h($conv_tmp); ?>&nbsp;</td>
@@ -126,6 +128,7 @@
                             <?php
                             $total = $compra['Compra']['valor'] + 0;
                             if (($conv_tmp <> $compra['Convenio']['razaoSocial']) && ($count == $i)) {
+                                $valorTotal += $total;
                                 ?>
                                 <tr class="odd gradeX">
                                     <td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>
@@ -141,7 +144,14 @@
                         }
                         $i++;
                     endforeach;
-                } ?>
+                }
+                if($modo == 2) { ?>
+                      <tr class="odd gradeX">
+                        <td><?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+                                  $valorTotal = $this->Number->currency($valorTotal,'BRL' );
+                                  echo h($valorTotal); ?>&nbsp;</td>
+                      </tr>
+                <?php } ?>
                 </tbody>
             </table>
         </div>
@@ -205,7 +215,8 @@ if ($modo == 1) {
             'controller' => 'ListaCompra',
             'action' => 'export_convenios_sinteticos',
             $periodo,
-            $convenio
+            $convenio,
+            $valorTotal
         ),
         array(
             'class' => 'btn btn-info',
