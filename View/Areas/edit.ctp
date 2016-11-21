@@ -10,7 +10,8 @@
                 <?php echo $this->Form->input('id'); ?>
                 <div class="form-group">
                     <?php echo $this->Form->input('nome', array('label' => 'Nome:', 'class' => 'form-control', 'rows' => '1')); ?>
-                    <?php echo $this->Form->input('valorref', array('label' => 'Valor da Refeição:', 'class' => 'form-control', 'rows' => '1')); ?>
+                    <?php echo $this->Form->input('reftec', array('label' => 'Refeição Técnico:', 'class' => 'form-control', 'rows' => '1')); ?>
+                    <?php echo $this->Form->input('refanalist', array('label' => 'Refeição Analista:', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
                 <button type="submit" class="btn btn-default">Enviar</button>
                 <?php echo $this->Form->end(); ?>

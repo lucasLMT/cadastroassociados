@@ -26,7 +26,6 @@ echo $this->Html->link(
                 <thead>
                 <tr>
                     <th><?php echo $this->Paginator->sort('nome'); ?></th>
-                    <th><?php echo $this->Paginator->sort('valorAlmoço', 'Valor do almoço'); ?></th>
                     <th class="actions"><?php echo __('Gerenciamento'); ?></th>
                 </tr>
                 </thead>
@@ -34,7 +33,6 @@ echo $this->Html->link(
                 <?php foreach ($cargos as $cargo): ?>
                     <tr class="odd gradeX">
                         <td><?php echo h($cargo['Cargo']['nome']); ?>&nbsp;</td>
-                        <td><?php echo h($cargo['Cargo']['valorAlmoço']); ?>&nbsp;</td>
                         <td class="actions">
                             <?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $cargo['Cargo']['id']),
                                 array('class' => 'btn btn-warning btn-sm', 'role' => 'button')); ?>

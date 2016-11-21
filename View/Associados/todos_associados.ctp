@@ -62,6 +62,7 @@ echo $this->Html->link(
                 </tr>
                 </thead>
                 <tbody>
+
                 <?php foreach ($associados as $associado): ?>
                     <tr class="odd gradeX">
                         <td><?php echo h($associado['Associado']['matricula']); ?>&nbsp;</td>

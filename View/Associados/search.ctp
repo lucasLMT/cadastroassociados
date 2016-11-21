@@ -10,11 +10,11 @@
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                 <tr>
-                    <th><?php echo __('Matrícula'); ?></th>
-                    <th><?php echo __('Nome'); ?></th>
-                    <th><?php echo __('Telefone'); ?></th>
-                    <th><?php echo __('Cargo'); ?></th>
-                    <th><?php echo __('Área'); ?></th>
+                    <th><?php echo $this->Paginator->sort('Matrícula'); ?></th>
+                    <th><?php echo $this->Paginator->sort('Nome'); ?></th>
+                    <th><?php echo $this->Paginator->sort('Telefone'); ?></th>
+                    <th><?php echo $this->Paginator->sort('Cargo'); ?></th>
+                    <th><?php echo $this->Paginator->sort('Área'); ?></th>
                     <th class="actions"><?php echo __('Gerenciamento'); ?></th>
                 </tr>
                 </thead>
