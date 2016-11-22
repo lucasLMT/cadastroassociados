@@ -30,7 +30,9 @@
                     <th><?php echo $this->Paginator->sort('associado_id', 'Associado'); ?></th>
                     <th><?php echo $this->Paginator->sort('convenio_id', 'Convênio'); ?></th>
                     <th><?php echo $this->Paginator->sort('descricao', 'Descrição'); ?></th>
+                    <th><?php echo $this->Paginator->sort('date', 'Data')?></th>
                     <th><?php echo $this->Paginator->sort('periodo', 'Período')?></th>
+                    <th><?php echo $this->Paginator->sort('quantidade', 'Quantidade'); ?></th>
                     <th><?php echo $this->Paginator->sort('valor'); ?></th>
                     <th class="actions"><?php echo __('Gerenciamento'); ?></th>
                 </tr>
@@ -42,7 +44,9 @@
                         <td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
                         <td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>
                         <td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
+                        <td><?php echo h($compra['Compra']['date']); ?>&nbsp;</td>
                         <td><?php echo h($compra['Periodo']['referencia']); ?>&nbsp;</td>
+                        <td><?php echo h($compra['Periodo']['quantidade']); ?>&nbsp;</td>
                         <?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
                               $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' ); ?>
                         <td><?php echo h($valor); ?>&nbsp;</td>
