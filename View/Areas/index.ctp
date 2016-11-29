@@ -40,8 +40,6 @@ echo $this->Html->link(
                 <thead>
                 <tr>
                     <th><?php echo $this->Paginator->sort('Nome'); ?></th>
-                    <th><?php echo $this->Paginator->sort('Refeição Técnico'); ?></th>
-                    <th><?php echo $this->Paginator->sort('Refeição Analista'); ?></th>
                     <th class="actions"><?php echo __('Gerenciamento'); ?></th>
                 </tr>
                 </thead>
@@ -49,8 +47,6 @@ echo $this->Html->link(
                 <?php foreach ($areas as $area): ?>
                     <tr class="odd gradeX">
                         <td><?php echo h($area['Area']['nome']); ?>&nbsp;</td>
-                        <td><?php echo h($area['Area']['reftec']); ?>&nbsp;</td>
-                        <td><?php echo h($area['Area']['refanalist']); ?>&nbsp;</td>
                         <td class="actions">
                             <?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $area['Area']['id']),
                                 array('class' => 'btn btn-warning btn-sm', 'role' => 'button')); ?>

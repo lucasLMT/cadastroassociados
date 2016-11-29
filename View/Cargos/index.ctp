@@ -25,7 +25,8 @@ echo $this->Html->link(
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                 <tr>
-                    <th><?php echo $this->Paginator->sort('nome'); ?></th>
+                    <th><?php echo $this->Paginator->sort('Nome'); ?></th>
+                    <th><?php echo $this->Paginator->sort('Valor do almoço'); ?></th>
                     <th class="actions"><?php echo __('Gerenciamento'); ?></th>
                 </tr>
                 </thead>
@@ -33,6 +34,7 @@ echo $this->Html->link(
                 <?php foreach ($cargos as $cargo): ?>
                     <tr class="odd gradeX">
                         <td><?php echo h($cargo['Cargo']['nome']); ?>&nbsp;</td>
+                        <td><?php echo h($cargo['Cargo']['mealvalue']); ?>&nbsp;</td>
                         <td class="actions">
                             <?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $cargo['Cargo']['id']),
                                 array('class' => 'btn btn-warning btn-sm', 'role' => 'button')); ?>
