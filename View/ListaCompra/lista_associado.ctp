@@ -168,98 +168,110 @@
 </div>
 <?php
 if (($modo == 1) && !$todos) {
-    echo $this->Html->link(
-        'Exportar PDF',
-        array(
-            'controller' => 'ListaCompra',
-            'action' => 'viewpdf_compras_analiticas',
-            'full_base' => true,
-            $periodo,
-            $associado,
-            $referencia
-        ),
-        array(
-            'class' => 'btn btn-success',
-            'role' => 'button'
-        )
-    );
+    if ($compras) {
+        echo $this->Html->link(
+            'Exportar PDF',
+            array(
+                'controller' => 'ListaCompra',
+                'action' => 'viewpdf_compras_analiticas',
+                'full_base' => true,
+                $periodo,
+                $associado,
+                $referencia
+            ),
+            array(
+                'class' => 'btn btn-success',
+                'role' => 'button'
+            )
+        );
+    }
 } else if ($modo == 2) {
-    echo $this->Html->link(
-        'Exportar PDF',
-        array(
-            'controller' => 'ListaCompra',
-            'action' => 'viewpdf_compras_sinteticas',
-            'full_base' => true,
-            $periodo,
-            $associado,
-            $referencia
-        ),
-        array(
-            'class' => 'btn btn-success',
-            'role' => 'button'
-        )
-    );
+    if ($compras) {
+        echo $this->Html->link(
+            'Exportar PDF',
+              array(
+                  'controller' => 'ListaCompra',
+                  'action' => 'viewpdf_compras_sinteticas',
+                  'full_base' => true,
+                  $periodo,
+                  $associado,
+                  $referencia
+              ),
+              array(
+                  'class' => 'btn btn-success',
+                  'role' => 'button'
+              )
+        );
+    }
 } else {
-    echo $this->Html->link(
-        'Exportar PDF',
-        array(
-            'controller' => 'ListaCompra',
-            'action' => 'viewpdf_compras_todas_analiticas',
-            'full_base' => true,
-            $periodo,
-            $associado,
-            $referencia
-        ),
-        array(
-            'class' => 'btn btn-success',
-            'role' => 'button'
-        )
-    );
+    if ($compras) {
+        echo $this->Html->link(
+            'Exportar PDF',
+            array(
+                'controller' => 'ListaCompra',
+                'action' => 'viewpdf_compras_todas_analiticas',
+                'full_base' => true,
+                $periodo,
+                $associado,
+                $referencia
+            ),
+            array(
+                'class' => 'btn btn-success',
+                'role' => 'button'
+            )
+        );
+    }
 }
 ?>
 <?php
 if (($modo == 1) && !$todos) {
-    echo $this->Html->link(
-        'Exportar CSV',
-        array(
-            'controller' => 'ListaCompra',
-            'action' => 'export_compras_analiticas',
-            $periodo,
-            $associado
-        ),
-        array(
-            'class' => 'btn btn-info',
-            'role' => 'button'
-        )
-    );
+    if ($compras) {
+        echo $this->Html->link(
+            'Exportar CSV',
+            array(
+                'controller' => 'ListaCompra',
+                'action' => 'export_compras_analiticas',
+                $periodo,
+                $associado
+            ),
+            array(
+                'class' => 'btn btn-info',
+                'role' => 'button'
+            )
+        );
+    }
 } else if ($modo == 2) {
-    echo $this->Html->link(
-        'Exportar CSV',
-        array(
-            'controller' => 'ListaCompra',
-            'action' => 'export_compras_sinteticas',
-            $periodo,
-            $associado,
-            $valorTotal
-        ),
-        array(
-            'class' => 'btn btn-info',
-            'role' => 'button'
-        )
-    );
+    if ($compras) {
+        echo $this->Html->link(
+            'Exportar CSV',
+            array(
+                'controller' => 'ListaCompra',
+                'action' => 'export_compras_sinteticas',
+                $periodo,
+                $associado,
+                $valorTotal
+            ),
+            array(
+                'class' => 'btn btn-info',
+                'role' => 'button'
+            )
+        );
+    }
 } else {
-    echo $this->Html->link(
-        'Exportar CSV',
-        array(
-            'controller' => 'ListaCompra',
-            'action' => 'export_compras_todas_analiticas',
-            $periodo,
-            $associado
-        ),
-        array(
-            'class' => 'btn btn-info',
-            'role' => 'button'
-        )
-    );
+    if ($compras) {
+        echo $this->Html->link(
+            'Exportar CSV',
+            array(
+                'controller' => 'ListaCompra',
+                'action' => 'export_compras_todas_analiticas',
+                $periodo,
+                $associado
+            ),
+            array(
+                'class' => 'btn btn-info',
+                'role' => 'button'
+            )
+        );
+    }
 }
 ?>

@@ -160,68 +160,76 @@
 </div>
 <?php
 if ($modo == 1) {
-    echo $this->Html->link(
-        'Exportar PDF',
-        array(
-            'controller' => 'ListaCompra',
-            'action' => 'viewpdf_convenios_analiticos',
-            'full_base' => true,
-            $periodo,
-            $convenio,
-            $referencia
-        ),
-        array(
-            'class' => 'btn btn-success',
-            'role' => 'button'
-        )
-    );
+    if ($compras) {
+        echo $this->Html->link(
+            'Exportar PDF',
+            array(
+                'controller' => 'ListaCompra',
+                'action' => 'viewpdf_convenios_analiticos',
+                'full_base' => true,
+                $periodo,
+                $convenio,
+                $referencia
+            ),
+            array(
+                'class' => 'btn btn-success',
+                'role' => 'button'
+            )
+        );
+    }
 } else {
-    echo $this->Html->link(
-        'Exportar PDF',
-        array(
-            'controller' => 'ListaCompra',
-            'action' => 'viewpdf_convenios_sinteticos',
-            'full_base' => true,
-            $periodo,
-            $convenio,
-            $referencia
-        ),
-        array(
-            'class' => 'btn btn-success',
-            'role' => 'button'
-        )
-    );
+    if ($compras) {
+        echo $this->Html->link(
+            'Exportar PDF',
+            array(
+                'controller' => 'ListaCompra',
+                'action' => 'viewpdf_convenios_sinteticos',
+                'full_base' => true,
+                $periodo,
+                $convenio,
+                $referencia
+            ),
+            array(
+                'class' => 'btn btn-success',
+                'role' => 'button'
+            )
+        );
+    }
 };
 ?>
 <?php
 if ($modo == 1) {
-    echo $this->Html->link(
-        'Exportar CSV',
-        array(
-            'controller' => 'ListaCompra',
-            'action' => 'export_convenios_analiticos',
-            $periodo,
-            $convenio
-        ),
-        array(
-            'class' => 'btn btn-info',
-            'role' => 'button'
-        )
-    );
+    if ($compras) {
+        echo $this->Html->link(
+            'Exportar CSV',
+            array(
+                'controller' => 'ListaCompra',
+                'action' => 'export_convenios_analiticos',
+                $periodo,
+                $convenio
+            ),
+            array(
+                'class' => 'btn btn-info',
+                'role' => 'button'
+            )
+        );
+    }
 } else {
-    echo $this->Html->link(
-        'Exportar CSV',
-        array(
-            'controller' => 'ListaCompra',
-            'action' => 'export_convenios_sinteticos',
-            $periodo,
-            $convenio,
-            $valorTotal
-        ),
-        array(
-            'class' => 'btn btn-info',
-            'role' => 'button'
-        )
-    );
+    if ($compras) {
+        echo $this->Html->link(
+            'Exportar CSV',
+            array(
+                'controller' => 'ListaCompra',
+                'action' => 'export_convenios_sinteticos',
+                $periodo,
+                $convenio,
+                $valorTotal
+            ),
+            array(
+                'class' => 'btn btn-info',
+                'role' => 'button'
+            )
+        );
+    }
 };
 ?>
