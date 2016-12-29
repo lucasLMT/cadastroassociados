@@ -19,7 +19,7 @@ $xls->closeRow();
 //1st row for columns name
 $xls->openRow();
 $xls->writeString('Convênio');
-$xls->writeString('Total');
+$xls->writeString('Valor');
 $xls->closeRow();
 
 //rows for data
@@ -55,6 +55,13 @@ foreach ($compras as $compra):
     }
     $i++;
 endforeach;
+
+$xls->openRow();
+$xls->writeString('Total: ');
+$this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+$total = $this->Number->currency($valorTotal,'BRL' );
+$xls->writeString($valorTotal);
+$xls->closeRow();
 
 $xls->addXmlFooter();
 exit();

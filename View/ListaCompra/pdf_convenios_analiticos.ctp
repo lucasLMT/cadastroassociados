@@ -23,6 +23,7 @@ $header = array(utf8_decode('Matrícula'), utf8_decode('Associado'), 'Valor',
 // Column widths
 $w = array(20, 100, 20, 50);
 //Convenio
+
 $pdf->Cell(0, 6, utf8_decode("Convênio: " . $compras[0]['Convenio']['razaoSocial']), 1, 0, 'C');
 $pdf->Ln();
 // Header

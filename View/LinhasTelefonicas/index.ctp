@@ -25,7 +25,7 @@ echo $this->Html->link(
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                 <tr>
-                    <th><?php echo $this->Paginator->sort('associado_id'); ?></th>
+                    <th><?php echo $this->Paginator->sort('associado_id', 'Associado'); ?></th>
                     <th><?php echo $this->Paginator->sort('Operadora'); ?></th>
                     <th><?php echo $this->Paginator->sort('Numero', 'Número'); ?></th>
                     <th><?php echo $this->Paginator->sort('modelo'); ?></th>

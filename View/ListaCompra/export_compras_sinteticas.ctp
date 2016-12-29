@@ -18,12 +18,14 @@ $xls->closeRow();
 
 //1st row for columns name
 $xls->openRow();
+$xls->writeString('Matrícula');
 $xls->writeString('Associado');
 $xls->writeString('Total');
 $xls->closeRow();
 
 //rows for data
 $assoc_tmp = $compras[0]['Associado']['nome'];
+$assocMat_tmp = $compras[0]['Associado']['matricula'];
 $count = Count($compras);
 $total = 0;
 $i = 1;
@@ -33,6 +35,7 @@ foreach ($compras as $compra):
             $total += $compra['Compra']['valor'];
 
         $xls->openRow();
+        $xls->writeString($assocMat_tmp);
         $xls->writeString($assoc_tmp);
         $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
         $total = $this->Number->currency($total,'BRL' );
@@ -43,6 +46,7 @@ foreach ($compras as $compra):
         if (($assoc_tmp <> $compra['Associado']['nome']) && ($count == $i)) {
 
             $xls->openRow();
+            $xls->writeString($compra['Associado']['matricula']);
             $xls->writeString($compra['Associado']['nome']);
             $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
             $total = $this->Number->currency($total,'BRL' );
@@ -55,6 +59,14 @@ foreach ($compras as $compra):
     }
     $i++;
 endforeach;
+
+$xls->openRow();
+$xls->writeString('Total: ');
+$xls->writeString();
+$this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
+$total = $this->Number->currency($valorTotal,'BRL' );
+$xls->writeString($valorTotal);
+$xls->closeRow();
 
 $xls->addXmlFooter();
 exit();
