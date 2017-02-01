@@ -97,20 +97,20 @@
                 localStorage['cachePeriodo'] = $('#CompraPeriodoId').find(':selected').val();
             })
 
-            $("#CompraValor").change(function(){
-                var quantidade = $("input[type='radio']").find(":checked").val();
+            $("#CompraValor").focus(function(){
+                var quantidade = $("input[type='radio']:checked").val();
                 var associadoId = $("select[name='data[Compra][associado_id]']").val();
                 $.ajax({
                     type: "GET", //se eu colocar tipo POST da erro
                     url : '<?php echo Router::url(array('controller' => 'compras', 'action' => 'add')); ?>',
                     data: {
-                        quatidade : quantidade,
+                        quantidade : quantidade,
                         associadoId: associadoId
                     },
                     //dataType: "json", //se colocar o dataType da erro
-                    success : function(html, textStatus) {
-                        //alert('Success ' + textStatus + html);
-                        $("#subtotal").val(FormatNumber(parseFloat(html), 2, ',', '.'));
+                    success : function(html, textStatus, data) {
+                        $("#CompraDescricao").val(html);
+                        $("#CompraValor").val(FormatNumber(parseFloat(html), 2, ',', '.'));
                     },
                     error : function(xhr, textStatus, errorThrown) {
                         alert('An error occurred! ' + errorThrown);

@@ -74,11 +74,27 @@ class ComprasController extends AppController
                 $this->Session->setFlash(__('Não foi possível adicionar a compra. Por favor, tente novamente.'));
             }
         } else if ($this->request->is('ajax')){
+            $this->layout = false;
+
             $quantidade = $_GET['quantidade'];
             $associadoId = $_GET['associadoId'];
 
+            //Retorna o array do associado relativo ao Id recebido
+            $associadoConditions = array('conditions' => array('Cargo.' . $this->Compra->Associado->primaryKey => $associadoId));
+            $associado = $this->Compra->Associado->find('first', $associadoConditions);
+
+            //debug($associado);
+
             $response = $this->render();
+
+            $jsonResponse = array(
+                'html'       => $response->body(),
+                'other_data' => array('foo' => 'bar'),
+                'bar'        => 'foo'
+            );
+
             $response->body($quantidade);
+
         }
         $convenios = $this->Compra->Convenio->find('list', array('order' => 'razaoSocial ASC'));
         $associados = $this->Compra->Associado->find('list', array('order' => 'nome ASC'));
