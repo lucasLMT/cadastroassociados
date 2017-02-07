@@ -76,14 +76,15 @@ class ComprasController extends AppController
         } else if ($this->request->is('ajax')){
             $this->layout = false;
 
-            $quantidade = $_GET['quantidade'];
+            $quantidade = $_GET['quantidade'] + 1;
             $associadoId = $_GET['associadoId'];
 
             //Retorna o array do associado relativo ao Id recebido
-            $associadoConditions = array('conditions' => array('Cargo.' . $this->Compra->Associado->primaryKey => $associadoId));
+            $associadoConditions = array('conditions' => array('Associado.' . $this->Compra->Associado->primaryKey => $associadoId));
             $associado = $this->Compra->Associado->find('first', $associadoConditions);
 
-            //debug($associado);
+            $cargoMealValue = $associado['Cargo']['mealvalue']; 
+
 
             $response = $this->render();
 
@@ -93,7 +94,7 @@ class ComprasController extends AppController
                 'bar'        => 'foo'
             );
 
-            $response->body($quantidade);
+            $response->body($cargoMealValue * $quantidade);
 
         }
         $convenios = $this->Compra->Convenio->find('list', array('order' => 'razaoSocial ASC'));

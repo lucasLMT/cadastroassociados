@@ -109,7 +109,6 @@
                     },
                     //dataType: "json", //se colocar o dataType da erro
                     success : function(html, textStatus, data) {
-                        $("#CompraDescricao").val(html);
                         $("#CompraValor").val(FormatNumber(parseFloat(html), 2, ',', '.'));
                     },
                     error : function(xhr, textStatus, errorThrown) {
