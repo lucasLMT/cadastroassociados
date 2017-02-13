@@ -38,6 +38,7 @@
                 </tr>
                 </thead>
                 <tbody>
+                <?php ?>
                 <?php foreach ($compras as $compra): ?>
                     <tr class="odd gradeX">
                         <td><?php echo h($compra['Associado']['matricula']); ?>&nbsp;</td>
@@ -46,7 +47,7 @@
                         <td><?php echo h($compra['Compra']['descricao']); ?>&nbsp;</td>
                         <td><?php echo h($compra['Compra']['date']); ?>&nbsp;</td>
                         <td><?php echo h($compra['Periodo']['referencia']); ?>&nbsp;</td>
-                        <td><?php echo h($compra['Periodo']['quantidade']); ?>&nbsp;</td>
+                        <td><?php echo h($compra['Compra']['quantidade']); ?>&nbsp;</td>
                         <?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
                               $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' ); ?>
                         <td><?php echo h($valor); ?>&nbsp;</td>

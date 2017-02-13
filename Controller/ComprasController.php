@@ -119,8 +119,8 @@ class ComprasController extends AppController
 
             $data = $this->request->data;
 
-            $referencia = $data['Compra']['referencia'];
-            $data['Compra']['referencia'] = revertDate($referencia);
+            $referencia = $data['Compra']['date'];
+            $data['Compra']['date'] = revertDate($referencia);
 
             if ($this->Compra->save($data)) {
                 $this->Session->setFlash(__('Compra salva.'));
@@ -132,8 +132,8 @@ class ComprasController extends AppController
             $options = array('conditions' => array('Compra.' . $this->Compra->primaryKey => $id));
             $comprasTmp = $this->Compra->find('first', $options);
 
-            $referencia = $comprasTmp['Compra']['referencia'];
-            $comprasTmp['Compra']['referencia'] = revertDate($referencia);
+            $referencia = $comprasTmp['Compra']['date'];
+            $comprasTmp['Compra']['date'] = revertDate($referencia);
 
             $comprasTmp['Compra']['quantidade'] = $comprasTmp['Compra']['quantidade'] - 1;
 
