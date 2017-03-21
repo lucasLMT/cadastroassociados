@@ -189,7 +189,8 @@ class AssociadosController extends AppController
         $associado = $this->request->data;
         if (!empty($associado)) {
             $result = $this->Associado->find('all', array('conditions' => array('Associado.nome LIKE' => "%" . $associado['Associado']['Busca'] . "%")));
-            $this->set(compact('result'));
+            $this->Paginator->settings = $this->paginate;
+            $this->set('result', $this->Paginator->paginate());
         } else {
             $this->redirect(array('controller' => 'associado', 'action' => 'index'));
         }
