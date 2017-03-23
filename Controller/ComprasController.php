@@ -62,8 +62,8 @@ class ComprasController extends AppController
             $this->Compra->create();
             $data = $this->request->data;
 
-            //$referencia = $data['Compra']['referencia'];
-            //$data['Compra']['referencia'] = revertDate($referencia);
+            $date = $data['Compra']['date'];
+            $data['Compra']['date'] = revertDate($rdate);
 
             $data['Compra']['quantidade'] = $data['Compra']['quantidade'] + 1;
 

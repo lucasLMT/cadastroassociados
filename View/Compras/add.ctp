@@ -14,6 +14,9 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <?php echo $this->Form->input('date', array('label' => 'Data:', 'class' => 'form-control date', 'rows' => '1')); ?>
+                </div>
+                <div class="form-group">
                     <?php echo $this->Form->input('convenio_id', array('label' => 'Convênio:', 'class' => 'form-control')); ?>
                 </div>
                 <div class="form-group">
@@ -27,9 +30,6 @@
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('descricao', array('label' => 'Descrição:', 'class' => 'form-control', 'rows' => '4')); ?>
-                </div>
-                <div class="form-group">
-                    <?php echo $this->Form->input('date', array('label' => 'Data:', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('periodo_id', array('label' => 'Período:', 'class' => 'form-control')); ?>
