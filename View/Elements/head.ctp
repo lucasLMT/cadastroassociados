@@ -100,21 +100,24 @@
             $("#CompraValor").focus(function(){
                 var quantidade = $("input[type='radio']:checked").val();
                 var associadoId = $("select[name='data[Compra][associado_id]']").val();
-                $.ajax({
-                    type: "GET", //se eu colocar tipo POST da erro
-                    url : '<?php echo Router::url(array('controller' => 'compras', 'action' => 'add')); ?>',
-                    data: {
-                        quantidade : quantidade,
-                        associadoId: associadoId
-                    },
-                    //dataType: "json", //se colocar o dataType da erro
-                    success : function(html, textStatus, data) {
-                        $("#CompraValor").val(FormatNumber(parseFloat(html), 2, ',', '.'));
-                    },
-                    error : function(xhr, textStatus, errorThrown) {
-                        alert('An error occurred! ' + errorThrown);
-                    }
-                });
+                var convenioId = $("selct[name='data[Compra][convenio_id]']").val();
+                if (convenioId = 24) {
+                    $.ajax({
+                        type: "GET", //se eu colocar tipo POST da erro
+                        url : '<?php echo Router::url(array('controller' => 'compras', 'action' => 'add')); ?>',
+                        data: {
+                            quantidade : quantidade,
+                            associadoId: associadoId
+                        },
+                        //dataType: "json", //se colocar o dataType da erro
+                        success : function(html, textStatus, data) {
+                            $("#CompraValor").val(parseFloat(html));
+                        },
+                        error : function(xhr, textStatus, errorThrown) {
+                            alert('An error occurred! ' + errorThrown);
+                        }
+                    });
+                    
             });
 
         });

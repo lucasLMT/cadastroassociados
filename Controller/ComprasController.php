@@ -63,7 +63,7 @@ class ComprasController extends AppController
             $data = $this->request->data;
 
             $date = $data['Compra']['date'];
-            $data['Compra']['date'] = revertDate($rdate);
+            $data['Compra']['date'] = revertDate($date);
 
             $data['Compra']['quantidade'] = $data['Compra']['quantidade'] + 1;
 
@@ -84,7 +84,8 @@ class ComprasController extends AppController
             $associado = $this->Compra->Associado->find('first', $associadoConditions);
 
             $cargoMealValue = $associado['Cargo']['mealvalue']; 
-
+            if ($cargoMealValue == null)
+                $cargoMealValue = 0;    
 
             $response = $this->render();
 
