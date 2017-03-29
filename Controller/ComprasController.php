@@ -69,7 +69,7 @@ class ComprasController extends AppController
 
             if ($this->Compra->save($data)) {
                 $this->Session->setFlash(__('Compra adicionada.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => 'add'));
             } else {
                 $this->Session->setFlash(__('Não foi possível adicionar a compra. Por favor, tente novamente.'));
             }

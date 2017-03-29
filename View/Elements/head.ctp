@@ -101,7 +101,7 @@
                 var quantidade = $("input[type='radio']:checked").val();
                 var associadoId = $("select[name='data[Compra][associado_id]']").val();
                 var convenioId = $("selct[name='data[Compra][convenio_id]']").val();
-                if (convenioId = 24) {
+                if (convenioId == 24) {
                     $.ajax({
                         type: "GET", //se eu colocar tipo POST da erro
                         url : '<?php echo Router::url(array('controller' => 'compras', 'action' => 'add')); ?>',
@@ -117,7 +117,7 @@
                             alert('An error occurred! ' + errorThrown);
                         }
                     });
-                    
+                }    
             });
 
         });
