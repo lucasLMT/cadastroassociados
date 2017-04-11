@@ -206,7 +206,7 @@
                     ?>
                 </li>
                 <li>
-                    <?php
+                    <?php /* 
                     echo $this->Html->link(
                         'Relatório das linhas',
                         array(
@@ -215,7 +215,7 @@
                             'full_base' => true
                         )
                     );
-                    ?>
+                    */?>
                 </li>
                 <li>
                     <?php

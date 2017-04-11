@@ -87,10 +87,10 @@ class ConveniosController extends AppController
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Convenio->save($this->request->data)) {
-                $this->Session->setFlash(__('Convênio salvo.'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('Não foi possível salvar o convênio. Por favor, Tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Convenio.' . $this->Convenio->primaryKey => $id));

@@ -93,7 +93,7 @@ class RefeitoriosController extends AppController
     public function edit($id = null)
     {
         if (!$this->Refeitorio->exists($id)) {
-            throw new NotFoundException(__('Invalid refeitorio'));
+            throw new NotFoundException(__('Refeitorio inválido.'));
         }
         if ($this->request->is(array('post', 'put'))) {
             $data = $this->request->data;
@@ -106,10 +106,10 @@ class RefeitoriosController extends AppController
             $data['Refeitorio']['total'] = $valorref * ($data['Refeitorio']['qtd_convidado'] + 1);
 
             if ($this->Refeitorio->save($data)) {
-                $this->Session->setFlash(__('Registro alterado com sucesso.'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('Ocorreu um erro na alteração. Por favor, tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Refeitorio.' . $this->Refeitorio->primaryKey => $id));

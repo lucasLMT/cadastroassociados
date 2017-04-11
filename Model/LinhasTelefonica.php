@@ -9,7 +9,6 @@ App::uses('AppModel', 'Model');
 class LinhasTelefonica extends AppModel
 {
 
-
     //The Associations below have been created with all possible keys, those that are not needed can be removed
 
     /**
@@ -35,6 +34,10 @@ class LinhasTelefonica extends AppModel
     );
 
     public $_schema = array(
+        'associado_id' => array(
+            'type' => 'integer',
+            'null' => false,                        
+        ),
         'data' => array(
             'type' => 'date',
             'null' => false,
@@ -45,7 +48,7 @@ class LinhasTelefonica extends AppModel
         ),
         'modo_id' => array(
             'type' => 'integer',
-            'null' => false,
+            'null' => false,                        
         ),
     );
 
@@ -53,8 +56,8 @@ class LinhasTelefonica extends AppModel
     {
         // this could be a find 'list' from
         // another model
-        return array(
-            1 => 'Por usuário',
+        return array(            
+            1 => 'Por associado',
             2 => 'Por número',
         );
     }

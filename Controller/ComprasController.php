@@ -124,10 +124,10 @@ class ComprasController extends AppController
             $data['Compra']['date'] = revertDate($referencia);
 
             if ($this->Compra->save($data)) {
-                $this->Session->setFlash(__('Compra salva.'));
-                return $this->redirect(array('action' => 'index'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
+                return $this->redirect($this->referer());
             } else {
-                $this->Session->setFlash(__('Não foi possível salvar a compra. Por favor, Tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Compra.' . $this->Compra->primaryKey => $id));
@@ -166,7 +166,8 @@ class ComprasController extends AppController
         } else {
             $this->Session->setFlash(__('Não foi possível remover a compra. Por favor, Tente novamente.'));
         }
-        return $this->redirect(array('action' => 'index'));
+        //return $this->redirect(array('action' => 'index'));
+        return $this->redirect($this->referer());
     }
 
     public function todasCompras()
