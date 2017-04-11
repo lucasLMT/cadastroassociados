@@ -34,7 +34,7 @@ class Compra extends AppModel
         ),
         'Periodo' => array(
             'className' => 'Periodo',
-            'foreignKey' => 'periodo_id'
+            'foreignKey' => 'periodo_id'            
         )
     );
 

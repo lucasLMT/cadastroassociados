@@ -24,6 +24,10 @@ class PeriodosController extends AppController
      */
     public function index()
     {
+        $this->Paginator->settings = array(
+            'order' => array('Periodo.id' => 'DESC'),
+            'limit' => 10
+        );                
         $this->Periodo->recursive = 0;
         $this->set('periodos', $this->Paginator->paginate());
     }
@@ -90,10 +94,10 @@ class PeriodosController extends AppController
             $data['Periodo']['data_final'] = revertDate($datafinal);
 
             if ($this->Periodo->save($data)) {
-                $this->Session->setFlash(__('Período editado com sucesso.'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('Falha ao salvar o período. Tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Periodo.' . $this->Periodo->primaryKey => $id));

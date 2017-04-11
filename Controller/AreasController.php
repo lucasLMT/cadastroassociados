@@ -83,10 +83,10 @@ class AreasController extends AppController
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Area->save($this->request->data)) {
-                $this->Session->setFlash(__('A área foi atualizada com sucesso.'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('A área não pode ser salva, tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Area.' . $this->Area->primaryKey => $id));

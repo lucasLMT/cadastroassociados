@@ -38,7 +38,7 @@ class UsuariosController extends AppController
     public function view($id = null)
     {
         if (!$this->Usuario->exists($id)) {
-            throw new NotFoundException(__('Invalid usuario'));
+            throw new NotFoundException(__('Usuário inválido.'));
         }
         $options = array('conditions' => array('Usuario.' . $this->Usuario->primaryKey => $id));
         $this->set('usuario', $this->Usuario->find('first', $options));
@@ -72,14 +72,14 @@ class UsuariosController extends AppController
     public function edit($id = null)
     {
         if (!$this->Usuario->exists($id)) {
-            throw new NotFoundException(__('Invalid usuario'));
+            throw new NotFoundException(__('Usuário inválido.'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Usuario->save($this->request->data)) {
-                $this->Session->setFlash(__('The usuario has been saved.'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The usuario could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Usuario.' . $this->Usuario->primaryKey => $id));

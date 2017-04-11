@@ -119,10 +119,11 @@ class AssociadosController extends AppController
             $data['Associado']['mensalidade'] = $data['Associado']['salario'] * 0.09;
 
             if ($this->Associado->save($data)) {
-                $this->Session->setFlash(__('Associado salvo.'));
-                return $this->redirect(array('action' => 'index'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso..'));
+                //return $this->redirect(array('action' => 'index'));
+                return $this->redirect($this->referer());
             } else {
-                $this->Session->setFlash(__('Não foi possível salvar o associado. Por favor, Tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Associado.' . $this->Associado->primaryKey => $id));
@@ -165,7 +166,8 @@ class AssociadosController extends AppController
         } else {
             $this->Session->setFlash(__('Não foi possível remover o associado. Por favor, Tente novamente.'));
         }
-        return $this->redirect(array('action' => 'index'));
+        //return $this->redirect(array('action' => 'index'));
+        return $this->redirect($this->referer());
     }
 
     public function listaAniversario($id = null)

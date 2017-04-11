@@ -61,10 +61,10 @@ class EmprestimosController extends AppController
         if ($this->request->is('post')) {
             $this->Emprestimo->create();
             if ($this->Emprestimo->save($this->request->data)) {
-                $this->Session->setFlash(__('The emprestimo has been saved.'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The emprestimo could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         }
         $associados = $this->Emprestimo->Associado->find('list', array('order' => 'nome ASC'));

@@ -79,14 +79,14 @@ class OperadorasController extends AppController
     public function edit($id = null)
     {
         if (!$this->Operadora->exists($id)) {
-            throw new NotFoundException(__('Invalid operadora'));
+            throw new NotFoundException(__('Operadora inválida.'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Operadora->save($this->request->data)) {
-                $this->Session->setFlash(__('The operadora has been saved.'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The operadora could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Operadora.' . $this->Operadora->primaryKey => $id));

@@ -83,10 +83,10 @@ class CargosController extends AppController
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Cargo->save($this->request->data)) {
-                $this->Session->setFlash(__('O cargo foi atualizado com sucesso.'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('O cargo não pode ser atualizado, tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Cargo.' . $this->Cargo->primaryKey => $id));

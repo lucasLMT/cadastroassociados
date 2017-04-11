@@ -30,9 +30,26 @@ class LinhasTelefonicasController extends AppController
      */
     public function index()
     {
-        $this->LinhasTelefonica->recursive = 0;
-        $this->Paginator->settings = $this->paginate;
-        $this->set('linhasTelefonicas', $this->Paginator->paginate());
+        $model = ClassRegistry::init('LinhasTelefonica');
+
+        if ($this->request->is('post')) {
+            $data = $this->request->data;
+            if ($data['LinhasTelefonica']['modo_id'] == 1) {
+                $options = array('conditions' => array('associado_id' => $data['LinhasTelefonica']['associado_id']));
+                $associado = $this->LinhasTelefonica->Associado->find('all', $options);
+            }
+            $this->redirect(array('controller' => 'LinhasTelefonicas', 'action' => 'listaLinhas',
+                $data['LinhasTelefonica']['associado_id'],
+                $data['LinhasTelefonica']['modo_id'],
+                $data['LinhasTelefonica']['numero']));
+        }
+        $associados = $this->LinhasTelefonica->Associado->find('list', array('order' => 'nome ASC'));
+        $modos = $model->getModeList();
+        $this->set(compact('associados', 'modos'));
+                    
+        //$this->LinhasTelefonica->recursive = 0;
+        //$this->Paginator->settings = $this->paginate;        
+        //$this->set('linhasTelefonicas', $this->Paginator->paginate());
     }
 
     /**
@@ -89,7 +106,7 @@ class LinhasTelefonicasController extends AppController
     public function edit($id = null)
     {
         if (!$this->LinhasTelefonica->exists($id)) {
-            throw new NotFoundException(__('Invalid linhas telefonica'));
+            throw new NotFoundException(__('Linhas telefônica inválida.'));
         }
         if ($this->request->is(array('post', 'put'))) {
             $data = $this->request->data;
@@ -100,10 +117,10 @@ class LinhasTelefonicasController extends AppController
             $data['LinhasTelefonica']['devolucao'] = revertDate($devolucao);
 
             if ($this->LinhasTelefonica->save($data)) {
-                $this->Session->setFlash(__('The linhas telefonica has been saved.'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The linhas telefonica could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('LinhasTelefonica.' . $this->LinhasTelefonica->primaryKey => $id));
@@ -154,7 +171,7 @@ class LinhasTelefonicasController extends AppController
         $this->set(compact('linhasTelefonicas'));
     }
 
-    public function formLinhas($id = null)
+    /*public function formLinhas($id = null)
     {
 
         $model = ClassRegistry::init('LinhasTelefonica');
@@ -173,7 +190,7 @@ class LinhasTelefonicasController extends AppController
         $associados = $this->LinhasTelefonica->Associado->find('list', array('order' => 'nome ASC'));
         $modos = $model->getModeList();
         $this->set(compact('associados', 'modos'));
-    }
+    }*/
 }
 
 function revertDate($date)
