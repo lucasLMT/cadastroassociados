@@ -8,10 +8,10 @@
             <div class="col-lg-6">
                 <?php echo $this->Form->create('LinhasTelefonica'); ?>
                 <div class="form-group">
-                    <?php echo $this->Form->input('associado_id', array('label' => 'Associado*', 'class' => 'form-control', 'empty' => '', 'required' => true)); ?>
+                    <?php echo $this->Form->input('associado_id', array('label' => 'Associado', 'class' => 'form-control', 'empty' => '')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('numero', array('label' => 'Número da linha:', 'class' => 'form-control', 'rows' => '1')); ?>
+                    <?php echo $this->Form->input('numero', array('label' => 'Número da linha', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('modo_id', array('label' => 'Modo*', 'class' => 'form-control', 'empty' => '', 'required' => true )); ?>

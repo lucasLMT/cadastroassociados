@@ -78,10 +78,10 @@ class AssociadosController extends AppController
             $data['Associado']['mensalidade'] = $data['Associado']['salario'] * 0.09;
 
             if ($this->Associado->save($data)) {
-                $this->Session->setFlash(__('Associado adicionado.'));
+                $this->Session->setFlash(__('Registro inserido com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('Não foi possível adicionar o associado. Por favor, Tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível inserir o registro. Favor, tente novamente.'));
             }
         }
         $cargos = $this->Associado->Cargo->find('list', array('order' => 'nome ASC'));
@@ -162,9 +162,9 @@ class AssociadosController extends AppController
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Associado->delete()) {
-            $this->Session->setFlash(__('Associado removido.'));
+            $this->Session->setFlash(__('Registro removido com sucesso.'));
         } else {
-            $this->Session->setFlash(__('Não foi possível remover o associado. Por favor, Tente novamente.'));
+            $this->Session->setFlash(__('Não foi possível remover o registro. Favor, tente novamente.'));
         }
         //return $this->redirect(array('action' => 'index'));
         return $this->redirect($this->referer());

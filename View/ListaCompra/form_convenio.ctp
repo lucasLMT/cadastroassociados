@@ -8,10 +8,10 @@
             <div class="col-lg-6">
                 <?php echo $this->Form->create('ListaCompra'); ?>
                 <div class="form-group">
-                    <?php echo $this->Form->input('convenio_id', array('label' => 'Convênio*', 'class' => 'form-control', 'empty' => '', 'required' => true)); ?>
+                    <?php echo $this->Form->input('convenio_id', array('label' => 'Convênio', 'class' => 'form-control', 'empty' => '')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('periodo_id', array('label' => 'Período*', 'class' => 'form-control', 'empty' => '', 'required' => true)); ?>
+                    <?php echo $this->Form->input('periodo_id', array('label' => 'Período', 'class' => 'form-control', 'empty' => '')); ?>
                 </div>
                 <table width="100%" cellpadding="5px">
                     <tr>
@@ -27,7 +27,7 @@
                         </td>
                     </tr>
                 </table>
-                <button type="submit" class="btn btn-default">Enviar</button>
+                <button type="submit" class="btn btn-default">Buscar</button>
                 <?php echo $this->Form->end(); ?>
             </div>
         </div>

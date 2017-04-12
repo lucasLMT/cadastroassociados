@@ -1,7 +1,12 @@
 <br>
 <div class="panel panel-default">
-    <div class="panel-heading">        
-       <b> Linhas telefônicas  <?php echo h($linhasTelefonicas[0]['Associado']['nome']); ?> </b>
+    <div class="panel-heading">               
+       <b> Linha(s) Telefônica(s)  
+       <?php if($modo == 1) { 
+                echo h($linhasTelefonicas[0]['Associado']['nome']);
+             } else if ($modo == 2) {                
+                echo h($linhasTelefonicas[0]['LinhasTelefonica']['Numero']);
+             } ?> </b>
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
@@ -10,11 +15,11 @@
                 <thead>
                 <tr>                
                     <th><?php echo __('Operadora'); ?></th>
-                    <th><?php echo __('Numero'); ?></th>
-                    <th><?php echo __('modelo'); ?></th>
-                    <th><?php echo __('data'); ?></th>
-                    <th><?php echo __('devolucao'); ?></th>
-                    <th><?php echo __('observacao'); ?></th>
+                    <th><?php echo __('Número'); ?></th>
+                    <th><?php echo __('Modelo'); ?></th>
+                    <th><?php echo __('Data'); ?></th>
+                    <th><?php echo __('Devolução'); ?></th>
+                    <th><?php echo __('Observação'); ?></th>
                     <th class="actions"><?php echo __('Gerenciamento'); ?></th>
                 </tr>
                 </thead>

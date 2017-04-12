@@ -34,14 +34,28 @@ class LinhasTelefonicasController extends AppController
 
         if ($this->request->is('post')) {
             $data = $this->request->data;
-            if ($data['LinhasTelefonica']['modo_id'] == 1) {
-                $options = array('conditions' => array('associado_id' => $data['LinhasTelefonica']['associado_id']));
-                $associado = $this->LinhasTelefonica->Associado->find('all', $options);
-            }
-            $this->redirect(array('controller' => 'LinhasTelefonicas', 'action' => 'listaLinhas',
-                $data['LinhasTelefonica']['associado_id'],
-                $data['LinhasTelefonica']['modo_id'],
-                $data['LinhasTelefonica']['numero']));
+            try {
+                $associado_id = $data['LinhasTelefonica']['associado_id'] ? $data['LinhasTelefonica']['associado_id'] : null;
+                $numero = $data['LinhasTelefonica']['numero'] ? $data['LinhasTelefonica']['numero'] : null;
+                $modo = $data['LinhasTelefonica']['modo_id'];
+                if ($modo == 1 && $associado_id) {                    
+                    $options = array('conditions' => array('associado_id' => $associado_id));
+                    $associado = $this->LinhasTelefonica->Associado->find('all', $options);
+                    $this->redirect(array('controller' => 'LinhasTelefonicas', 'action' => 'listaLinhas',                
+                        $associado_id,
+                        $modo));
+                } else if ($modo == 2 && $numero) {                    
+                    $options = array('conditions' => array('numero' => $data['LinhasTelefonica']['numero']));            
+                    $associado = $this->LinhasTelefonica->find('all', $options);                    
+                    $this->redirect(array('controller' => 'LinhasTelefonicas', 'action' => 'listaLinhas',                
+                        $numero,
+                        $modo));                
+                } else {
+                    throw new Exception(__('Selecione o modo de busca correto ou verique se os campos estão preenchidos corretamente.'));
+                }    
+            } catch (Exception $e) {
+                echo 'Erro na busca: ',  $e->getMessage(), "\n";                                                
+            }    
         }
         $associados = $this->LinhasTelefonica->Associado->find('list', array('order' => 'nome ASC'));
         $modos = $model->getModeList();
@@ -62,7 +76,7 @@ class LinhasTelefonicasController extends AppController
     public function view($id = null)
     {
         if (!$this->LinhasTelefonica->exists($id)) {
-            throw new NotFoundException(__('Invalid linhas telefonica'));
+            throw new NotFoundException(__('Linha Telefônica inválida.'));
         }
         $options = array('conditions' => array('LinhasTelefonica.' . $this->LinhasTelefonica->primaryKey => $id));
         $this->set('linhasTelefonica', $this->LinhasTelefonica->find('first', $options));
@@ -85,10 +99,10 @@ class LinhasTelefonicasController extends AppController
             $data['LinhasTelefonica']['devolucao'] = revertDate($devolucao);
 
             if ($this->LinhasTelefonica->save($data)) {
-                $this->Session->setFlash(__('The linhas telefonica has been saved.'));
+                $this->Session->setFlash(__('Registro inserido com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The linhas telefonica could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Não foi possível inserir o registro. Favor, tente novamente.'));
             }
         }
         $associados = $this->LinhasTelefonica->Associado->find('list', array('order' => 'nome ASC'));
@@ -106,7 +120,7 @@ class LinhasTelefonicasController extends AppController
     public function edit($id = null)
     {
         if (!$this->LinhasTelefonica->exists($id)) {
-            throw new NotFoundException(__('Linhas telefônica inválida.'));
+            throw new NotFoundException(__('Linha Telefônica inválida.'));
         }
         if ($this->request->is(array('post', 'put'))) {
             $data = $this->request->data;
@@ -149,26 +163,30 @@ class LinhasTelefonicasController extends AppController
     {
         $this->LinhasTelefonica->id = $id;
         if (!$this->LinhasTelefonica->exists()) {
-            throw new NotFoundException(__('Invalid linhas telefonica'));
+            throw new NotFoundException(__('Linha Telefônica inválida.'));
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->LinhasTelefonica->delete()) {
-            $this->Session->setFlash(__('The linhas telefonica has been deleted.'));
+            $this->Session->setFlash(__('Registro removido com sucesso.'));
         } else {
-            $this->Session->setFlash(__('The linhas telefonica could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('Não foi possível remover o registro. Favor, tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }
 
-    public function listaLinhas($associado_id, $modo, $numero = null)
-    {
+    public function listaLinhas($var1, $var2)
+    {                
+        $modo = $var2;
         if ($modo == 1) {
+            $associado_id = $var1;
             $options = array('conditions' => array('associado_id' => $associado_id));
-        } else {
-            $options = array('conditions' => array('numero' => $numero));
-        }
-        $linhasTelefonicas = $this->LinhasTelefonica->find('all', $options);
-        $this->set(compact('linhasTelefonicas'));
+            $linhasTelefonicas = $this->LinhasTelefonica->find('all', $options);        
+        } else if ($modo == 2){            
+            $numero = $var1;
+            $options = array('conditions' => array('numero' => $numero));            
+            $linhasTelefonicas = $this->LinhasTelefonica->find('all', $options);        
+        }                
+        $this->set(compact('linhasTelefonicas','modo'));        
     }
 
     /*public function formLinhas($id = null)

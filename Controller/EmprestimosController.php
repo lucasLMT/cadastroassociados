@@ -45,7 +45,7 @@ class EmprestimosController extends AppController
     public function view($id = null)
     {
         if (!$this->Emprestimo->exists($id)) {
-            throw new NotFoundException(__('Invalid emprestimo'));
+            throw new NotFoundException(__('Empréstimo inválido.'));
         }
         $options = array('conditions' => array('Emprestimo.' . $this->Emprestimo->primaryKey => $id));
         $this->set('emprestimo', $this->Emprestimo->find('first', $options));
@@ -61,10 +61,10 @@ class EmprestimosController extends AppController
         if ($this->request->is('post')) {
             $this->Emprestimo->create();
             if ($this->Emprestimo->save($this->request->data)) {
-                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
+                $this->Session->setFlash(__('Registro inserido com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível inserir o registro. Favor, tente novamente.'));
             }
         }
         $associados = $this->Emprestimo->Associado->find('list', array('order' => 'nome ASC'));
@@ -81,14 +81,14 @@ class EmprestimosController extends AppController
     public function edit($id = null)
     {
         if (!$this->Emprestimo->exists($id)) {
-            throw new NotFoundException(__('Invalid emprestimo'));
+            throw new NotFoundException(__('Empréstimo inválido.'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Emprestimo->save($this->request->data)) {
-                $this->Session->setFlash(__('The emprestimo has been saved.'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The emprestimo could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('Emprestimo.' . $this->Emprestimo->primaryKey => $id));
@@ -109,13 +109,13 @@ class EmprestimosController extends AppController
     {
         $this->Emprestimo->id = $id;
         if (!$this->Emprestimo->exists()) {
-            throw new NotFoundException(__('Invalid emprestimo'));
+            throw new NotFoundException(__('Empréstimo inválido.'));
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Emprestimo->delete()) {
-            $this->Session->setFlash(__('The emprestimo has been deleted.'));
+            $this->Session->setFlash(__('Registro removido com sucesso.'));
         } else {
-            $this->Session->setFlash(__('The emprestimo could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('Não foi possível remover o registro. Favor, tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }

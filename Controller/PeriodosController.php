@@ -65,10 +65,10 @@ class PeriodosController extends AppController
             $data['Periodo']['data_final'] = revertDate($datafinal);
 
             if ($this->Periodo->save($data)) {
-                $this->Session->setFlash(__('Período adicionado com sucesso.'));
+                $this->Session->setFlash(__('Registro inserido com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('Falha ao adicionar o período. Tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível inserir o registro. Favor, tente novamente.'));
             }
         }
     }
@@ -127,9 +127,9 @@ class PeriodosController extends AppController
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Periodo->delete()) {
-            $this->Session->setFlash(__('Período deletado com sucesso.'));
+            $this->Session->setFlash(__('Registro removido com sucesso.'));
         } else {
-            $this->Session->setFlash(__('Falha ao remover o período. Tente novamente.'));
+            $this->Session->setFlash(__('Não foi possível remover o registro. Favor, tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }

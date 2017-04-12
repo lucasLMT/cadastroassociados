@@ -45,7 +45,7 @@ class SaudePlanosController extends AppController
     public function view($id = null)
     {
         if (!$this->SaudePlano->exists($id)) {
-            throw new NotFoundException(__('Invalid saude plano'));
+            throw new NotFoundException(__('Plano inválido.'));
         }
         $options = array('conditions' => array('SaudePlano.' . $this->SaudePlano->primaryKey => $id));
         $this->set('saudePlano', $this->SaudePlano->find('first', $options));
@@ -61,10 +61,10 @@ class SaudePlanosController extends AppController
         if ($this->request->is('post')) {
             $this->SaudePlano->create();
             if ($this->SaudePlano->save($this->request->data)) {
-                $this->Session->setFlash(__('The saude plano has been saved.'));
+                $this->Session->setFlash(__('Registro inserido com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The saude plano could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Não foi possível inserir o registro. Favor, tente novamente.'));
             }
         }
     }
@@ -79,14 +79,14 @@ class SaudePlanosController extends AppController
     public function edit($id = null)
     {
         if (!$this->SaudePlano->exists($id)) {
-            throw new NotFoundException(__('Invalid saude plano'));
+            throw new NotFoundException(__('Plano inválido.'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->SaudePlano->save($this->request->data)) {
-                $this->Session->setFlash(__('The saude plano has been saved.'));
+                $this->Session->setFlash(__('Alteração realizada com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The saude plano could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Não foi possível realizar a alteração. Favor, tente novamente.'));
             }
         } else {
             $options = array('conditions' => array('SaudePlano.' . $this->SaudePlano->primaryKey => $id));
@@ -105,13 +105,13 @@ class SaudePlanosController extends AppController
     {
         $this->SaudePlano->id = $id;
         if (!$this->SaudePlano->exists()) {
-            throw new NotFoundException(__('Invalid saude plano'));
+            throw new NotFoundException(__('Plano inválido.'));
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->SaudePlano->delete()) {
-            $this->Session->setFlash(__('The saude plano has been deleted.'));
+            $this->Session->setFlash(__('Registro removido com sucesso.'));
         } else {
-            $this->Session->setFlash(__('The saude plano could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('Não foi possível remover o registro. Favor, tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }

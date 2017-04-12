@@ -45,7 +45,7 @@ class OperadorasController extends AppController
     public function view($id = null)
     {
         if (!$this->Operadora->exists($id)) {
-            throw new NotFoundException(__('Invalid operadora'));
+            throw new NotFoundException(__('Operadora inválida.'));
         }
         $options = array('conditions' => array('Operadora.' . $this->Operadora->primaryKey => $id));
         $this->set('operadora', $this->Operadora->find('first', $options));
@@ -61,10 +61,10 @@ class OperadorasController extends AppController
         if ($this->request->is('post')) {
             $this->Operadora->create();
             if ($this->Operadora->save($this->request->data)) {
-                $this->Session->setFlash(__('The operadora has been saved.'));
+                $this->Session->setFlash(__('Registro inserido com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The operadora could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Não foi possível inserir o registro. Favor, tente novamente.'));
             }
         }
     }
@@ -105,13 +105,13 @@ class OperadorasController extends AppController
     {
         $this->Operadora->id = $id;
         if (!$this->Operadora->exists()) {
-            throw new NotFoundException(__('Invalid operadora'));
+            throw new NotFoundException(__('Operadora inválida.'));
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Operadora->delete()) {
-            $this->Session->setFlash(__('The operadora has been deleted.'));
+            $this->Session->setFlash(__('Registro removido com sucesso.'));
         } else {
-            $this->Session->setFlash(__('The operadora could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('Não foi possível remover o registro. Favor, tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }
