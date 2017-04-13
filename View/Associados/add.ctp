@@ -70,8 +70,21 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('mensagem', array('label' => 'Mensagem:', 'class' => 'form-control', 'rows' => '4')); ?>
                 </div>
-                <button type="submit" class="btn btn-default">Enviar</button>
-                <button type="reset" class="btn btn-default">Limpar</button>
+                <button type="submit" class="btn btn-default">Adicionar</button>                
+                <?php
+                    echo $this->Html->link(
+                        'Voltar',
+                        array(
+                            'controller' => 'Associados',
+                            'action' => 'index',
+                            'full_base' => true
+                        ),
+                        array(
+                            'class' => 'btn btn-info',
+                            'role' => 'button'
+                        )
+                    );
+                ?>
                 <?php echo $this->Form->end(); ?>
             </div>
         </div>

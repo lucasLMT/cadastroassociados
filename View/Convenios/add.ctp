@@ -40,8 +40,21 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('statu_id', array('label' => 'Status:', 'class' => 'form-control')); ?>
                 </div>
-                <button type="submit" class="btn btn-default">Enviar</button>
-                <button type="reset" class="btn btn-default">Limpar</button>
+                <button type="submit" class="btn btn-default">Adicionar</button>
+                <?php
+                    echo $this->Html->link(
+                        'Voltar',
+                        array(
+                            'controller' => 'Convenios',
+                            'action' => 'index',
+                            'full_base' => true
+                        ),
+                        array(
+                            'class' => 'btn btn-info',
+                            'role' => 'button'
+                        )
+                    );
+                ?>
                 <?php echo $this->Form->end(); ?>
             </div>
         </div>

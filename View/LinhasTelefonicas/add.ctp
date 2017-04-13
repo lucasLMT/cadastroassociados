@@ -35,7 +35,20 @@
                     <?php echo $this->Form->input('observacao', array('label' => 'Telefone:', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
                 <button type="submit" class="btn btn-default">Enviar</button>
-                <button type="reset" class="btn btn-default">Limpar</button>
+                <?php
+                    echo $this->Html->link(
+                        'Voltar',
+                        array(
+                            'controller' => 'LinhasTelefonicas',
+                            'action' => 'index',
+                            'full_base' => true
+                        ),
+                        array(
+                            'class' => 'btn btn-info',
+                            'role' => 'button'
+                        )
+                    );
+                ?>                
                 <?php echo $this->Form->end(); ?>
             </div>
         </div>

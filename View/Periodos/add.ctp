@@ -16,7 +16,21 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('data_final', array('label' => 'Data final:', 'class' => 'form-control date', 'rows' => '1')); ?>
                 </div>
-                <button type="submit" class="btn btn-default">Enviar</button>
+                <button type="submit" class="btn btn-default">Adicionar</button>
+                <?php
+                    echo $this->Html->link(
+                        'Voltar',
+                        array(
+                            'controller' => 'Periodos',
+                            'action' => 'index',
+                            'full_base' => true
+                        ),
+                        array(
+                            'class' => 'btn btn-info',
+                            'role' => 'button'
+                        )
+                    );
+                ?>
                 <?php echo $this->Form->end(); ?>
             </div>
         </div>
