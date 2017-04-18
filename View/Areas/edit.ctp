@@ -21,7 +21,7 @@
                             'full_base' => true
                         ),
                         array(
-                            'class' => 'btn btn-info',
+                            'class' => 'btn btn-default',
                             'role' => 'button'
                         )
                     );

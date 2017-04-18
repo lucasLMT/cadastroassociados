@@ -32,6 +32,20 @@
                     <?php echo $this->Form->input('periodo_id', array('label' => 'Período:', 'class' => 'form-control')); ?>
                 </div>                
                 <button type="submit" class="btn btn-default">Salvar</button>
+                <?php
+                    echo $this->Html->link(
+                        'Voltar',
+                        array(
+                            'controller' => 'Compras',
+                            'action' => 'index',
+                            'full_base' => true
+                        ),
+                        array(
+                            'class' => 'btn btn-default',
+                            'role' => 'button'
+                        )
+                    );
+                ?>
                 <?php echo $this->Form->end(); ?>
             </div>
         </div>

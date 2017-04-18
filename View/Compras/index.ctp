@@ -10,7 +10,7 @@
                 'full_base' => true
             ),
             array(
-                'class' => 'btn btn-info',
+                'class' => 'btn btn-warning',
                 'role' => 'button'
             )
         );

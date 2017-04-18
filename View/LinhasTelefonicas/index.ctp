@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('modo_id', array('label' => 'Modo*', 'class' => 'form-control', 'empty' => '', 'required' => true )); ?>
                 </div>
-                <button type="submit" class="btn btn-success">Buscar</button>
+                <button type="submit" class="btn btn-info">Buscar</button>
                 <?php
                     echo $this->Html->link(
                         'Cadastrar uma nova linha',
@@ -26,7 +26,7 @@
                             'full_base' => true
                         ),
                         array(
-                            'class' => 'btn btn-info',
+                            'class' => 'btn btn-success',
                             'role' => 'button'
                         )
                     );

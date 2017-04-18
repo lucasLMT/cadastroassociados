@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('observacao', array('label' => 'Telefone:', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
-                <button type="submit" class="btn btn-default">Enviar</button>
+                <button type="submit" class="btn btn-default">Adicionar</button>
                 <?php
                     echo $this->Html->link(
                         'Voltar',
@@ -44,7 +44,7 @@
                             'full_base' => true
                         ),
                         array(
-                            'class' => 'btn btn-info',
+                            'class' => 'btn btn-default',
                             'role' => 'button'
                         )
                     );

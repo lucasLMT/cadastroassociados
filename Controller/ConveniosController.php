@@ -82,6 +82,8 @@ class ConveniosController extends AppController
      */
     public function edit($id = null)
     {
+        $model = ClassRegistry::init('Convenio');        
+        
         if (!$this->Convenio->exists($id)) {
             throw new NotFoundException(__('Convênio inválido.'));
         }
@@ -96,6 +98,9 @@ class ConveniosController extends AppController
             $options = array('conditions' => array('Convenio.' . $this->Convenio->primaryKey => $id));
             $this->request->data = $this->Convenio->find('first', $options);
         }
+
+        $status = $model->getStatus();
+        $this->set(compact('status'));
     }
 
     /**

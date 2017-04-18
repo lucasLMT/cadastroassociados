@@ -38,7 +38,7 @@
                     <?php echo $this->Form->input('contato', array('label' => 'Contato:', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('statu_id', array('label' => 'Status:', 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('statu_id', array('label' => 'Status:', 'class' => 'form-control','empty' => '')); ?>
                 </div>
                 <button type="submit" class="btn btn-default">Adicionar</button>
                 <?php
@@ -50,7 +50,7 @@
                             'full_base' => true
                         ),
                         array(
-                            'class' => 'btn btn-info',
+                            'class' => 'btn btn-default',
                             'role' => 'button'
                         )
                     );
