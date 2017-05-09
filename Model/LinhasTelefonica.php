@@ -57,8 +57,8 @@ class LinhasTelefonica extends AppModel
         // this could be a find 'list' from
         // another model
         return array(            
-            1 => 'Por associado',
-            2 => 'Por número',
+            1 => 'Por Associado',
+            2 => 'Por Número',
         );
     }
 }

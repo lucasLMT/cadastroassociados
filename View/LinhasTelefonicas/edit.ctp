@@ -36,6 +36,20 @@
                     <?php echo $this->Form->input('observacao', array('label' => 'Observação:', 'class' => 'form-control', 'rows' => '4')); ?>
                 </div>
                 <button type="submit" class="btn btn-default">Salvar</button>
+                <?php
+                    echo $this->Html->link(
+                        'Voltar',
+                        array(
+                            'controller' => 'LinhasTelefonicas',
+                            'action' => 'index',
+                            'full_base' => true
+                        ),
+                        array(
+                            'class' => 'btn btn-default',
+                            'role' => 'button'
+                        )
+                    );
+                ?>
                 <?php echo $this->Form->end(); ?>
             </div>
         </div>

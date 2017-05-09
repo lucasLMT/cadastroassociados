@@ -8,15 +8,15 @@
             <div class="col-lg-6">
                 <?php echo $this->Form->create('LinhasTelefonica'); ?>
                 <div class="form-group">
-                    <?php echo $this->Form->input('associado_id', array('label' => 'Associado*', 'class' => 'form-control', 'empty' => '', 'required' => true)); ?>
+                    <?php echo $this->Form->input('associado_id', array('label' => 'Associado', 'class' => 'form-control', 'empty' => '')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('numero', array('label' => 'Número da linha:', 'class' => 'form-control', 'rows' => '1')); ?>
+                    <?php echo $this->Form->input('numero', array('label' => 'Número da linha', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('modo_id', array('label' => 'Modo*', 'class' => 'form-control', 'empty' => '', 'required' => true )); ?>
                 </div>
-                <button type="submit" class="btn btn-default">Buscar</button>
+                <button type="submit" class="btn btn-info">Buscar</button>
                 <?php
                     echo $this->Html->link(
                         'Cadastrar uma nova linha',
@@ -26,7 +26,7 @@
                             'full_base' => true
                         ),
                         array(
-                            'class' => 'btn btn-info',
+                            'class' => 'btn btn-success',
                             'role' => 'button'
                         )
                     );

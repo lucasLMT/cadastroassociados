@@ -25,7 +25,21 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('observacao', array('label' => 'Observação:', 'class' => 'form-control', 'rows' => '4')); ?>
                 </div>
-                <button type="submit" class="btn btn-default">Salvar</button>
+                <button type="submit" class="btn btn-default">Adicionar</button>
+                <?php
+                    echo $this->Html->link(
+                        'Voltar',
+                        array(
+                            'controller' => 'SaudePlanos',
+                            'action' => 'index',
+                            'full_base' => true
+                        ),
+                        array(
+                            'class' => 'btn btn-info',
+                            'role' => 'button'
+                        )
+                    );
+                ?>
                 <?php echo $this->Form->end(); ?>
             </div>
         </div>

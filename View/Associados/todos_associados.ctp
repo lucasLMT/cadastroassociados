@@ -21,7 +21,7 @@ echo $this->Html->link(
         'full_base' => true
     ),
     array(
-        'class' => 'btn btn-warning',
+        'class' => 'btn btn-success',
         'role' => 'button'
     )
 );
@@ -35,7 +35,7 @@ echo $this->Html->link(
         'full_base' => true
     ),
     array(
-        'class' => 'btn btn-success',
+        'class' => 'btn btn-danger',
         'role' => 'button'
     )
 );

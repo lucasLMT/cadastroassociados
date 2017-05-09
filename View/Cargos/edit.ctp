@@ -15,6 +15,20 @@
                     <?php echo $this->Form->input('mealvalue', array('label' => 'Valor do almoço: (Exemplo 1234.56)', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>
                 <button type="submit" class="btn btn-default">Enviar</button>
+                <?php
+                    echo $this->Html->link(
+                        'Voltar',
+                        array(
+                            'controller' => 'Cargos',
+                            'action' => 'index',
+                            'full_base' => true
+                        ),
+                        array(
+                            'class' => 'btn btn-default',
+                            'role' => 'button'
+                        )
+                    );
+                ?>
                 <?php echo $this->Form->end(); ?>
             </div>
         </div>

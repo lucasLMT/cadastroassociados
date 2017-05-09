@@ -29,6 +29,20 @@
                     <?php// echo $this->Form->input('preco_conv', array('label' => 'Preço convidado: (Exemplo 1234.56)', 'class' => 'form-control', 'rows' => '1')); ?>
                 </div>-->
                 <button type="submit" class="btn btn-default">Salvar</button>
+                <?php
+                    echo $this->Html->link(
+                        'Voltar',
+                        array(
+                            'controller' => 'Refeitorios',
+                            'action' => 'index',
+                            'full_base' => true
+                        ),
+                        array(
+                            'class' => 'btn btn-default',
+                            'role' => 'button'
+                        )
+                    );
+                ?>
                 <?php echo $this->Form->end(); ?>
             </div>
         </div>

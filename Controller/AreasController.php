@@ -61,10 +61,10 @@ class AreasController extends AppController
         if ($this->request->is('post')) {
             $this->Area->create();
             if ($this->Area->save($this->request->data)) {
-                $this->Session->setFlash(__('A área foi salva com sucesso.'));
+                $this->Session->setFlash(__('Registro inserido com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('A nova área não pode ser salva, tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível inserir o registro. Favor, tente novamente.'));
             }
         }
     }
@@ -79,7 +79,7 @@ class AreasController extends AppController
     public function edit($id = null)
     {
         if (!$this->Area->exists($id)) {
-            throw new NotFoundException(__('Invalid area'));
+            throw new NotFoundException(__('Área inválida.'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Area->save($this->request->data)) {
@@ -105,13 +105,13 @@ class AreasController extends AppController
     {
         $this->Area->id = $id;
         if (!$this->Area->exists()) {
-            throw new NotFoundException(__('Invalid area'));
+            throw new NotFoundException(__('Área inválida.'));
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Area->delete()) {
-            $this->Session->setFlash(__('A área foi deletada com sucesso.'));
+            $this->Session->setFlash(__('Registro removido com sucesso.'));
         } else {
-            $this->Session->setFlash(__('A área não pode ser deletada, tente novamente.'));
+            $this->Session->setFlash(__('Não foi possível remover o registro. Favor, tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }

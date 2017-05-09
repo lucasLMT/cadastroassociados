@@ -45,7 +45,7 @@ class CargosController extends AppController
     public function view($id = null)
     {
         if (!$this->Cargo->exists($id)) {
-            throw new NotFoundException(__('Invalid cargo'));
+            throw new NotFoundException(__('Cargo inválido.'));
         }
         $options = array('conditions' => array('Cargo.' . $this->Cargo->primaryKey => $id));
         $this->set('cargo', $this->Cargo->find('first', $options));
@@ -61,10 +61,10 @@ class CargosController extends AppController
         if ($this->request->is('post')) {
             $this->Cargo->create();
             if ($this->Cargo->save($this->request->data)) {
-                $this->Session->setFlash(__('O cargo foi salvo com sucesso.'));
+                $this->Session->setFlash(__('Registro inserido com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('O cargo não pode ser salvo, tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível inserir o registro. Favor, tente novamente.'));
             }
         }
     }
@@ -109,9 +109,9 @@ class CargosController extends AppController
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Cargo->delete()) {
-            $this->Session->setFlash(__('O cargo foi deletado com sucesso.'));
+            $this->Session->setFlash(__('Registro removido com sucesso.'));
         } else {
-            $this->Session->setFlash(__('O cargo não pode ser deletado, tente novamente.'));
+            $this->Session->setFlash(__('Não foi possível remover o registro. Favor, tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }

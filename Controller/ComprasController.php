@@ -68,10 +68,10 @@ class ComprasController extends AppController
             $data['Compra']['quantidade'] = $data['Compra']['quantidade'] + 1;
 
             if ($this->Compra->save($data)) {
-                $this->Session->setFlash(__('Compra adicionada.'));
+                $this->Session->setFlash(__('Registro inserido com sucesso.'));
                 return $this->redirect(array('action' => 'add'));
             } else {
-                $this->Session->setFlash(__('Não foi possível adicionar a compra. Por favor, tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível inserir o registro. Favor, tente novamente.'));
             }
         } else if ($this->request->is('ajax')){
             $this->layout = false;
@@ -162,9 +162,9 @@ class ComprasController extends AppController
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Compra->delete()) {
-            $this->Session->setFlash(__('Compra removida.'));
+            $this->Session->setFlash(__('Registro removido com sucesso.'));
         } else {
-            $this->Session->setFlash(__('Não foi possível remover a compra. Por favor, Tente novamente.'));
+            $this->Session->setFlash(__('Não foi possível remover o registro. Favor, tente novamente.'));
         }
         //return $this->redirect(array('action' => 'index'));
         return $this->redirect($this->referer());

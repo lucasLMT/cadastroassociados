@@ -45,7 +45,7 @@ class RefeitoriosController extends AppController
     public function view($id = null)
     {
         if (!$this->Refeitorio->exists($id)) {
-            throw new NotFoundException(__('Invalid refeitorio'));
+            throw new NotFoundException(__('Refeitório inválido.'));
         }
         $options = array('conditions' => array('Refeitorio.' . $this->Refeitorio->primaryKey => $id));
         $this->set('refeitorio', $this->Refeitorio->find('first', $options));
@@ -134,9 +134,9 @@ class RefeitoriosController extends AppController
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Refeitorio->delete()) {
-            $this->Session->setFlash(__('The refeitorio has been deleted.'));
+            $this->Session->setFlash(__('Registro removido com sucesso.'));
         } else {
-            $this->Session->setFlash(__('The refeitorio could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('Não foi possível remover o registro. Favor, tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }

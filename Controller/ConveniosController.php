@@ -63,10 +63,10 @@ class ConveniosController extends AppController
         if ($this->request->is('post')) {
             $this->Convenio->create();
             if ($this->Convenio->save($this->request->data)) {
-                $this->Session->setFlash(__('Convênio adicionado.'));
+                $this->Session->setFlash(__('Registro inserido com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('Não foi possível adicionar o convênio. Por favor, Tente novamente.'));
+                $this->Session->setFlash(__('Não foi possível inserir o registro. Favor, tente novamente.'));
             }
         }
         $status = $model->getStatus();
@@ -82,6 +82,8 @@ class ConveniosController extends AppController
      */
     public function edit($id = null)
     {
+        $model = ClassRegistry::init('Convenio');        
+        
         if (!$this->Convenio->exists($id)) {
             throw new NotFoundException(__('Convênio inválido.'));
         }
@@ -96,6 +98,9 @@ class ConveniosController extends AppController
             $options = array('conditions' => array('Convenio.' . $this->Convenio->primaryKey => $id));
             $this->request->data = $this->Convenio->find('first', $options);
         }
+
+        $status = $model->getStatus();
+        $this->set(compact('status'));
     }
 
     /**
@@ -113,9 +118,9 @@ class ConveniosController extends AppController
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Convenio->delete()) {
-            $this->Session->setFlash(__('Convênio removido.'));
+            $this->Session->setFlash(__('Registro removido com sucesso.'));
         } else {
-            $this->Session->setFlash(__('Não foi possível remover o convênio. Por favor, Tente novamente.'));
+            $this->Session->setFlash(__('Não foi possível remover o registro. Favor, tente novamente.'));
         }
         return $this->redirect(array('action' => 'index'));
     }
