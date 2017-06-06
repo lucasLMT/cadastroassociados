@@ -60,8 +60,10 @@ echo $this->Html->link(
 </p>
 <div class="paging">
     <?php
-    echo $this->Paginator->prev('< ' . __('anterior '), array(), null, array('class' => 'prev disabled'));
-    echo $this->Paginator->numbers(array('separator' => ' '));
-    echo $this->Paginator->next(__(' próximo') . ' >', array(), null, array('class' => 'next disabled'));
+    echo $this->Paginator->prev('< ' . __('Anterior   '), array('class' => 'btn btn-default',
+                            'role' => 'button'), null, array('class' => 'btn btn-default disabled', 'role' => 'button'));
+    echo $this->Paginator->numbers(array('separator' => '   '));
+    echo $this->Paginator->next(__('   Próximo') . ' >', array('class' => 'btn btn-default',
+                            'role' => 'button'), null, array('class' => 'btn btn-default disabled', 'role' => 'button'));
     ?>
 </div>

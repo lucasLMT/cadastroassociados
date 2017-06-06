@@ -33,7 +33,7 @@ class ListaCompraController extends AppController
             $options = array('conditions' => array(
                 'Compra.periodo_id' => $periodo,
                 'Compra.associado_id' => $associado),
-                'order' => array('Compra.referencia'));
+                'order' => array('Compra.date'));
         } else {
             $options = array('conditions' => array(
                 'Compra.periodo_id' => $periodo),
