@@ -11,8 +11,7 @@
                 <tr>
                     <?php if ($modo == 1) { ?>
                         <th><?php echo __('Associado'); ?></th>
-                        <th><?php echo __('Convênio'); ?></th>
-                        <th><?php echo __('Referência'); ?></th>
+                        <th><?php echo __('Convênio'); ?></th>                        
                         <th><?php echo __('Valor'); ?></th>
                         <th><?php echo __('Descrição'); ?></th>
                     <?php } else { ?>
@@ -27,8 +26,7 @@
                         foreach ($compras as $compra): ?>
                             <tr class="odd gradeX">
                                 <td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
-                                <td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>
-                                <td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+                                <td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>                                
                                 <?php $total += (float)$compra['Compra']['valor']; ?>
                                 <?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
 			                          $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );?>
@@ -48,8 +46,7 @@
                                 if (($conv_tmp == $compra['Convenio']['razaoSocial']) && ($count == $i)) { ?>
                                     <tr class="odd gradeX">
                                         <td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
-                                        <td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>
-                                        <td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+                                        <td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>                                        
                                         <?php $total += (float)$compra['Compra']['valor']; ?>
                                         <?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
         			                          $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );?>
@@ -71,8 +68,7 @@
                                     </tr>
                                     <tr class="odd gradeX">
                                         <td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
-                                        <td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>
-                                        <td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+                                        <td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>                                        
                                         <?php $total = (float)$compra['Compra']['valor']; ?>
                                         <?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
         			                          $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );?>
@@ -97,8 +93,7 @@
                             } ?>
                             <tr class="odd gradeX">
                                 <td><?php echo h($compra['Associado']['nome']); ?>&nbsp;</td>
-                                <td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>
-                                <td><?php echo h($compra['Compra']['referencia']); ?>&nbsp;</td>
+                                <td><?php echo h($compra['Convenio']['razaoSocial']); ?>&nbsp;</td>                                
                                 <?php $total += (float)$compra['Compra']['valor']; ?>
                                 <?php $this->Number->addFormat('BRL', array('before'=> 'R$', 'thousands' => '.', 'decimals' => ','));
 			                          $valor = $this->Number->currency($compra['Compra']['valor'],'BRL' );?>
