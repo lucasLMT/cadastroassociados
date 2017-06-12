@@ -49,9 +49,9 @@ class LinhasTelefonicasController extends AppController
                     $associado = $this->LinhasTelefonica->find('all', $options);                    
                     $this->redirect(array('controller' => 'LinhasTelefonicas', 'action' => 'listaLinhas',                
                         $numero,
-                        $modo));                
+                        $modo));                                
                 } else {
-                    throw new Exception(__('Selecione o modo de busca correto ou verique se os campos estão preenchidos corretamente.'));
+                    throw new Exception(__('Selecione o modo de busca correto ou verifique se os campos estão preenchidos corretamente.'));
                 }    
             } catch (Exception $e) {
                 echo 'Erro na busca: ',  $e->getMessage(), "\n";                                                
@@ -175,7 +175,7 @@ class LinhasTelefonicasController extends AppController
     }
 
     public function listaLinhas($var1, $var2)
-    {                
+    {                        
         $modo = $var2;
         if ($modo == 1) {
             $associado_id = $var1;
@@ -184,9 +184,9 @@ class LinhasTelefonicasController extends AppController
         } else if ($modo == 2){            
             $numero = $var1;
             $options = array('conditions' => array('numero' => $numero));            
-            $linhasTelefonicas = $this->LinhasTelefonica->find('all', $options);        
-        }                
-        $this->set(compact('linhasTelefonicas','modo'));        
+            $linhasTelefonicas = $this->LinhasTelefonica->find('all', $options);                    
+        }                    
+        $this->set(compact('linhasTelefonicas','modo'));    
     }
 
     /*public function formLinhas($id = null)

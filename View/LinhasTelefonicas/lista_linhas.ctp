@@ -1,12 +1,20 @@
 <br>
 <div class="panel panel-default">
     <div class="panel-heading">               
-       <b> Linha(s) Telefônica(s)  
-       <?php if($modo == 1) { 
-                echo h($linhasTelefonicas[0]['Associado']['nome']);
-             } else if ($modo == 2) {                
-                echo h($linhasTelefonicas[0]['LinhasTelefonica']['Numero']);
-             } ?> </b>
+       <b>  
+       <?php 
+        try {            
+            if (empty($linhasTelefonicas)){
+                throw new Exception(__('A consulta não retornou resultados. Verifique se os campos estão preenchidos corretamente.'));               
+            } else if($modo == 1) { 
+                echo h('Linha(s) Telefônica(s): '. $linhasTelefonicas[0]['Associado']['nome']);
+            } else if ($modo == 2) {                
+                echo h('Linha(s) Telefônica(s): '. $linhasTelefonicas[0]['LinhasTelefonica']['Numero'].'Asspciado: '. $linhasTelefonicas[0]['Associado']['nome']);                        
+            }
+        } catch(Exception $e) {
+            echo 'Erro na busca: ',  $e->getMessage(), "\n";
+        }             
+         ?> </b>
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
