@@ -11,6 +11,9 @@
                     <?php echo $this->Form->input('convenio_id', array('label' => 'Convênio', 'class' => 'form-control', 'empty' => '')); ?>
                 </div>
                 <div class="form-group">
+                    <?php echo $this->Form->input('associado_id', array('label' => 'Associado', 'class' => 'form-control', 'empty' => '')); ?>
+                </div>
+                <div class="form-group">
                     <?php echo $this->Form->input('periodo_id', array('label' => 'Período', 'class' => 'form-control', 'empty' => '')); ?>
                 </div>
                 <table width="100%" cellpadding="5px">
@@ -23,6 +26,18 @@
                         <td>
                             <div class="form-group">
                                 <?php echo $this->Form->input('todos', array('label' => 'Trazer todos:', 'class' => 'form-control')); ?>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <?php echo $this->Form->input('data_inicial', array('label' => 'Data Inicial', 'class' => 'form-control date', 'empty' => '')); ?>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <?php echo $this->Form->input('data_final', array('label' => 'Data Final', 'class' => 'form-control date', 'empty' => '')); ?>
                             </div>
                         </td>
                     </tr>

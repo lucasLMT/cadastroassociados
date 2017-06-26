@@ -62,9 +62,15 @@ class ListaCompra extends AppModel
             'type' => 'boolean',
             'null' => false,
         ),
+        'data_inicial' => array(
+            'type' => 'string',
+        ),
+        'data_final' => array(
+            'type' => 'string',
+        ),
     );
 
-    public $validate = array(
+    /*public $validate = array(
         'associado_id' => array(
             'rule' => 'notempty',
             'message' => "O nome deve ser preenchido",
@@ -73,7 +79,7 @@ class ListaCompra extends AppModel
             'rule' => 'notempty',
             'message' => "O período deve ser preenchido",
         ),
-    );
+    );*/
 
     public function getModeList()
     {

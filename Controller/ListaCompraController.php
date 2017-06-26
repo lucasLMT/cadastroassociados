@@ -28,12 +28,12 @@ class ListaCompraController extends AppController
      */
     public function listaAssociado($periodo, $associado,
                                    $modo, $todos, $referencia)
-    {
+    {        
         if (($modo == 1) && !$todos) {
             $options = array('conditions' => array(
                 'Compra.periodo_id' => $periodo,
                 'Compra.associado_id' => $associado),
-                'order' => array('Compra.date'));
+                'order' => array('Compra.referencia'));
         } else {
             $options = array('conditions' => array(
                 'Compra.periodo_id' => $periodo),
@@ -71,16 +71,24 @@ class ListaCompraController extends AppController
     }
 
     public function listaConvenio($periodo, $convenio, $modo,
-                                  $todos, $referencia)
+                                  $todos, $referencia, $associado, $dataInicial, $dataFinal)
     {
-        if (($modo == 1) && !$todos) {
+        if (($convenio = 24) && ($associado != null)) {
             $options = array('conditions' => array(
-                'Compra.periodo_id' => $periodo,
-                'Compra.convenio_id' => $convenio));
+                    'Compra.associado_id' => $associado,
+                    'Compra.date >=' => $dataInicial,
+                    'Compra.date <=' => $dataFinal,
+                    'Compra.convenio_id' => $convenio));
         } else {
-            $options = array('conditions' => array(
-                'Compra.periodo_id' => $periodo),
-                'order' => array('Compra.convenio_id'));
+            if (($modo == 1) && !$todos) {
+                $options = array('conditions' => array(
+                    'Compra.periodo_id' => $periodo,
+                    'Compra.convenio_id' => $convenio));
+            } else {
+                $options = array('conditions' => array(
+                    'Compra.periodo_id' => $periodo),
+                    'order' => array('Compra.convenio_id'));
+            }
         }
         $compras = $this->ListaCompra->Compra->find('all', $options);
         $total = 0;
@@ -91,9 +99,8 @@ class ListaCompraController extends AppController
     public function formConvenio($id = null)
     {
         $model = ClassRegistry::init('ListaCompra');
-
-        if ($this->request->is('post')) {
-
+        
+        if ($this->request->is('post')) {            
             $data = $this->request->data;
             $date_conditions = array('conditions' => array('Periodo.id' => $data['ListaCompra']['periodo_id']));
             $date = $this->ListaCompra->Periodo->find('all', $date_conditions);
@@ -104,13 +111,18 @@ class ListaCompraController extends AppController
                 $data['ListaCompra']['periodo_id'],
                 $data['ListaCompra']['convenio_id'],
                 $data['ListaCompra']['modo_id'],
-                $data['ListaCompra']['todos'],
-                $referencia));
+                $data['ListaCompra']['todos'],                
+                $referencia,
+                $data['ListaCompra']['associado_id'],
+                $data['ListaCompra']['data_inicial'],
+                $data['ListaCompra']['data_final']
+                ));
         }
         $convenios = $this->ListaCompra->Convenio->find('list', array('order' => 'razaoSocial ASC'));
+        $associados = $this->ListaCompra->Associado->find('list', array('order' => 'nome ASC'));
         $periodos = $this->ListaCompra->Periodo->find('list', array('order' => 'id DESC'));
         $modos = $model->getModeList();
-        $this->set(compact('convenios', 'periodos', 'modos'));
+        $this->set(compact('convenios', 'periodos', 'modos', 'associados'));
     }
 
     public function listaDevedores($periodo)
