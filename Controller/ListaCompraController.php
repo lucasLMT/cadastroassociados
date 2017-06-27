@@ -76,9 +76,9 @@ class ListaCompraController extends AppController
         if (($convenio = 24) && ($associado != null)) {
             $options = array('conditions' => array(
                     'Compra.associado_id' => $associado,
-                    'Compra.date >=' => $dataInicial,
-                    'Compra.date <=' => $dataFinal,
-                    'Compra.convenio_id' => $convenio));
+                    'Compra.date >=' => revertDate($dataInicial),
+                    'Compra.date <=' => revertDate($dataFinal),
+                    'Compra.convenio_id' => $convenio));     
         } else {
             if (($modo == 1) && !$todos) {
                 $options = array('conditions' => array(
@@ -323,4 +323,16 @@ class ListaCompraController extends AppController
         //$data = $this->Model->find('all');
         $this->set(compact('compras', 'valorTotal'));
     }
+}
+
+function revertDate($date)
+{
+    if ($date != '') {
+        $dates = explode('-', $date);
+        $datesTmp[0] = $dates[2];
+        $datesTmp[1] = $dates[1];
+        $datesTmp[2] = $dates[0];
+        return join('-', $datesTmp);
+    }
+    return $date;
 }
