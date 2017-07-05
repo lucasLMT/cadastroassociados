@@ -81,9 +81,16 @@ class ListaCompraController extends AppController
                     'Compra.convenio_id' => $convenio));     
         } else {
             if (($modo == 1) && !$todos) {
-                $options = array('conditions' => array(
-                    'Compra.periodo_id' => $periodo,
-                    'Compra.convenio_id' => $convenio));
+                if ($periodo != null) {
+                    $options = array('conditions' => array(
+                        'Compra.periodo_id' => $periodo,
+                        'Compra.convenio_id' => $convenio));
+                } else if ($dataInicial != null && $dataFinal != null) {
+                    $options = array('conditions' => array(
+                        'Compra.date >=' => revertDate($dataInicial),
+                        'Compra.date <=' => revertDate($dataFinal),
+                        'Compra.convenio_id' => $convenio)); 
+                }
             } else {
                 $options = array('conditions' => array(
                     'Compra.periodo_id' => $periodo),
